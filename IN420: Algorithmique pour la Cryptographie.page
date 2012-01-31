@@ -41,8 +41,7 @@ Cours 12 (18/04/2012)
 # TDs
 
 TD 1 (31/01/2012)
-  ~ [Chiffrement
-    monoalphabétique](TD1:%20Chiffrement%20monoalphabétique)
+  ~ [Cryptanalyse des chiffres monoalphabétiques]()
 TD 2 (07/02/2012)
   ~ 
 TD 3 (14/02/2012)
@@ -72,10 +71,9 @@ TD 11 (17/04/2012)
 # Bibliographie
 
 D. Kahn. *The Codebreakers. The Comprehensive History of Secret
-Communication from Ancient Times to the Internet*.
-  ~ Second edition. Scribner, 1996. ISBN: 978–0684831305. Ouvrage de
-    divulgation classique sur la cryptographie classique (i.e. jusqu’à
-    la fin de la deuxième guerre). Absolument pas un manuel de cours,
-    mais une lecture passionnante pour le mordu de crypto.
-    Malheureusement le livre n’a jamais été complètement traduit en
-    français, à ma connaissance.
+Communication from Ancient Times to the Internet*. \~ Second edition.
+Scribner, 1996. ISBN: 978–0684831305. Ouvrage de divulgation classique
+sur la cryptographie classique (i.e. jusqu’à la fin de la deuxième
+guerre). Absolument pas un manuel de cours, mais une lecture
+passionnante pour le mordu de crypto. Malheureusement le livre n’a
+jamais été complètement traduit en français, à ma connaissance.
