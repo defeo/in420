@@ -194,7 +194,7 @@ Pour lire le fichier nous devons créer un objet un peut spécial appelé
 supposant que le variable `fichier` soit une chaîne contenant le nom
 du fichier a ouvrir, on le crée ainsi:
 
-    BufferedStreamReader in = new BufferedStreamReader(new FileReader(fichier));
+    BufferedReader in = new BufferedReader(new FileReader(fichier));
 
 Ensuite la lecture du fichier se fait avec la méthode `readLine()` du
 `BufferedStreamReader`. Cette méthode renvoie une chaîne de caractères
