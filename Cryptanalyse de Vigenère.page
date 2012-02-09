@@ -167,7 +167,7 @@ public class Vigenere {
        chaque lettre dans ligne */
     private static int[] compte(String ligne) {}
     /* Donne l'indice de coincidence reel du texte */
-    public int[] coincidence() {}
+    public float[] coincidence() {}
 
     /* Dechiffre le texte en utilisant la clef et sauvegarde
        le resultat */
@@ -182,23 +182,73 @@ public class Vigenere {
     public void affiche() {}
     
     /* Execute le programme */
-    public static void main(String[] args) throws IOException {}
+    public static void main(String[] args) throws IOException {
+	if (args.length < 2) {
+	    System.out.println("Pas assez d'arguments");
+	    System.exit(0);
+	}
+	
+	String fichier = args[0];
+	String op = args[1];
+	String x = "";
+	if (args.length > 2)
+	    x = args[2];
+
+	int longueur = 0;
+	if (op.equals("coincidence")) {
+	    longueur = Integer.parseInt(x);
+	    if (longueur == 0) {
+		System.out.println("Clef trop courte");
+		System.exit(0);
+	    }
+	} else {
+	    longueur = x.length();
+	}
+	
+	BufferedReader in = new BufferedReader(new FileReader(fichier));
+	String texte = "", ligne;
+	while ((ligne = in.readLine()) != null) {
+	    texte += ligne;
+	}
+
+	Vigenere vig = new Vigenere(texte, longueur);
+
+	if (!op.equals("coincidence") && !x.equals(""))
+	    vig.dechiffre(x);
+
+	if (op.equals("coincidence")) {
+	    float[] ic = vig.coincidence();
+	    for (float i : ic)
+		System.out.println(i);
+	} else if (op.equals("frequence")) {
+	    for (String l : vig.lignes)
+		System.out.println(vig.ordonne(l));
+	} else if (op.equals("affiche")) {
+	    vig.affiche();
+	} else {
+	    System.out.println("Operation inconnue: " + op);
+	}
+    }
 }
 ~~~
 
 Structurez le code comme suit.
 
-- Le `main` examine le tableau `args`:
+- Le `main` est déjà fourni. Il prend deux ou trois arguments:
 
-    - Le premier argument va être le nom d'un fichier contenant le
-      texte à déchiffrer (allez voir la
-      [Cryptanalyse des chiffres monoalphabétiques]() pour savoir
-      comment on lit des fichiers).
-    - Le deuxième argument doit être le nom d'une opération à
-      exécuter: `coincidence`, `frequence` ou `affiche`.
-    - Le troisième argument, optionnel, doit être une longueur ou une
-      clef de déchiffrement, selon la méthode demandée.
-      
+    - Le premier argument est le nom d'un fichier contenant le texte à déchiffrer.
+
+    - Le deuxième argument est le nom de l'opération à effecture. Trois opérations sont possible:
+    
+        - `coincidence`: il calcule et affiche les indices de
+          coincidence; dans ce cas le troisième argument doit être la longueur
+          putative de la clef.
+        - `frequence`: s'il y a une clef comme troisième argument, il
+          utilise `dechiffre`; ensuite il utilise `ordonne` sur chaque
+          ligne et affiche le résultat.
+        - `affiche`: s'il y a une clef comme troisième argument, il
+          utilise `dechiffre`; ensuite il appelle `affiche`.
+
     Au fur et à mesure que vous avancez dans le code, utilisez le main
     pour tester votre programme.
 
@@ -243,23 +293,5 @@ Structurez le code comme suit.
 - La méthode `affiche` imprime à l'écran le contenu des lignes de
   façon lisible.
   
-- Finalement, le `main` agit comme suit:
-
-    1. Il lit les arguments.
-    
-    2. Il ouvre le fichier.
-    
-    3. Il crée un objet Vigenere en lui passant le contenu du fichier.
-    
-    4. Si l'opération demandée est 
-    
-        - `coincidence`: il calcule et affiche les indices de
-          coincidence; le troisième argument doit être la longueur
-          putative de la clef.
-        - `frequence`: s'il y a une clef comme troisième argument, il
-          utilise `dechiffre`; ensuite il utilise `ordonne` sur chaque
-          ligne et affiche le résultat.
-        - `affiche`: s'il y a une clef comme troisième argument, il
-          utilise `dechiffre`; ensuite il appelle `affiche`.
 
 Utilisez votre programme pour déchiffrer le texte au début du TD.
