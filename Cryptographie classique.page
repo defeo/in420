@@ -2,7 +2,9 @@ Par *cryptographie classique* l'on entend tous les systèmes cryptographiques (p
 
 # Chiffrement monoalphabétique
 
-Les systèmes de chiffrement monoalphabétique remplacent chaque caractère du texte clair avec un nouveau caractère. La table de substitution des caractères constitue la clef secrète. Suétone nous rapporte que César aurait utilisé un système monoalphabétique par décalage pour chiffrer ses messages.
+Les systèmes de chiffrement monoalphabétique remplacent chaque caractère du texte clair avec un nouveau caractère. La table de substitution des caractères constitue la clef secrète.
+
+Suétone nous rapporte que César aurait utilisé un système monoalphabétique par décalage pour chiffrer ses messages. Un autre système classique de chiffrement monoalphabétique est le *chiffre affine*.
 
 Les systèmes monoalphabétiques souffrent d'une faille majeure: un symbole du texte clair est toujours envoyé sur le même symbole dans le texte chiffré. Ceci rend les systèmes monoalphabétiques vulnérables à la cryptanalyse par analyse statistique.
 
@@ -28,6 +30,8 @@ Les systèmes par permutation constituent le cas particulier du chiffre de Hill 
 
 # Bibliographie
 
-D. Stinson. Cryptographie -- Théorie et pratique.
+D. Stinson. *Cryptographie -- Théorie et pratique*.
 :   2e édition. Vuibert, Paris, 2003. ISBN: 2–7117–4800–6. Chapitre 1.
 
+J. A. Buchmann. *Introduction à la cryptographie*.
+:   2e édition. Dunod, 2006. ISBN 2–10–049622–0. Côte BU: 005.82 BUC. Les sections 3.10--3.14 contiennent des rappels et des exercices sur les systèmes affine, de Vigènere et de Hill.
