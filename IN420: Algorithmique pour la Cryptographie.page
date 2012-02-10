@@ -73,11 +73,23 @@ TD 11 (17/04/2012)
 # Bibliographie
 
 D. Stinson. *Cryptographie -- Théorie et pratique*.
-:   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
+:   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Côte BU: 005.82 STI. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
+
+*Cryptographie & codes secrets*.
+:   Éditions POLE, 2006. Hors-Série Tangente 26. ISSN: 09870806. Côte BU: 008.82 CRY. Ouvrage de divulgation non-technique, recouvrant une partie du cours. Surtout les chapitres introductifs sur la cryptographie classique sont assez riches pour être utilisés comme matériel d'étude à la place du Stinson (qui est moins verbeux, mais plus technique).
+
+J. A. Buchmann. *Introduction à la cryptographie*.
+:   2^e^ édition. Dunod, 2006. ISBN 2-10-049622-0. Côte BU: 005.82 BUC. Texte d'introduction à la cryptographie pour mathématiciens, avec exercices. Les deux premier chapitres font un panorama complet des algorithmes qu'on utilisera pour la [Cryptographie asymétrique]().
+
+-------
 
 D. Kahn. *The Codebreakers. The Comprehensive History of Secret Communication from Ancient Times to the Internet*.
-:   Second edition. Scribner, 1996. ISBN: 978–0684831305. Ouvrage de divulgation classique
+:   Second edition. Scribner, 1996. ISBN: 978–0684831305. Côte BU 005.82 KAH. Ouvrage de divulgation classique
     sur la cryptographie classique (i.e. jusqu’à la fin de la deuxième
     guerre). Absolument pas un manuel de cours, mais une lecture
     passionnante pour le mordu de crypto. Malheureusement le livre n’a
     jamais été complètement traduit en français, à ma connaissance.
+
+S. Vaudenay. *La fracture cryptographique*.
+:   Presses polytechniques et universitaires romandes, 2011. ISBN: 978-2-88074-830-2. Côte BU: 005.82 VAU. Ouvrage non-technique dressant le paysage de techniques cryptographiques modernes. Il contient très peu de maths, très peu de formules et beaucoup d'études de cas. Son contenu est presque complètement disjoint de celui du cours, mais l'étudiant passionné qui souhaite s'orienter vers une spécialisation en sécurité y trouvera des nombreuses informations et pistes de réflexion.
+
