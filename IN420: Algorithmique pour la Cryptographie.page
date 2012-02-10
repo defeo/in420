@@ -10,17 +10,17 @@ l’Informatique](http://swift.prism.uvsq.fr:5999) se trouve maintenant
 
 **Chargé de cours:** Luca De Feo <http://www.prism.uvsq.fr/~dfl>
 
-**Cours magistral:** Mercredi 11h30 –13h, salle G003 **TDs:** Mardi
+**Cours magistral:** Mercredi 11h30 - 13h, salle G003 **TDs:** Mardi
 13h30 - 16h45, salle G101
 
 # Cours
 
 Cours 1 (25/01/2012)
-  ~ Définitions de base, [Chiffres monoalphabétiques]().
+  ~ Définitions de base, [Chiffres monoalphabétiques](Cryptographie classique).
 Cours 2 (01/02/2012)
-  ~ [Chiffres polyalphabétiques]()
+  ~ [Chiffres polyalphabétiques](Cryptographie classique).
 Cours 3 (08/02/2012)
-  ~ 
+  ~ [Chiffrement par permutation](Cryptographie classique), [Chiffre de Hill](Cryptographie classique).
 Cours 4 (15/02/2012)
   ~ 
 Cours 5 (22/02/2012)
@@ -72,10 +72,12 @@ TD 11 (17/04/2012)
 
 # Bibliographie
 
-D. Kahn. *The Codebreakers. The Comprehensive History of Secret
-Communication from Ancient Times to the Internet*. \~ Second edition.
-Scribner, 1996. ISBN: 978–0684831305. Ouvrage de divulgation classique
-sur la cryptographie classique (i.e. jusqu’à la fin de la deuxième
-guerre). Absolument pas un manuel de cours, mais une lecture
-passionnante pour le mordu de crypto. Malheureusement le livre n’a
-jamais été complètement traduit en français, à ma connaissance.
+D. Stinson. *Cryptographie -- Théorie et pratique*.
+:   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
+
+D. Kahn. *The Codebreakers. The Comprehensive History of Secret Communication from Ancient Times to the Internet*.
+:   Second edition. Scribner, 1996. ISBN: 978–0684831305. Ouvrage de divulgation classique
+    sur la cryptographie classique (i.e. jusqu’à la fin de la deuxième
+    guerre). Absolument pas un manuel de cours, mais une lecture
+    passionnante pour le mordu de crypto. Malheureusement le livre n’a
+    jamais été complètement traduit en français, à ma connaissance.
