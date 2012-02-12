@@ -72,6 +72,8 @@ TD 11 (17/04/2012)
 
 # Bibliographie
 
+Ces références concernent la cryptographie et les algorithmes.
+
 D. Stinson. *Cryptographie -- Théorie et pratique*.
 :   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Côte BU: 005.82 STI. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
 
@@ -82,6 +84,31 @@ J. A. Buchmann. *Introduction à la cryptographie*.
 :   2^e^ édition. Dunod, 2006. ISBN 2-10-049622-0. Côte BU: 005.82 BUC. Texte d'introduction à la cryptographie pour mathématiciens, avec exercices. Les deux premier chapitres font un panorama complet des algorithmes qu'on utilisera pour la [Cryptographie asymétrique]().
 
 -------
+
+Ces références concernent les algorithmes et les mathématiques. On indique les chapitres importants pour le cours.
+
+J. Vélu. *Méthodes Mathématiques pour l'Informatique*.
+:   4e édition. Dunod, 2005. ISBN 2-10-049149-0. Côte BU: 004.01 VEL. Chapitres 15 (division, pgcd et nombres premiers) et 16 (entiers modulaires), annexes B (algèbre linéaire) et C (calcul matriciel).
+
+J. Vélu, G. Avérous, I. Gil, F. Santi. *Mathématiques pour l'Informatique*.
+:   Dunod 2008. ISBN 978-10-052052-7. Côte BU: 004.01 MAT. Livre d'exercices qui complète la référence précédente.
+
+T. H. Cormen, C. E. Leiserson, R. L. Rivest, X. Cazin *Introduction à l'algorithmique*.
+:   Dunod 1994. ISBN 2-10-001933-3. Côte BU: 005.1 COR. Chapitres 28 (algèbre linéaire et calcul matriciel), 31 (arithmétique des entiers) et 34 (NP-complétude). Texte archi-classique, à lire absolument.
+
+T. Brugère, A. Mollard. *Mathématiques à l'usage des informaticiens*.
+:   Ellipses, 2003. ISBN 2-7298-1399-3. Côte BU: 004.01. Chapitres 8 (calcul matriciel et algèbre linéaire), 10 (arithmétique des entiers) et 11 (cryptographie). Ce livre se place à un niveau plus élevé que celui de Vélu.
+
+-------
+
+Pour se rafraîchir la mémoire sur java
+
+J. Brondeau. *Introudction à la programmation en Java*.
+:   Côte BU: 005.13jav BRO.
+
+-------
+
+Ouvrages de divulgation.
 
 D. Kahn. *The Codebreakers. The Comprehensive History of Secret Communication from Ancient Times to the Internet*.
 :   Second edition. Scribner, 1996. ISBN: 978–0684831305. Côte BU 005.82 KAH. Ouvrage de divulgation classique
