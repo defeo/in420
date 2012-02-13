@@ -191,5 +191,6 @@ encore changé la méthode `chiffre`, le résultat devrait être
 exactement le fichier d'entrée).
 3. Écrivez la fonction `chiffre` qui prend un tableau d'entiers de
 longueur arbitraire et applique le chiffre de Hill à chaque bloc de
-longueur $n$. Testez que votre code marche en utilisant des matrices
+longueur $n$. N'oubliez pas de réduire les résultats modulo 26.
+Testez que votre code marche en utilisant des matrices
 dont vous savez calculer l'inverse.
