@@ -96,8 +96,7 @@ javac Matrice.java
 ~~~
 
 Le programme s'attends à recevoir sur la ligne de commande deux
-matrices d'entiers séparées par une opération (soit `+`, soit
-`*`).
+matrices d'entiers séparées par une opération, `+` pour l'addition, toute autre chose pour la multiplication (mais attention à utiliser `*` de la ligne de commande: le terminal peut l'interpréter de façon bizarre).
 
 Les matrices sont codées de la façon suivante: les éléments de chaque
 ligne sont séparés par des virgules (`,`), ensuite chaque ligne est
