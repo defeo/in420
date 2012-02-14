@@ -52,7 +52,7 @@ clair est transformée en:
   première ligne: par exemple **N** est codé avec **6**;
 - Le numéro de la ligne suivi du numéro de la colonne si la lettre
   apparaît dans les deux autres lignes: par exemple **Q** est codé
-  avec **4**.
+  avec **84**.
   
 Pour faire un exemple concret, le texte "ATTAQUER TOUR EIFFEL A
 L'AUBE" est codé par le tableau ci-dessus comme suit:
