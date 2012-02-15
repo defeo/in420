@@ -37,7 +37,7 @@ Voici un exemple d'échiquier à diffusion
 
  **2**   B   C   D   F   G   H   J   K   L   M   
 
- **8**   N   O   .   P   Q   V   '   X   Y   Z
+ **8**   O   .   P   Q   V   '   W   X   Y   Z
 ------- --- --- --- --- --- --- --- --- --- ---
  
 Les deux lignes du bas portent le numéro des colonnes qui
