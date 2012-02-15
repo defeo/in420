@@ -52,7 +52,7 @@ clair est transformée en:
   première ligne: par exemple **N** est codé avec **6**;
 - Le numéro de la ligne suivi du numéro de la colonne si la lettre
   apparaît dans les deux autres lignes: par exemple **Q** est codé
-  avec **84**.
+  avec **83**.
   
 Pour faire un exemple concret, le texte "ATTAQUER TOUR EIFFEL A
 L'AUBE" est codé par le tableau ci-dessus comme suit:
@@ -60,10 +60,10 @@ L'AUBE" est codé par le tableau ci-dessus comme suit:
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 A  T  T  A  Q  U  E  R  T  O  U  R  E  I  F  F  E  L  A  L  '  A  U  B  E
 
-1  0  0  1  84 4  7  3  0  81 4  3  7  5  23 23 7  28 1  28 86 1  4  20 7
+1  0  0  1  83 4  7  3  0  81 4  3  7  5  23 23 7  28 1  28 86 1  4  20 7
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 
-Ce qui donne le texte encodé: 100184473081437523237281288614207.
+Ce qui donne le texte encodé: 100183473081437523237281288614207.
 
 Le décodage peut se faire de façon unique car on sait que chaque 2
 introduit une lettre sur la deuxième ligne et chaque 8 introduit une
