@@ -4,9 +4,9 @@
 $$(8001)_{16},\quad(ffff)_{16},\quad(a091)_{16}.$$
 2. Convertir les entiers suivants en hexadécimal:
 $$(1010110001)_2,\quad(11111)_2,\quad(10000)_2.$$
-3. Sans faire le calcul, écrire $2^13$ en base $16$.
+3. Sans faire le calcul, écrire $2^{13}$ en base $16$.
 4. Sans passer par la base $10$, écrire $(100010)_2\cdot 16$ en binaire.
-5. Sans passer par la base $10$, écrire $(800)_16\cdot 8$ en hexadécimal.
+5. Sans passer par la base $10$, écrire $(800)_{16}\cdot 8$ en hexadécimal.
 6. Calculer le *et*, le *ou* et le *xor* bit-par-bit de $(ae)_{16}$ et
 $(71)_{16}$.
 
