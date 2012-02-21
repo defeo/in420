@@ -164,3 +164,87 @@ qui précède le registre.
 besoin de faire appel à `parite`.
 
 6. Laquelle des deux méthodes est plus efficace? Pourquoi?
+
+
+## Solution
+
+Voici une solution complète. Essayez de compléter le TD avant de la regarder.
+
+<div onclick="if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'" style="max-height:6ex;overflow:hidden">
+
+~~~ {.java}
+public class LFSR {           // cliquez ici pour voir la solution
+    char etat;
+    char taps;
+        
+    public LFSR(char etat, char taps) {
+        this.etat = etat;
+        this.taps = taps;
+    }
+        
+    static int parite(int masque) {
+        int p = 0;
+        for ( ; masque > 0 ; masque >>>= 1)
+            p ^= masque & 1;
+        return p;
+    }
+
+    static String bin(int registres) {
+        return String.format("%16s",
+                             Integer.toBinaryString(registres)).replace(" ",
+                                                                        "0");
+    }
+
+    public String fibonacci(int combien) {
+        String alea = "";
+        for (int i = 0 ; i < combien ; i++) {
+            System.out.println("Debug info: etat = " + bin(this.etat));
+            int bit = this.parite(this.etat & this.taps);
+            alea += this.etat & 1;
+            this.etat >>= 1;
+            this.etat |= bit << 15;
+        }
+        return alea;
+    }
+
+    public String galois(int combien) {
+        String alea = "";
+        for (int i = 0 ; i < combien ; i++) {
+            System.out.println("Debug info: etat = " + bin(this.etat));
+            int bit = this.etat & 1;
+            alea += bit;
+            this.etat >>= 1;
+            if (bit == 1)
+                this.etat ^= this.taps;
+        }
+        return alea;
+    }
+
+    public static void main(String args[]) {
+        if (args.length < 2) {
+            System.out.println("Pas assez d'arguments");
+            System.exit(0);
+        }
+        
+        char taps = (char)Integer.parseInt(args[0], 16);
+        int combien = Integer.parseInt(args[1]);
+        
+        char graine = 1;
+        if (args.length >= 3) {
+            graine = (char)Integer.parseInt(args[2], 16);
+        }
+
+        LFSR lfsr = new LFSR(graine, taps);
+        
+        System.out.println("Debug info: taps = " + bin(taps));
+        System.out.println();
+
+        if (args.length < 4 || !args[3].equals("galois"))
+            System.out.println("\n" + lfsr.fibonacci(combien));
+        else
+            System.out.println("\n" + lfsr.galois(combien));
+    }
+}
+~~~
+
+</div>
