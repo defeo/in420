@@ -238,7 +238,7 @@ Structurez le code comme suit.
 
     - Le premier argument est le nom d'un fichier contenant le texte à déchiffrer.
 
-    - Le deuxième argument est le nom de l'opération à effecture. Trois opérations sont possible:
+    - Le deuxième argument est le nom de l'opération à effectuer. Trois opérations sont possible:
     
         - `coincidence`: il calcule et affiche les indices de
           coincidence; dans ce cas le troisième argument doit être la longueur
