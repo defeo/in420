@@ -39,7 +39,7 @@ Le premier octet lu sera le caractère `'a'`. Le codage binaire [ASCII](http://f
 
 La méthode `write()` de `OutputStream` (et de ses sous-classes) se comporte comme `read()`: elle écrit octet par octet, l'octet à écrire étant passé dans une variable de type `int` (ce qui veut à nouveau dire qu'il y a 3 octets qui ne servent à rien). C'est pour ça que la copie marche. C'est aussi pour ça que le chiffrement ne marche pas: en effet
 
-$$97+12 =13\mod 10,\qquad 49+12=13\mod 10,$$
+$$97+12 =13\mod 16,\qquad 49+12=13\mod 16,$$
 
 la deuxième écriture écrira donc deux fois l'octet 13, soit 00001101, dans le fichier `chiffre.txt`, ce qui correspond au caractère [ASCII](http://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange) Carriage Return (Retour à la Ligne).
 
