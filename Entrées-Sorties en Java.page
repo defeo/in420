@@ -1,6 +1,6 @@
 # D'après une question d'un étudiant
 
-Pourquoi `System.out.print(i)`  me donne un résultat différent de `System.out.write(i)`, et pourquoi ce code ne fait pas ce à quoi je m'attendrais (la copie marche, mais le chiffrement non)?
+Pourquoi `System.out.print(49)`  me donne un résultat différent de `System.out.write(49)`, et pourquoi ce code ne fait pas ce à quoi je m'attendrais (la copie marche, mais le chiffrement non)?
 
 ~~~ {.java}
 // clef de César modulo 16
