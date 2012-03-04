@@ -24,9 +24,9 @@ Cours 3 (08/02/2012)
 Cours 4 (15/02/2012)
   ~ Réseaux de permutation-substituion, [Chiffrement par flot]().
 Cours 5 (22/02/2012)
-  ~ 
+  ~ [Modes opératoires](), [Codes correcteurs d'erreurs]().
 Cours 6 (07/03/2012)
-  ~ 
+  ~ [Codes de Hamming](Codes correcteurs d'erreurs), [Décodage par syndrome](Codes correcteurs d'erreurs).
 Cours 7 (14/03/2012)
   ~ 
 Cours 8 (21/03/2012)
@@ -70,6 +70,11 @@ TD 11 (17/04/2012)
 
 DM 1 (à rendre le 29/02/2012)
   ~ [Chiffre VIC](DM1 - Chiffre VIC), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/vic).
+
+
+# Pages utiles
+
+- [Entrées-Sorties en Java]().
 
 
 # Liens
