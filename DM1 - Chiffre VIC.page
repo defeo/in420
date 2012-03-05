@@ -63,7 +63,7 @@ A  T  T  A  Q  U  E  R  T  O  U  R  E  I  F  F  E  L  A  L  '  A  U  B  E
 1  0  0  1  83 4  7  3  0  80 4  3  7  5  23 23 7  28 1  28 85 1  4  20 7
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
 
-Ce qui donne le texte encodé: 100183473081437523237281288614207.
+Ce qui donne le texte encodé: 100183473080437523237281288514207.
 
 Le décodage peut se faire de façon unique car on sait que chaque 2
 introduit une lettre sur la deuxième ligne et chaque 8 introduit une

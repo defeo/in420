@@ -51,9 +51,9 @@ TD 3 (14/02/2012)
 TD 4 (21/02/2012)
   ~ [Bit twiddling et LFSR]().
 TD 5 (06/03/2012)
-  ~ 
+  ~ [Codes linéaires]().
 TD 6 (13/03/2012)
-  ~ 
+  ~ [Codes linéaires]().
 TD 7 (20/03/2012)
   ~ 
 TD 8 (27/03/2012)
@@ -70,6 +70,8 @@ TD 11 (17/04/2012)
 
 DM 1 (à rendre le 29/02/2012)
   ~ [Chiffre VIC](DM1 - Chiffre VIC), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/vic).
+DM 2 (à rendre le 28/03/2012)
+  ~ Décodage par syndrome.
 
 
 # Pages utiles
