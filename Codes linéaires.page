@@ -510,4 +510,171 @@ lectures/écritures de fichiers, allez voir
 
 # Codes de Hamming
 
-À venir pour la semaine prochaine.
+Nous arrivons, finalement, aux codes correcteurs d'erreurs. Les codes
+de Hamming sont une classe de codes linéaires 1-correcteurs
+(parfaits). Dans la suite, on va noter $n$ la *longueur* d'un code, $k$ sa
+*dimension* et $d$ sa *distance minimale*; ce qui peut être noté plus
+succinctement par $[n,k,d]$.
+
+On peut montrer que pour tout entier $m > 1$ il existe un unique (à
+isomorphisme près) code de Hamming avec paramètres
+
+$$[n=2^m-1,\; k=2^m-1-m,\; 3]$$
+
+qu'on appelle **le** code de Hamming $(n,k)$. Le code de Hamming
+$(3,1)$ étant le code par répétition sur 3 bits, on considère que le
+plus petit code de Hamming intéressant est le code $(7,4)$.
+
+La construction d'un code de Hamming est très simple. On commence par
+choisir l'entier $m$, qui est le nombre de *bits de contrôle*. On
+construit alors la *matrice de parité* du code, qui est la matrice
+$m\times (2^m-1)$ où les lignes sont les écritures en base $2$ des
+entiers compris entre $1$ et $2^m-1$. Voici la matrice de parité du
+code $(7,4)$:
+
+$$\begin{pmatrix}
+1&0&1&0&1&0&1 \\
+0&1&1&0&0&1&1 \\
+0&0&0&1&1&1&1
+\end{pmatrix}$$
+
+On met ensuite cette matrice sous *forme systématique*, ce qui revient
+à faire des échanges de colonnes jusqu'à faire apparaître une matrice
+identité dans sa partie droite. Pour le code $(7,4)$, en déplaçant les
+colonnes 1, 2 et 4 vers la droite, on obtient la matrice de parité
+suivante
+
+$$H=\begin{pmatrix}
+1&1&0&1&1&0&0 \\
+1&0&1&1&0&1&0 \\
+0&1&1&1&0&0&1
+\end{pmatrix}$$
+
+qui définit un code équivalent au précédent. La matrice de parité
+permet de vérifier si un mot reçu appartient au code, on a en effet
+$Hv = 0$ pour tout mot $v$ appartenant au code de Hamming. Observez
+que les colonnes qui sont déplacées vers la droite sont celles dont
+**la position est une puissance de deux**: 1, 2, 4, ...
+
+Pour encoder un message, en plus de la matrice de parité il faut
+construire la *matrice génératrice* du code. Ceci se fait aisément en
+partant de la matrice de parité sous forme systématique; en effet, si
+
+$$H=\left(\begin{array}{c c c | c c c}
+  &&& 1 \\
+&A& &   & \ddots\\
+  &&&   &  & 1
+\end{array}\right)$$
+
+avec $A$ un bloc de taille $m\times k$, alors
+
+$$G=\begin{pmatrix}
+1\\
+&\ddots\\
+&&1\\
+\hline\\
+&A\\
+&
+\end{pmatrix}$$
+
+est la matrice génératrice du code. Par exemple, la matrice
+génératrice du code $(7,4)$ est
+
+$$G=\begin{pmatrix}
+1&0&0&0 \\
+0&1&0&0 \\
+0&0&1&0 \\
+0&0&0&1 \\
+1&1&0&1 \\
+1&0&1&1 \\
+0&1&1&1 
+\end{pmatrix}.$$
+
+Maintenant un message $v\in\mathbb{F}_2^k$ est encodé par $Gv$. Par
+conséquent, le code de Hamming est le sous-espace vectoriel de
+$\mathbb{F}_2^n$ engendré par les colonnes de $G$, et on a la relation
+
+$$HG = 0.$$
+
+**Attention:** dans la majorité des livres de texte la matrice $G$ est
+  écrite dans sa forme transposée $G^t$, et les messages sont encodés
+  en les multipliant à gauche: $v^t G^t$.
+
+Nous allons écrire un programme qui génère le code de Hamming de
+paramètres donnés et encode des messages. Créez le fichier suivant:
+
+~~~ {.java}
+public class Hamming {
+    // La matrice de parite du code de Hamming
+    BinMatrix parity;
+
+    // Verifie si l'entier positif n est une puissance de 2
+    public static Boolean isPowerOf2(int n) {
+        return False;
+    }
+
+    // Calcule la partie entiere du logarithme en base 2 
+    // de l'entier positif n
+    public static int log2(int n) {
+        return 0;
+    }
+
+    // Cree le code de Hamming avec n_minus_k bits de parite
+    public Hamming(int n_minus_k) {
+    }
+    
+    // Calcule la matrice generatrice de ce code de Hamming
+    public BinMatrix generator() {
+        return null;
+    }
+
+    // Encode un vecteur avec ce code de Hamming
+    public BinVector encode(BinVector v) {
+        return null;
+    }
+
+    // Cree le code de Hamming avec parametres donnes
+    // et affiche ses matrices
+    public static void main(String[] args) {
+        int m = Integer.parseInt(args[0]);
+        
+        Hamming code = new Hamming(m);
+        
+        System.out.println(code.parity);
+        System.out.println(code.generator());
+        // Decommentez cette ligne quand vous aurez fini.
+        // Le resultat doit etre la matrice ne contenant que
+        // des zeros.
+        //System.out.println(code.parity.product(code.generator()));
+    }
+}
+~~~
+
+Le `main` prend comme unique argument de la ligne de commande un
+entier $m$ qui correspond au nombre de bits de contrôle du code de
+Hamming, comme décrit auparavant. Servez vous de ses affichages pour
+tester votre code.
+
+1. Écrivez les méthodes statiques `isPowerOf2` et `log2`. La première
+prend un entier (supposé positif) et donne `true` s'il s'agit d'une
+puissance de deux. La deuxième prend un entier et donne la partie
+entière inférieure de son logarithme en base 2 (ce qui est aussi,
+souvenez-vous, le nombre de bits nécessaires à l'écrire). Les deux
+méthodes peuvent être écrites en utilisant exclusivement des
+opérateurs de décalage.
+
+2. Écrivez le constructeur `Hamming`. Ce constructeur prend en entrée
+l'entier $m$ comptant le nombre de bits de contrôle du code, et
+calcule la matrice de parité **sous forme systématique** $H$ du code
+de Hamming $(2^m-1, 2^m-1-m)$.
+
+3. Écrivez la méthode `generator` qui calcule la matrice génératrice
+$G$ du code de Hamming. Pour cela, vous allez devoir extraire la
+sous-matrice $A$ de $H$ de taille $m\times k$, comme décrit plus haut.
+
+4. Écrivez la méthode `encode` qui encode un message $v$ en le
+multipliant par $G$.
+
+
+Testez votre code en encodant des messages de plusieurs octets et en
+vérifiant que leur produit par $H$ fait zéro.
