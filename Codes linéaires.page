@@ -859,7 +859,7 @@ puissance de deux. La deuxième prend un entier et donne la partie
 entière inférieure de son logarithme en base 2 (ce qui est aussi,
 souvenez-vous, le nombre de bits nécessaires à l'écrire). Les deux
 méthodes peuvent être écrites en utilisant exclusivement des
-opérateurs de décalage.
+opérations sur les bits.
 
 2. Écrivez le constructeur `Hamming`. Ce constructeur prend en entrée
 l'entier $m$ comptant le nombre de bits de contrôle du code, et
@@ -875,4 +875,4 @@ multipliant par $G$.
 
 
 Testez votre code en encodant des messages de plusieurs octets et en
-vérifiant que leur produit par $H$ fait zéro.
+vérifiant que leur produit par $H$ fait bien zéro.
