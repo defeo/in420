@@ -506,7 +506,205 @@ bien dans les deux sens. Pour plus d'information sur les
 lectures/écritures de fichiers, allez voir
 [cette page](Entrées-Sorties en Java).
 
+Et enfin, voici le code complet des trois classes `Bit`, `BinVector`
+et `BinMatrix` (sans les méthodes main).
 
+<div onclick="if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'" style="max-height:6ex;overflow:hidden">
+
+~~~ {.java}
+//                    Cliquez ici pour ouvrir
+/**
+  Bits
+*/
+public class Bit {
+    public static final Bit ONE = new Bit(1);
+    public static final Bit ZERO = new Bit(0);
+
+    byte value;
+    
+    public Bit(int value) {
+        this.value = (byte)value;
+    }
+
+    public String toString() {
+        if ((value & 1) == 1)
+            return "1";
+        else 
+            return "0";
+    }
+
+    public Bit add(Bit other) {
+        return new Bit(this.value ^ other.value);
+    }
+
+    public Bit mul(Bit other) {
+        return new Bit(this.value & other.value);
+    }
+}
+
+
+
+/**
+  Vecteurs
+*/
+public class BinVector {
+    Bit[] bits;
+
+    public BinVector(Bit[] bits) {
+        this.bits = bits.clone();
+    }
+
+    /* Construit un vecteur de bits en extrayant une portion d'un
+       tableau d'octets.
+       
+       bits:   un tableau d'octets d'où tirer les bits;
+       start:  le bit (en partant de la gauche) de départ;
+       len:    combien de bits il faut lire.
+     */
+    public BinVector(byte[] bits, int len, int start) {
+        this.bits = new Bit[len];
+        for (int i = start ; i < len + start ; i++) {
+            this.bits[i - start] = new Bit((bits[i / 8] >> i % 8) & 1);
+        }
+    }
+
+    public int length() {
+        return this.bits.length;
+    }
+
+    public String toString() {
+        String res = "";
+        for (Bit bit : bits)
+            res += bit.toString();
+        return res;
+    }
+
+    /* Addition de vecteurs */
+    public BinVector add(BinVector other) throws IllegalArgumentException {
+        if (this.length() != other.length()) 
+            throw new IllegalArgumentException("Les vecteurs n'ont pas la même longueur.");
+
+        Bit[] bits = new Bit[this.length()];
+        for ( int i = 0 ; i < this.length() ; i++ )
+            bits[i] = this.bits[i].add(other.bits[i]);
+        return new BinVector(bits);
+    }
+
+    /* Multiplication par un scalaire */
+    public BinVector mul(Bit scalar) {
+        Bit[] bits = new Bit[this.length()];
+        for ( int i = 0 ; i < this.length() ; i++ )
+            bits[i] = this.bits[i].mul(scalar);
+        return new BinVector(bits);
+    }
+
+    /* Produit scalaire */
+    public Bit scalarProd(BinVector other) throws IllegalArgumentException {
+        if (this.length() != other.length()) 
+            throw new IllegalArgumentException("Les vecteurs n'ont pas la même longueur.");
+        
+        Bit res = Bit.ZERO;
+        for ( int i = 0 ; i < this.length() ; i++ )
+            res = res.add(this.bits[i].mul(other.bits[i]));
+        return res;
+    }
+
+    /* Fonction d'utilite pour transformer une chaine hexadecimale
+       en tableau d'octets */
+    public static byte[] parseBytes(String hexbytes) {
+        byte[] bits = new byte[hexbytes.length() / 2];
+        for (int i = 0 ; i < bits.length ; i++)
+            bits[i] = (byte)(Integer.reverse(Integer.parseInt(hexbytes.substring(2*i, 2*i+2), 16)) >> 24);
+        return bits;
+    }
+}
+
+
+
+/**
+  Matrices
+*/
+public class BinMatrix {
+    BinVector[] rows;
+
+    /* Construit une matrice a partir d'un tableau de lignes 
+       (chaque ligne est un vecteur colonne). */
+    public BinMatrix(BinVector[] rows) throws IllegalArgumentException {
+        if (rows.length == 0 || rows[0].length() == 0)
+            throw new IllegalArgumentException("Pas de lignes.");
+
+        this.rows = new BinVector[rows.length];
+        int len = rows[0].length();
+        
+        for ( int i = 0 ; i < rows.length ; i++ ) {
+            if (rows[i].length() != len)
+                throw new IllegalArgumentException("Les lignes n'ont pas la meme longueur.");
+            this.rows[i] = rows[i];
+        }
+    }
+
+    public int rows() {
+        return rows.length;
+    }
+    
+    public int columns() {
+        return rows[0].length();
+    }
+
+    public String toString() {
+        String res = "";
+        for (BinVector r : rows)
+            res += r.toString() + "\n";
+        return res;
+    }
+
+    /* La i-eme ligne de la matrice */
+    public BinVector row(int i) {
+        return rows[i];
+    }
+
+    /* La j-ieme colonne de la matrice */
+    public BinVector column(int j) {
+        Bit[] column = new Bit[this.rows.length];
+        for (int i = 0 ; i < column.length ; i++)
+            column[i] = this.rows[i].bits[j];
+        return new BinVector(column);
+    }
+
+    /* Matrice transposee */
+    public BinMatrix transpose() {
+        BinVector[] rows = new BinVector[this.columns()];
+        
+        for (int i = 0 ; i < rows.length ; i++)
+            rows[i] = this.column(i);
+        
+        return new BinMatrix(rows);
+    }
+
+    /* Produit matrice-vecteur */
+    public BinVector product(BinVector v) throws IllegalArgumentException {
+        Bit[] bits = new Bit[this.rows()];
+        
+        for ( int i = 0 ; i < bits.length ; i++)
+            bits[i] = this.rows[i].scalarProd(v);
+
+        return new BinVector(bits);
+    }
+
+    /* Produit matrice-matrice */
+    public BinMatrix product(BinMatrix other) throws IllegalArgumentException {
+        BinVector[] columns = new BinVector[other.columns()];
+
+        for (int j = 0 ; j < other.columns() ; j++)
+            columns[j] = this.product(other.column(j));
+
+        BinMatrix trans = new BinMatrix(columns);
+        return trans.transpose();
+    }
+}
+~~~
+
+</div>
 
 # Codes de Hamming
 
