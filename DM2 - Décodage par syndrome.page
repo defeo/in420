@@ -211,14 +211,49 @@ Pour résumer, voici l'algorithme de décodage par syndrome.
 
 # À vos `javac`
 
-1. Écrivez un programme Java qui prend en entrée un fichier binaire,
-le découpe en blocs de $4$ bits et le code en utilisant le code de
-Hamming $(7,4)$.
+Votre devoir consiste à écrire un programme qui encode et décode un fichier binaire en utilisant un code de Hamming et le décodage par syndrome. On donne ici des instructions pour vous aider à structurer votre code, vous n'êtes cependant pas obligés de les suivre à la lettre.
+
+1. Écrivez deux fonctions:
+    
+    - Une fonction qui lit un fichier octet par octet et retourne un tableau de bits (par exemple en utilisant l'objet `Bit` du TD);
+    - Une fonction qui prend un tableau de bits et l'écrit dans un fichier. Si la longueur du tableau n'est pas un multiple de 8, ajoutez assez de 0 **à la fin**.
 
 Quelques mots sur le codage du fichier: vous ne devez pas le traiter
 comme s'il s'agissait d'un fichier de texte. Vous devez le lire en
-mode binaire octet par octet, chaque octet vous fournit deux blocs de
-4 bits. Par exemple, un fichier codé en ASCII contenant le texte
+mode binaire: **octet par octet**. Les lectures octet par octet peuvent être faites en Java par une boucle comme ceci (le `BufferedInputStream` est optionnel, mais il ajoute de l'efficacité sans rendre la programmation plus compliquée):
+
+~~~ {.java}
+BufferedInputStream in = new BufferedInputStream(new FileInputStream("source.txt"));
+
+int i;
+while ((i = in.read()) != -1) {
+    byte octet = (byte)i;
+    ...
+}
+~~~
+
+De manière analogue, les écritures octet par octet se font avec
+
+~~~ {.java}
+BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("dest.txt"));
+
+while (...) {
+    byte octet = ...
+    out.write(octet);
+}
+~~~
+
+Pour plus d'informations sur les lectures/écritures de fichiers en mode binaire, allez
+lire la page [Entrées-Sorties en Java](). 
+
+2. Écrivez une fonction qui:
+
+    1. Prend en entrée un tableau de bits de longeur arbitraire;
+    2. Le découpe en blocs de $4$ bits;
+    3. Code chaque bloc en utilisant le code de Hamming $(7,4)$;
+    4. Renvoie un tableau de bits qui est l'enchaînement des blocs codés
+
+Encore quelques mot sur l'enchaînement des fonctions que vous avez écrites jusqu'à maintenant. Chaque octet du fichier d'origine vous fournit huit bits, ce qui fait deux blocs de 4 bits. Par exemple, un fichier codé en ASCII contenant le texte
 
 ~~~
 Ham
@@ -257,16 +292,11 @@ soit, en héxadécimal,
 0x4d 0x19 0xd0 0xf6 0xdd 0x00
 ~~~
 
-Ceci n'est évidemment pas un fichier de texte lisible. Vous ne pourrez
-récupérer le texte d'origine qu'en implantant le décodage. Pour vous
-aider avec les lectures/écritures de fichiers en mode binaire, allez
-lire la page [Entrées-Sorties en Java](). Vous devez utiliser les
-objets de type `InputStream` et `OutputStream` pour faire des lectures
-octet par octet, et non pas ceux de type `StreamReader` et
-`StreamWriter`, qui traitent les fichiers caractère par caractère.
+Ceci n'est évidemment pas un fichier de texte lisible (voici par exemple le caractère `0xd0`: Ð). Vous ne pourrez
+donc récupérer le texte d'origine qu'après avoir implanté le décodage.
 
-2. Écrivez une fonction qui ajoute au plus un bit d'erreur tous les 7
-    bits à un fichier. Vous pouvez utiliser la fonction
+
+3. Écrivez une fonction qui prend un tableau de bits et qui y ajoute une erreur au plus tous les 7 bits. Vous pouvez utiliser la fonction
 
     ~~~ {.java}
     int alea = (int)(Math.random() * 7);
@@ -274,13 +304,16 @@ octet par octet, et non pas ceux de type `StreamReader` et
     
     pour obtenir un entier aléatoire entre 0 et 7.
 
-3. Complétez votre programme avec la possibilité de faire du décodage
-par syndrome. Vous ferez à nouveau attention à découpe votre fichier
-en blocs de 7 bits, et à décoder chaque bloc en ses 4 bits
-d'origine. Vérifiez votre programme en décodant votre fichier encodé
-(avec et sans erreurs ajoutées).
+4. Écrivez une fonction qui
 
-4. Votre mission: visitez
+    1. Prend en entrée un tableau de bits de longeur arbitraire;
+    2. Le découpe en blocs de $7$ bits;
+    3. Decode chaque bloc en utilisant un décodage par syndrome;
+    4. Renvoie un tableau de bits qui est l'enchaînement des blocs décodés
+
+Vérifiez votre programme en encodant un fichier, en y ajoutant des erreurs et en décodant (avec et sans erreurs ajoutées).
+
+5. Votre mission: visitez
 [cette page](http://swift.prism.uvsq.fr:2401/in420-dms.py/syndrome) et
 décodez le fichier binaire qui vous est proposé. **ATTENTION:** le
 fichier a été encodé avec un code de Hamming comme décrit précédemment
@@ -292,9 +325,6 @@ gagné si vous avez complété le TD sur les [Codes linéaires]()).
 Déposez votre code source et le texte déchiffré dans la boîte de dépôt
 sur [e-campus 2](http://e-campus2.uvsq.fr/) (si e-campus ne devait pas
 marcher, envoyez-les par mail au
-[professeur](http://www.prism.uvsq.fr/~dfl)). 
-
-<!--La date limite pour
-envoyer vos fichiers est le jeudi 1er Février à 4h du matin. Un point
-de pénalité pour chaque heure de retard: le 1er Février à minuit vous
-êtes sûrs d’avoir 0.-->
+[professeur](http://www.prism.uvsq.fr/~dfl)).  La date limite pour
+envoyer vos fichiers est le jeudi 5 Avril à 4h du matin. Un point
+de pénalité pour chaque heure de retard: le 5 Février à 23h59 c'est votre dernière chance!
