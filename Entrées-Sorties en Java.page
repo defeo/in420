@@ -54,7 +54,7 @@ Donc voilà plusieurs conseils pour travailler sur les fichiers en Java.
 
 `FileInputStream` et `FileOutputStream` sont très utiles pour travailler sur des fichiers en mode binaire. Par exemple des fichiers qui ne contiennent pas de texte (exécutables, images, etc.), ou lorsqu'on veut faire des copies identiques de fichiers.
 
-`BufferedInputStream` et `BufferedOutputStream` servent juste à ajouter un peux d'efficacité dans la lecture/écriture: le fichier est chargé en memoire en blocs, plutôt qu'un octet à la fois. C'est bien de s'en servir, comme dans l'exemple en haut, pour les mêmes usages que `FileInputStream` et `FileOutputStream`; mais cela ne va pas nous aider plus pour des fichiers de texte sur lesquels on veux faire des transformations de caractères (comme c'est le cas pour le chiffrement).
+`BufferedInputStream` et `BufferedOutputStream` servent juste à ajouter un peu d'efficacité dans la lecture/écriture: le fichier est chargé en memoire en blocs, plutôt qu'un octet à la fois. C'est bien de s'en servir, comme dans l'exemple en haut, pour les mêmes usages que `FileInputStream` et `FileOutputStream`; mais cela ne va pas nous aider plus pour des fichiers de texte sur lesquels on veux faire des transformations de caractères (comme c'est le cas pour le chiffrement).
 
 La façon standard en Java de traiter des fichiers texte est de les *wrapper* dans des `Reader` et des `Writer`, comme ceci:
 
