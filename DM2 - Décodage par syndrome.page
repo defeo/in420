@@ -253,19 +253,20 @@ lire la page [Entrées-Sorties en Java]().
     3. Code chaque bloc en utilisant le code de Hamming $(7,4)$;
     4. Renvoie un tableau de bits qui est l'enchaînement des blocs codés
 
-Encore quelques mot sur l'enchaînement des fonctions que vous avez écrites jusqu'à maintenant. Chaque octet du fichier d'origine vous fournit huit bits, ce qui fait deux blocs de 4 bits. Par exemple, un fichier codé en ASCII contenant le texte
+Encore quelques mots sur l'enchaînement des fonctions que vous avez écrites jusqu'à maintenant. Chaque octet du fichier d'origine vous fournit huit bits, ce qui fait deux blocs de 4 bits. Par exemple, le fichier codé en ASCII
+que vous pouvez télécharger [ici](dm2_ham.txt) contient le texte
 
 ~~~
 Ham
 ~~~
 
-contient les trois octets (écrits en hexadécimal)
+Ce qui correspond aux trois octets (écrits en hexadécimal)
 
 ~~~
 0x48 0x61 0x6d
 ~~~
 
-ce qui fait 6 blocs de 4 octets (écrits en binaire, pour changer):
+Cela fait 6 blocs de 4 octets (écrits en binaire, pour changer):
 
 ~~~
 0100 1000 0110 0001 0110 1101
@@ -280,7 +281,7 @@ Chaque bloc est encodé sur sept bits, et les résultats sont concaténés, ce q
 On obtient $6\times 7=42$ bits au total, ce qui n'est pas un multiple
 de 8. Pour encoder ceci dans un fichier, on ajoute assez de 0 à droite
 jusqu'à obtenir un multiple de 8 (le multiple suivant est 50). Le
-résultat est donc le fichier contenant les octets suivants
+résultat est donc le fichier, que vous pouvez télécharger [ici](dm2_ham.bin), contenant les octets suivants
 
 ~~~
 01001011 00011001 10110000 11110110 11011011 00000000
@@ -289,11 +290,11 @@ résultat est donc le fichier contenant les octets suivants
 soit, en héxadécimal,
 
 ~~~
-0x4d 0x19 0xd0 0xf6 0xdd 0x00
+0x4b 0x19 0xb0 0xf6 0xdb 0x00
 ~~~
 
 Ceci n'est évidemment pas un fichier de texte lisible (voici par exemple le caractère `0xd0`: Ð). Vous ne pourrez
-donc récupérer le texte d'origine qu'après avoir implanté le décodage.
+donc récupérer le texte d'origine qu'après avoir implanté le décodage. Pour vous aider à débugger votre programme, vous pouvez utiliser un *hex editor* comme <http://www.wxhexeditor.org/>: les *hex editors* sont des programmes qui affichent le contenu binaire d'un fichier quelconque sous forme hexadécimale. Sous linux la commande `hd` fait la même chose.
 
 
 3. Écrivez une fonction qui prend un tableau de bits et qui y ajoute une erreur au plus tous les 7 bits. Vous pouvez utiliser la fonction
