@@ -116,7 +116,7 @@ L'idée de l'exponentiation binaire consiste à écrire $x$ en base 2 et
 algorithme de façon intuitive lorsque vous avez fait des calculs à la
 main, par exemple:
 
-$$a^{15} = a^{(1111)_2} = a^{8 + 4 + 2 + 1} = a^8 a^4 a^2 a^1.$$
+$$a^{11} = a^{(1011)_2} = a^{8 + 2 + 1} = a^8 a^2 a^1.$$
 
 Plutôt que faire 14 multiplications, vous n'avez donc qu'à calculer
 les éléments suivants (trois multiplications):
@@ -126,7 +126,7 @@ les éléments suivants (trois multiplications):
 - $a^4 = (a^2)^2$,
 - $a^8 = (a^4)^2$,
 
-et à les multiplier entre eux (encore trois multiplications).
+et à multiplier entre eux ceux qui apparaissent dans le produit (deux multiplications, dans ce cas).
 
 Plus généralement, l'algorithme d'exponentiation binaire
 *gauche-droite* calcule $a^x$ de la façon suivante:
