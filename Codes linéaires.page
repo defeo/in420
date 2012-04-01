@@ -251,7 +251,7 @@ public class BinVector {
     public static byte[] parseBytes(String hexbytes) {
         byte[] bits = new byte[hexbytes.length() / 2];
         for (int i = 0 ; i < bits.length ; i++)
-            bits[i] = (byte)(Integer.reverse(Integer.parseInt(hexbytes.substring(2*i, 2*i+2), 16)) >> 24);
+            bits[i] = (byte)(Integer.parseInt(hexbytes.substring(2*i, 2*i+2), 16));
         return bits;
     }
     
@@ -564,7 +564,7 @@ public class BinVector {
     public BinVector(byte[] bits, int len, int start) {
         this.bits = new Bit[len];
         for (int i = start ; i < len + start ; i++) {
-            this.bits[i - start] = new Bit((bits[i / 8] >> i % 8) & 1);
+            this.bits[i - start] = new Bit((bits[i / 8] >> (7 - i % 8)) & 1);
         }
     }
 
@@ -614,7 +614,7 @@ public class BinVector {
     public static byte[] parseBytes(String hexbytes) {
         byte[] bits = new byte[hexbytes.length() / 2];
         for (int i = 0 ; i < bits.length ; i++)
-            bits[i] = (byte)(Integer.reverse(Integer.parseInt(hexbytes.substring(2*i, 2*i+2), 16)) >> 24);
+            bits[i] = (byte)(Integer.parseInt(hexbytes.substring(2*i, 2*i+2), 16));
         return bits;
     }
 }
