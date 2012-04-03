@@ -857,7 +857,7 @@ tester votre code.
 prend un entier (supposé positif) et donne `true` s'il s'agit d'une
 puissance de deux. La deuxième prend un entier et donne la partie
 entière inférieure de son logarithme en base 2 (ce qui est aussi,
-souvenez-vous, le nombre de bits nécessaires à l'écrire). Les deux
+souvenez-vous, un de moins que le nombre de bits nécessaires à l'écrire). Les deux
 méthodes peuvent être écrites en utilisant exclusivement des
 opérations sur les bits.
 
