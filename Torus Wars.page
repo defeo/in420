@@ -170,7 +170,8 @@ public class Torus {
     /** La position du joueur */
     int player;
     /** La position du mechant */
-    int villain;
+    int villain_x;
+    int villain_y;
     /** La direction de tir */
     int direction;
     /** La position du projectile */
@@ -183,7 +184,7 @@ public class Torus {
         simplement, mais c'est plus robuste comme ca.
     */
     private Vector<String> visited;
-    
+
     /**
        Constuit une arene de dimension modulus.
 
@@ -193,12 +194,13 @@ public class Torus {
         this.n = modulus;
         // Place le joueur et le mechant au hasard
         this.player = (int)(Math.random() * n);
-        this.villain = (int)(Math.random() * n);
+        this.villain_x = 1 + (int)(Math.random() *(n-1));
+        this.villain_y = (int)(Math.random() * n);
         // Demande une direction de tire a la methode aim()
         this.direction = this.aim();
         // Place le projectile dans cette direction
         this.bullet_x = 1;
-        this.bullet_y = this.player + this.direction;
+        this.bullet_y = (n + this.player + this.direction) % n;
         this.visited = new Vector<String>();
     }
 
@@ -218,7 +220,7 @@ public class Torus {
                 boolean bullet = x == bullet_x && y == bullet_y;
                 if (x == 0 && player == y)
                     s += bullet ? " # " : " P ";
-                else if (x == n-1 && villain == y)
+                else if (x == villain_x && villain_y == y)
                     s += bullet ? " # " : " V ";
                 else {
                     if (this.visited.contains(x + "," + y))
@@ -233,7 +235,7 @@ public class Torus {
         }
         return s;
     }
-    
+
     /**
        Fait demarrer le projectile et le deplace toutes les `speed`
        secondes d'un pas dans la direction de tir.
@@ -248,7 +250,7 @@ public class Torus {
             System.out.println(this);
             System.out.println("direction: " + this.direction);
             if (this.bullet_x == 0 && this.bullet_y == this.player ||
-                this.bullet_x == n-1 && this.bullet_y == this.villain) {
+                this.bullet_x == this.villain_x && this.bullet_y == this.villain_y) {
                 hit = true;
             } else {
                 Thread.sleep(Torus.speed);
@@ -260,13 +262,13 @@ public class Torus {
         else
             System.out.println("\nYou win!");
     }
-    
+
     /**
        Deplace le projectile d'un pas vers la droite dans la direction
        determinee par `this.direction`.
      */
     public void moveBullet() {
-        System.out.println("Implantez les methodes moveBullet et aim.");
+        System.out.println("Implantez moveBullet et aim.");
         System.exit(0);
     }
 
@@ -281,17 +283,17 @@ public class Torus {
        probleme.
      */
     public int aim() {
-        // Par defaut, on tire a 45 degres
         return 1;
     }
 
     /** Nettoye l'ecran */
-    public static void scroll() {
+    public static void scroll() 
+    {
         // on fait defiler l'ecran de 24 lignes
         for (int i = 0 ; i < 24 ; i++)
             System.out.println();
     }
-    
+
     /** Lance le jeu. Il prend un parametre sur la ligne de commande
      * qui indique la dimension de l'arene. Si le parametre est
      * absent, la dimension par defaut est 11.
@@ -304,7 +306,6 @@ public class Torus {
         t.fire();
     }
 }
-
 ~~~
 
 Ce programme prend une entrée optionnelle sur la ligne de commande,
