@@ -55,9 +55,9 @@ une calculette.
 1. On choisit les premiers $p=13$ et $q=17$. Générez les paramètres
 d'un cryptosystème RSA.
 
-2. Bob veut envoyer les messages suivants à Alice: 199, 154, 23,
-201. Chiffrez ces messages et vérifiez que leur déchiffrement
-correspond bien au message d'origine.
+2. Bob veut envoyer les messages suivants à Alice: 199, 154, 23, 201.
+Chiffrez ces messages et vérifiez que leur déchiffrement correspond bien
+au message d'origine.
 
 
 # Mini RSA
