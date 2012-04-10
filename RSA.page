@@ -31,7 +31,7 @@ Lorsque Alice reçoit le message de Bob, elle peut le décoder comme
 suit:
 
 - Elle calcule $c^d \mod N$. Par construction, ceci est égal à $$c^d =
-  (m^e)^d = m^{ed} = m^{ed \mod \phi(N)} = m^1 = m \mod N$$.
+  (m^e)^d = m^{ed} = m^{ed \mod \phi(N)} = m^1 = m \mod N.$$
 
 
 Par exemple, si Bob doit envoyer le message $10$ à Alice, il calcule
