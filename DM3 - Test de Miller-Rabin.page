@@ -12,7 +12,7 @@ $$a^{n-1} \ne 1 \mod n.$$
 
 Si tel est le cas, on conclut que $n$ n'est pas premier; sinon on ne peut rien dire, mais on affirme que $n$ à une chance d'être premier.
 
-Par exemple, voici la valeur de $a^14 \mod 15$ pour $a$ allant de $1$ jusqu'à $14$:
+Par exemple, voici la valeur de $a^{14} \mod 15$ pour $a$ allant de $1$ jusqu'à $14$:
 
 $$1, 4, 9, 1, 10, 6, 4, 4, 6, 10, 1, 9, 4, 1.$$
 
