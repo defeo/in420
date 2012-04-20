@@ -102,7 +102,7 @@ Le but de ce DM est d'implanter le test de Miller-Rabin pour des grands entiers,
 
 2. Écrivez un programme qui prend en entrée un entier $n$ et optionnellement un nombre $k$ d'itérations et qui fait $k$ tests de Miller-Rabin avec des témoins choisis au hasard.
 
-Vérifiez votre programme avec des petits nombres premiers et composés.
+Vérifiez votre programme avec des petits nombres premiers et composés. Un conseil: testez votre programme avec le nombre de Carmichael $651693055693681 = 72931 \cdot 87517 \cdot 102103$, si votre programme trouve qu'il est premier, vous avez certainement un bug (vous avez mal testé les conditions sur les racines carrées de l'unité).
 
 3. Votre mission: visitez [cette page](http://swift.prism.uvsq.fr:2401/in420-dms.py/primes) et utilisez le test de Miller-Rabin pour sauver le monde! Faites attention: ces nombres sont bien trop gros pour vous passer de la classe `BigInteger`...
 
