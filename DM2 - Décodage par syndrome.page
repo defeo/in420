@@ -280,7 +280,7 @@ Chaque bloc est encodé sur sept bits, et les résultats sont concaténés, ce q
 
 On obtient $6\times 7=42$ bits au total, ce qui n'est pas un multiple
 de 8. Pour encoder ceci dans un fichier, on ajoute assez de 0 à droite
-jusqu'à obtenir un multiple de 8 (le multiple suivant est 50). Le
+jusqu'à obtenir un multiple de 8 (le multiple suivant est 48). Le
 résultat est donc le fichier, que vous pouvez télécharger [ici](dm2_ham.bin), contenant les octets suivants
 
 ~~~
