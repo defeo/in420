@@ -37,9 +37,9 @@ Cours 9 (28/03/2012)
 Cours 10 (04/04/2012)
   ~ [Algorithme d'Euclide](Cryptographie asymétrique), [RSA](Cryptographie asymétrique).
 Cours 11 (18/04/2012)
-  ~ [Test de Miller-Rabin](Cryptographie asymétrique), [Algorithme de Gauss](Systèmes linéaires).
+  ~ [Test de Miller-Rabin](Cryptographie asymétrique), [Théorème des restes chinois](Cryptographie asymétrique).
 Cours 12 (02/05/2012)
-  ~ [Algorithme de Gauss](Systèmes linéaires), [Cryptosystème de McEliece](Systèmes linéaires).
+  ~ Cryptosystème de McEliece.
 
 # TDs
 
@@ -65,8 +65,8 @@ TD 10 (10/04/2012)
   ~ [RSA]().
 TD 11 (17/04/2012)
   ~ [RSA]().
-TD 12 (09/05/2012 ?)
-  ~ Révision examen
+TD 12 (09/05/2012)
+  ~ [Révision examen](/TD12.pdf)
 
 # Devoirs maison
 
