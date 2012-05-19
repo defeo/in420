@@ -876,3 +876,92 @@ multipliant par $G$.
 
 Testez votre code en encodant des messages de plusieurs octets et en
 vérifiant que leur produit par $H$ fait bien zéro.
+
+Vous trouverez la solution ci-dessous.
+
+<div onclick="if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'" style="max-height:6ex;overflow:hidden">
+
+~~~ {.java}
+//                    Cliquez ici pour ouvrir
+public class Hamming {
+    // La matrice de parite du code de Hamming
+    BinMatrix parity;
+
+    // Verifie si l'entier positif n est une puissance de 2
+    public static Boolean isPowerOf2(int n) {
+        return n != 0 && ((n - 1) & n) == 0;
+    }
+
+    // Calcule la partie entiere du logarithme en base 2 
+    // de l'entier positif n
+    public static int log2(int n) {
+        int cnt = 0;
+        for ( ; n > 1 ; n >>= 1) cnt++;
+        return cnt;
+    }
+
+    // Cree le code de Hamming avec n_minus_k bits de parite
+    public Hamming(int n_minus_k) {
+        int n = (1 << n_minus_k) - 1;
+        int k = n - n_minus_k;
+
+        BinVector[] H = new BinVector[n];
+        for (int i = 1 ; i <= n ; i++) {
+            byte[] bits = { (byte)i, (byte)(i >> 8), (byte)(i >> 16), (byte)(i >> 24) };
+            int column = isPowerOf2(i) ? k + log2(i) : i - log2(i) - 2;
+            H[column] = new BinVector(bits, n_minus_k, 0);
+        }
+
+        this.parity = (new BinMatrix(H)).transpose();
+    }
+    
+    // Calcule la matrice generatrice de ce code de Hamming
+    public BinMatrix generator() {
+        int n = parity.columns();
+        int k = n - parity.rows();
+
+        BinVector[] G = new BinVector[n];
+        
+        // Une ligne de bits tous a zero
+        Bit[] bits = new Bit[k];
+        for (int i = 0 ; i < k ; i++)
+            bits[i] = Bit.ZERO;
+        
+        // La partie identite de la matrice
+        for (int i = 0 ; i < k ; i++) {
+            if (i > 0)
+                bits[i - 1] = Bit.ZERO;
+            bits[i] = Bit.ONE;
+            G[i] = new BinVector(bits);
+        }
+
+        /* La partie qui depend de H */
+        for (int i = k ; i < n ; i++) {
+            for (int j = 0 ; j < k ; j++)
+                bits[j] = parity.row(i-k).bits[j];
+            G[i] = new BinVector(bits);
+        }
+
+        return new BinMatrix(G);
+    }
+
+    // Encode un vecteur avec ce code de Hamming
+    public BinVector encode(BinVector v) {
+        return generator().product(v);
+    }
+
+    // Cree le code de Hamming avec parametres donnes
+    // et affiche ses matrices
+    public static void main(String[] args) {
+        int nk = Integer.parseInt(args[0]);
+        
+        Hamming code = new Hamming(nk);
+        
+        System.out.println(code.parity);
+        System.out.println(code.generator());
+        System.out.println(code.parity.product(code.generator()));
+    }
+}
+~~~
+
+</div>
