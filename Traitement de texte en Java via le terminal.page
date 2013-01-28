@@ -1,0 +1,130 @@
+Java est un langage destiné principalement aux interfaces graphiques et à la programmation de serveurs. Néanmoins, il offre les mêmes facilités que le C, voire un peu de bibliothèques en plus, pour le traitement de données au terminal. D'autres langages de scripting, tel Perl, Python, Lua, Ruby, offrent beaucoup plus de facilités dans ce sens, mais le but de ce cours étant aussi la consolidation de notre connaissance du Java, nous n'en parlerons pas.
+
+
+# Le terminal
+
+Il y a deux façons de traiter le texte, et plus généralement les données. Tout le monde connaît les fichiers, paquets de données binaires destinées à être stockées sur disque dûr et/ou chargées en mémoire vive afin d'être traités par les logiciels. L'autre moyen, moins pratiqué par les non-experts, est le **terminal**, ou **console**, véritable couteau suisse de l'informaticien.
+
+Dans les systèmes Unix (ce qui inclut Linux, BSD, MacOS, ...), un terminal est souvent facilement disponible (MacOS peut demander un peu de configuration pour l'afficher). Dans windows 7, un terminal est disponible sous le nom, très impropre, d'*invite de commandes*. Trouvez ce logiciel dans votre système et créez un raccourci vers celui-ci.
+
+Lorsque vous exécutez un terminal, celui ci vous place dans un *répertoire initial*, vous affiche un *prompt* (c'est à dire une ligne de texte contenant des informations telles le répertoire courant, l'utilisateur, etc.), et se met en attente de vos commandes. Sous linux vous pouvez demander à afficher le contenu du répertoire courant en tapant `ls` ; la même chose peut être obtenue sous Windows avec la commande `dir`.
+
+Voici un exemple de dialogue avec un terminal linux :
+
+    Linux proust 3.2.0-4-amd64 #1 SMP Debian 3.2.35-2 x86_64
+    
+    The programs included with the Debian GNU/Linux system are free software;
+    the exact distribution terms for each program are described in the
+    individual files in /usr/share/doc/*/copyright.
+    
+    Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+    permitted by applicable law.
+    You have mail.
+    Last login: Fri Jan 25 18:17:14 2013 from 85-170-121-50.rev.numericable.fr
+    dfl@proust:~$ ls
+    apo      Downloads           Fiche de renseignement PStage.odt  texmf   travail
+    bin      enseignement        keats                              tmp     www
+    Desktop  examen-13-1-10.pdf  prism_www                          towers
+    dfl@proust:~$ cd ..
+    dfl@proust:/home$ ls
+    dfl  lost+found
+
+La ligne `dfl@proust:~$` est le *prompt*, indiquant l'utilisateur (`dfl`), le nom de l'ordinateur (`proust`) et le répértoire courant (`~`, un alias pour le répertoire initial `/home/dfl`).
+
+Vous pouvez vous déplacer dans le répertoires, aussi bien sous UNIX que sous Windows, avec la commande `cd` suivie du nom du répertoire. Le nom `..` est un alias pour le nom du répertoire parent.
+
+Si vous avez un fichier de texte dans votre répertoire courant, vous pouvez l'afficher dans le terminal avec la commande `cat` (`type` sous windows) suivie du nom du fichier.
+
+1. Déplacez-vous dans un dossier contenant un fichier de texte et affichez-le avec la commande `cat` (`type`).
+
+N'hésitez pas à test l'usage des flèches haut/bas (en général, rappel des dernières commandes) et la touche tab (en général, auto-complétion) dans le terminal. De nombreux autres raccourcis clavier sont aussi disponibles selon votre terminal, à vous de les découvrir.
+
+
+# Java et le terminal
+
+On va refaire pour la n-ième Hello world en Java.
+
+1. Dans le répertoire de votre choix, avec votre éditeur préféré (pas notepad, svp), créez un fichier `Hello.java` contenant le texte suivant
+
+    ~~~ {.java}
+    public class Hello {
+        public static void main(String[] args) {
+            System.out.println("Hello world!");
+        }
+    }
+    ~~~
+
+   il est important d'écrire `Hello` avec la même combinaison de majuscules et minuscules dans le nom du fichier et dans le nom de la classe.
+
+2. Java est un langage compilé/interprété, ce qui veut dire qu'avant de pouvoir exécuter `Hello.java` il va falloir le compiler dans un fichier `Hello.class`. Certains IDE (par exemple Eclipse) le font automatiquement pour vous, mais nous allons quand même faire au moins une fois la démarche de compiler à la main. Dans le terminal naviguez jusqu'au répertoire contenant `Hello.java`. Au prompt, tapez la commande
+
+    ~~~
+    javac Hello.java
+    ~~~
+
+    Si tout va bien, ceci va créer le fichier `Hello.class`, vérifiez sa présence avec la commande `ls` (`dir`). Il se pourrait que cette commande échoue parce que le système n'arrive pas à trouver le programme `javac`. Ceci est très improbable sous Linux ; sous Windows, au contraire, cela arrivera presque sûrement. À l'aide d'une recherche, repérez le dossier contenant les exécutables `javac.exe` et `java.exe` (en général il s'agit du dossier `C:\Programmes\jdkX.X.X\bin`) et ajoutez-le à la variable d'environnement `PATH` (voir [http://java.com/fr/download/help/path.xml]()).
+
+3. Maintenant vous pouvez exécuter votre programme. Tapez
+
+    ~~~
+    java Hello
+    ~~~
+
+    et observez le résultat.
+
+
+
+# Prendre des entrées sur la ligne de commande
+
+L'intérêt de la console c'est qu'elle permet de passer avec simplicité des entrées aux programmes java, voir même le contenu d'un fichier entier. Pour passer des paramètres à un programme à travers la console, il suffit de les écrire dans la ligne de commande à la suite du nom du programme, séparés par des espaces, comme ceci
+
+~~~
+java Hello parametre1 parametre2
+~~~
+
+Chaque langage a sa façon de rendre ces paramètres disponibles au programme. En C, ils sont passés à la fonction `main` dans un tableau de chaînes de caractères, comme ceci
+
+~~~ {.C}
+int main (int argc, char** argv) {
+    ...
+}
+~~~
+
+où `argc` est un entier donnant le nombre de paramètres plus un, `argv` est le tableau de chaînes, contenant le nom du programme en `argv[0]`, les paramètres dans les cases suivantes. Java se comporte de façon très similaire au C, en passant les paramètres au `main` dans un tableau de `String`, comme ceci
+
+~~~ {.java}
+public static void main(String [] args) {
+    ...
+}
+~~~
+
+Contrairement au C, `args[0]` contient le première paramètre, le nom du programme étant toujours déductible du nom de la classe contenant le `main`.
+
+1. Écrivez un programme `Echo.java` qui prend en entrée un nombre arbitraire de paramètres et qui les affiche un par un.
+
+
+# Codage ASCII et Unicode
+
+On va écrire un programme permettant d'afficher les codes correspondants aux caractères, et inversement. Java code ses caractères en Unicode, dont les 
+
+1. Créez un fichier `Symboles.java`, qui prend un paramètre sur la ligne de commande et qui en affiche le premier caractère. La méthode `.charAt()` de la classe `String` permet d'extraire un caractère d'une chaîne.
+
+1. Un `char` n'est autre que des octets de données, un `int` en contient quatre. Par conséquent, java permet d'assigner le contenu du premier au deuxième sans problèmes (mais pas l'inverse). Vous pouvez ainsi écrire
+
+    ~~~ {.java}
+    char c = 'a';
+    int  d = c;
+    ~~~
+
+    modifiez le programme `Symboles.java` pour qu'il affiche la valeur numérique du caractère entré.
+
+1. Lorsqu'on affiche un `int`, Java montre sa valeur en base 10. Mais avec les caractères, on a plutôt l'habitude d'afficher leur codes en base 16. La fonction ` Integer.toString(d, 16)` permet d'afficher l'entier `d` en base 16. Modifiez `Symboles.java` pour qu'il affiche la valeur hexadécimale à côté de la valeur décimale.
+
+Voici un exemple d'exécution du programme
+
+~~~
+dfl@deagol:~$ java Symboles a
+a 97 61
+~~~
+
+Essayez avec plusieurs symboles courant. Essayez avec des symboles exotiques, comme par exemple le symbole d'euro €. Que constatez-vous?
