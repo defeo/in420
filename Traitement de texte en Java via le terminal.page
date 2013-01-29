@@ -136,3 +136,33 @@ Essayez avec plusieurs symboles courant. Essayez avec des symboles exotiques, co
     ~~~
 
     il fonctionne en mode inverse, c'est à dire qu'il affiche le caractère Unicode correspondant au code hexadécimal `A2`. Si l'option `-u` n'est pas donnée, le programme fonctionne comme avant. Vous pouvez utiliser la fonction `Integer.parseInt(s, 16)` pour convertir un `String` en l'entier qu'il représente en base 16.
+
+    **Note :** `parseInt` donne un `int`, qui est un type de données tenant sur 4 octets. Les caractères Unicode sont représentés en Java par des `char`, qui tiennent sur 2 octets. Convertir un `int` en `char` est donc une opération nécessairement dangereuse, qui risque de perdre des données, par conséquent Java va se rebeller si vous essayez de faire
+
+    ~~~ {.java}
+    int d = 2;
+    char c = d;
+    ~~~
+
+    Pour expliquer à Java que vous savez ce que vous êtres en train de faire, vous devez utiliser un *cast explicite* :
+
+    ~~~ {.java}
+    int d = 2;
+    char c = (char)d;
+    ~~~
+
+5. Ajoutez une fonction
+
+    ~~~ {.java}
+    public static String toHexString(int d) {
+        ...
+    }
+    ~~~
+
+    à la classe. La fonction doit prendre en entrée un entier `d` et renvoyer sa représentation en hexadécimal sous forme de `String`. Utilisez l'algorithme de conversion de base vu au semestre précédent, ne vous servez pas de `Integer.toString`. Remplacez l'appel à `Integer.toString` par cette nouvelle fonction.
+
+6. Dans le même esprit, ajoutez une fonction `static int fromHexString(String s)` réalisant la conversion inverse. Remplacez les appels à Integer.parseInt par cette nouvelle fonction.
+
+7. Modifiez les fonctions `toHexString` et `fromHexString` pour qu'elles fassent la conversion en utilisant une base arbitraire à la place de 16. Elles doivent prendre un deuxième paramètre de type `int` qui représente la base.
+
+
