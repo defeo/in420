@@ -128,3 +128,11 @@ a 97 61
 ~~~
 
 Essayez avec plusieurs symboles courant. Essayez avec des symboles exotiques, comme par exemple le symbole d'euro €. Que constatez-vous?
+
+4. Une convention courante pour les programmes destinés à être utilisés par la console consiste à accepter des options sous la forme d'un code précédé par un tiret `-`. Modifier le programme en sorte que lorsqu'il est invoqué comme ceci
+
+    ~~~
+    java Symboles -u A2
+    ~~~
+
+    il fonctionne en mode inverse, c'est à dire qu'il affiche le caractère Unicode correspondant au code hexadécimal `A2`. Si l'option `-u` n'est pas donnée, le programme fonctionne comme avant. Vous pouvez utiliser la fonction `Integer.parseInt(s, 16)` pour convertir un `String` en l'entier qu'il représente en base 16.
