@@ -75,32 +75,36 @@ public class Transcoder {
     */
     static void test(int codepoint) throws UnsupportedEncodingException {
         int[] utf8 = cp_to_UTF8(codepoint);
-        int[] pad = new int[4];
-        byte[] code = new byte[utf8.length];
-        for (int i = 0 ; i < utf8.length ; i++) {
-            pad[i] = utf8[i];
-            code[i] = (byte)utf8[i];
-            System.out.print(Integer.toString(utf8[i], 16) + " ");
-        }
-        System.out.println("\n" +
-                           Integer.toString(cp_from_UTF8(pad[0],
-                                                         pad[1],
-                                                         pad[2],
-                                                         pad[3]),
-                                            16));
-        System.out.println(new String(code, "UTF-8"));
+	int[] pad = new int[4];
+	if (utf8 != null) {
+	    byte[] code = new byte[utf8.length];
+	    for (int i = 0 ; i < utf8.length ; i++) {
+		pad[i] = utf8[i];
+		code[i] = (byte)utf8[i];
+		System.out.print(Integer.toString(utf8[i], 16) + " ");
+	    }
+	    System.out.println("\n" +
+			       Integer.toString(cp_from_UTF8(pad[0],
+							     pad[1],
+							     pad[2],
+							     pad[3]),
+						16));
+	    System.out.println(new String(code, "UTF-8"));
+	}
 
-        int[] utf16 = cp_to_UTF16(codepoint);
-        pad = new int[2];
-        for (int i = 0 ; i < utf16.length ; i++) {
-            System.out.print(Integer.toString(utf16[i], 16) + " ");
-            pad[i] = utf16[i];
-        }
-        System.out.println("\n" +
-                           Integer.toString(cp_from_UTF16(pad[0],
-                                                          pad[1]),
-                                            16));
-        System.out.println("" + (char)pad[0] + (char)pad[1]);
+	int[] utf16 = cp_to_UTF16(codepoint);
+	if (utf16 != null) {
+	    pad = new int[2];
+	    for (int i = 0 ; i < utf16.length ; i++) {
+		System.out.print(Integer.toString(utf16[i], 16) + " ");
+		pad[i] = utf16[i];
+	    }
+	    System.out.println("\n" +
+			       Integer.toString(cp_from_UTF16(pad[0],
+							      pad[1]),
+						16));
+	    System.out.println("" + (char)pad[0] + (char)pad[1]);
+	}
     }
 
     public static void main(String[] args) 
@@ -115,7 +119,17 @@ public class Transcoder {
 
 2. Complétez les méthodes cp_to_UTF8, cp_from_UTF8. Ajoutez des constantes pour vous aider.
 
-Testez a l'aide du main.
+Testez a l'aide du main. Voici un exemple de sortie lorsque toutes les fonctions auront été implantées.
+
+~~~
+dfl@proust:~$ java Transcoder 1f603
+f0 9f 98 83 
+1f603
+😃
+d83d de03 
+1f603
+😃
+~~~
 
 3. Complétez le main.
 
