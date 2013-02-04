@@ -1,1 +1,125 @@
+Dans ce TD nous allons écrire un transcodeur capable de convertir des fichiers de l'encodage [UTF-16]() à l'encodage [UTF-8]() et *vice-versa*.
+
+Copiez-collez le code suivant dans un fichier nommé `Transcoder.java`.
+
+~~~ {.java}
+import java.io.*;
+
+public class Transcoder {
+    // Constantes liees aux plages UTF-16
+    private static int
+        lead_start = 0xD800, 
+        tail_start = 0xDC00, 
+        tail_end   = 0xDFFF,
+        bmp_end    = 0xFFFF,
+        max_cp     = 0x10FFFF;
+ 
+    /*
+      Convertit deux mots de 16 bits (supposes encodes en UTF-16) en
+      un codepoint Unicode. Le deuxieme mot est ignore le cas echeant.
+
+      Renvoie -1 s'il y a un probleme d'encodage.
+    */
+    static int cp_from_UTF16(int lead, int tail) {
+        return -1;
+    }
+
+    /*
+      Convertit un codepoint Unicode en son encodage UTF-16 (un
+      tableau de un ou deux entiers de 16 bits).
+
+      Renvoie null si le codepoint est invalide.
+     */
+    static int[] cp_to_UTF16(int codepoint) {
+        return null;
+    }
+
+    /*
+      Meme chose que la methode precedente, mais si le parametre
+      big_endian vaut false, le tableau est inverse.
+     */
+    static int[] cp_to_UTF16(int codepoint, Boolean big_endian) {
+        return null;
+    }
+
+    /*
+      Convertit un codepoint Unicode en son encodage UTF-8 (un
+      tableau de un à quatre entiers de 8 bits).
+
+      Renvoie null si le codepoint est invalide.
+     */
+    static int[] cp_to_UTF8(int codepoint) {
+        return null;
+    }
+
+    /*
+      Convertit quatre mots de 8 bits (supposes encodes en UTF-8) en
+      un codepoint Unicode. Les mots en plus sont ignores le cas
+      echeant.
+
+      Renvoie -1 s'il y a un probleme d'encodage.
+    */
+    static int cp_from_UTF8(int b1, int b2, int b3, int b4) {
+        return -1;
+    }
+
+    /*
+      Convertit un flux de UTF-8 a UTF-16
+    */
+    public static void utf8to16(InputStream in, OutputStream out) {
+    }
+
+    /*
+      Convertit un flux de UTF-16 a UTF-18
+    */
+    public static void utf16to8(InputStream in, OutputStream out) {
+    }
+
+    /*
+      Cette fonction sert a tester les methodes ci-dessus. Elle prend
+      un codepoint en entree et fait des affichages de test.
+    */
+    static void test(int codepoint) throws UnsupportedEncodingException {
+        int[] utf8 = cp_to_UTF8(codepoint);
+        int[] pad = new int[4];
+        byte[] code = new byte[utf8.length];
+        for (int i = 0 ; i < utf8.length ; i++) {
+            pad[i] = utf8[i];
+            code[i] = (byte)utf8[i];
+            System.out.print(Integer.toString(utf8[i], 16) + " ");
+        }
+        System.out.println("\n" +
+                           Integer.toString(cp_from_UTF8(pad[0],
+                                                         pad[1],
+                                                         pad[2],
+                                                         pad[3]),
+                                            16));
+        System.out.println(new String(code, "UTF-8"));
+
+        int[] utf16 = cp_to_UTF16(codepoint);
+        pad = new int[2];
+        for (int i = 0 ; i < utf16.length ; i++) {
+            System.out.print(Integer.toString(utf16[i], 16) + " ");
+            pad[i] = utf16[i];
+        }
+        System.out.println("\n" +
+                           Integer.toString(cp_from_UTF16(pad[0],
+                                                          pad[1]),
+                                            16));
+        System.out.println("" + (char)pad[0] + (char)pad[1]);
+    }
+
+    public static void main(String[] args) 
+        throws IOException, UnsupportedEncodingException {
+
+        test(Integer.parseInt(args[0], 16));
+    }
+}
+~~~
+
+
+
+
 Utilisez ce lien pour visualiser vos fichiers <http://swift.prism.uvsq.fr:2401/coder.py>.
+
+
