@@ -1,5 +1,18 @@
 Dans ce TD nous allons écrire un transcodeur capable de convertir des fichiers de l'encodage [UTF-16]() à l'encodage [UTF-8]() et *vice-versa*.
 
+Nous avons exprimé les algorithmes pour le codage et le décodage en utilisant la base 16. En plus des entiers en base 10, Java offre des facilités pour écrire les constante numérales en bases 8, 16 et (depuis 7.0) 2. Voici un exemple.
+
+~~~
+int a = 987;    // entier en base 10
+int b = 0765    // les entiers en base 8 commencent par 0
+int c = 0xFED   // les entiers en base 16 commencent par 0x ou 0X
+int d = 0b1010  // les enttiers en base 2 commencent par 0b (depuis Java 7.0)
+~~~
+
+Si vous connaissez les opérateurs bit-à-bit Java (décalage et masquage), vous êtes libres de les utiliser. Néanmoins, les opérations arithmétiques (multiplication, division et modulo) sont largement suffisantes pour ce TD et vous êtes encouragés à faire l'effort intellectuel de vous en servir.
+
+# Coder et décoder [UTF-16]() et [UTF-8]()
+
 Copiez-collez le code suivant dans un fichier nommé `Transcoder.java`.
 
 ~~~ {.java}
@@ -115,11 +128,32 @@ public class Transcoder {
 }
 ~~~
 
-1. Complétez les méthodes cp_to_UTF16, cp_from_UTF16.
+1. Complétez la méthode `cp_from_UTF16`. Elle prend en entrée deux `int`, qu'il faut interpréter comme deux mots de 16 bits issus d'un flux [UTF-16](), et renvoie le *codepoint* Unicode correspondant aux deux mots. Si le premier `int` est un mot du Basic Multilingual Plane, le deuxième `int` doit tout simplement être ignoré. Si les deux mots ne forment pas un encodage [UTF-16]() valide, la fonction doit renvoyer -1. Remarquez qu'un int contient 32 bits, mais pour chacun des deux paramètres passés à la fonction nous allons ignorer les 16 bits de *poids fort* (les bits *plus significatif*, c'est à dire, ceux qui correspondent aux plus grandes puissances de 2) et utiliser exclusivement la valeur des 16 bits de *poids faible*.
 
-2. Complétez les méthodes cp_to_UTF8, cp_from_UTF8. Ajoutez des constantes pour vous aider.
+Pour vous aider à tester votre code, une fonction de test est déjà implantée dans le code fourni ci-dessus. Il suffit de compiler le programme et le lancer avec un paramètre sur la ligne de commande. Le paramètre doit être le *codepoint* d'un symbole Unicode valide écrit en hexadécimal ; le programme de test va afficher quelques informations utiles: entre autres, la valeur hexadécimale de son encodage [UTF-16]() et le symbole lui-même. Voici un exemple de test après que vous aurez implanté correctement la méthode `cp_from_UTF16`.
 
-Testez a l'aide du main. Voici un exemple de sortie lorsque toutes les fonctions auront été implantées.
+~~~
+dfl@proust:~$ java Transcoder 1f603
+d83d de03 
+-1
+😃
+~~~
+
+2. Complétez la méthode `cp_to_UTF16`. Elle prend en entrée un `int` représentant le *codepoint* d'un symbole Unicode valide, et renvoie un tableau de un ou deux `int`, contenant son encodage [UTF-16](). À nouveau, chacun des `int` du tableau fait 32 bits, mais nous nous servons seulement des 16 bits de poids faible.
+
+Voici la sortie du test après que vous aurez implanté correctement cette fonction.
+
+~~~
+dfl@proust:~$ java Transcoder 1f603
+d83d de03 
+1f603
+😃
+~~~
+
+
+3. Complétez les méthodes `cp_to_UTF8`, `cp_from_UTF8`. Comme les méthodes précédente, la première prend en entrée un *codepoint* et renvoie un tableau de 1 à 4 `int`, la deuxième prend en entrée 4 `int` et renvoie un *codepoint*. Cette fois-ci, on va se servir seulement des 8 bits de poids faible de chaque `int`.
+
+N'hésitez pas à définir des constantes définissant les plages [UTF-8]() comme cela a été fait pour vous concernant [UTF-16](). Voici un exemple de sortie lorsque toutes les fonctions auront été implantées correctement.
 
 ~~~
 dfl@proust:~$ java Transcoder 1f603
@@ -131,11 +165,17 @@ d83d de03
 😃
 ~~~
 
-3. Complétez le main.
+
+# Agir sur des fichiers
+
+
+4. Modifiez le main pour qu'il agisse sur des fichiers.
 
 Utilisez ce lien pour visualiser vos fichiers <http://swift.prism.uvsq.fr:2401/coder.py>.
 
-Voici la solution du TD.
+
+
+# Solution
 
 <div style="overflow:hidden;height:6ex"
 onclick="if (this.style.height != 'auto') this.style.height='auto'; else this.style.height='6ex'">
