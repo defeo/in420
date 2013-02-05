@@ -168,11 +168,46 @@ d83d de03
 
 # Agir sur des fichiers
 
+Les entrées/sorties en Java se font à l'aide de *flux* (*streams*). Les deux types les plus simples de stream sont [`InputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/InputStream.html) et [`OutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/OutputStream.html). `System.in` est une instance du premier, tandis que `System.out` et `System.err` sont des instances du deuxième.
 
-4. Modifiez le main pour qu'il agisse sur des fichiers.
+Deux classes spécifiques à la lecture et écriture de fichiers héritent de `InputStream` et `OutputStream`. Il s'agit de [`FileInputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) et [`FileOutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html). On peut utiliser la première pour lire des fichiers, voici un exemple d'utilisation
 
-Utilisez ce lien pour visualiser vos fichiers <http://swift.prism.uvsq.fr:2401/coder.py>.
+~~~ {.java}
+FileReader in = new FileReader("source.txt");
+int i;
+while( (i = in.read()) != -1 ) {
+    System.out.println(i);
+}
+~~~
 
+La fonction `read()` de `InputStream` lit le contenu du flux (que ce soit `System.in` ou un `FileInputStream`) un seul octet à la fois. Lorsqu'il n'y a plus d'octets dans le flux, elle renvoie -1. Nonobstant la valeur de retour de `read()` représente un octet, le type de sa valeur de retour est `int` (sinon il serait impossible, par exemple, de renvoyer -1).
+
+L'écriture dans un flux est réalisée de façon similaire. Voici un exemple qui écrit des octets pas très intéressants dans un fichier.
+
+~~~ {.java}
+FileWriter out = new FileWriter("destination.txt");
+for ( int i = 0 ; i <= 0xFF ; i++ ) {
+    out.write(i);
+}
+~~~
+
+Comme pour `read()`, le paramètre attendu par `write()` est de type `int`, mais seulement les 8 bits de poids faible vont être utilisés par cette fonction.
+
+Voici un exemple très simple de copie de fichier octet par octet.
+
+~~~ {.java}
+FileReader in = new FileReader("source.txt");
+FileWriter out = new FileWriter("destination.txt");
+int i;
+while( (i = in.read()) != -1 )
+    out.write(i);
+~~~
+
+1. Modifiez le `main` pour qu'il prenne en paramètre les noms de deux fichiers. Le premier va être un fichier d'entrée, le deuxième un fichier de sortie. Complétez la fonction `utf8to16` pour qu'elle lise le contenu du flux `in`, le décode en supposant qu'il est encodé en [UTF-8](), convertit le résultat en [UTF-16]() et écrit le résultat sur le flux `out`. Appelez la fonction `utf8to16` à partir du `main`.
+
+2. Complétez la fonction `utf16to8`, qui réalise la conversion inverse. Modifiez le `main` pour qu'il prenne un paramètre sur la ligne de commande permettant de choisir le sens de la conversion.
+
+Pour tester les deux questions précédentes, vous pouvez utiliser la page <http://swift.prism.uvsq.fr:2401/coder.py>, qui permet d'afficher un fichier avec l'encodage choisi.
 
 
 # Solution
