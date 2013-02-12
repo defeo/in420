@@ -173,7 +173,7 @@ Les entrées/sorties en Java se font à l'aide de *flux* (*streams*). Les deux t
 Deux classes spécifiques à la lecture et écriture de fichiers héritent de `InputStream` et `OutputStream`. Il s'agit de [`FileInputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) et [`FileOutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html). On peut utiliser la première pour lire des fichiers, voici un exemple d'utilisation
 
 ~~~ {.java}
-FileReader in = new FileReader("source.txt");
+FileInputStream in = new FileInputStream("source.txt");
 int i;
 while( (i = in.read()) != -1 ) {
     System.out.println(i);
@@ -185,7 +185,7 @@ La fonction `read()` de `InputStream` lit le contenu du flux (que ce soit `Syste
 L'écriture dans un flux est réalisée de façon similaire. Voici un exemple qui écrit des octets pas très intéressants dans un fichier.
 
 ~~~ {.java}
-FileWriter out = new FileWriter("destination.txt");
+FileOutputStream out = new FileOutputStream("destination.txt");
 for ( int i = 0 ; i <= 0xFF ; i++ ) {
     out.write(i);
 }
@@ -196,8 +196,8 @@ Comme pour `read()`, le paramètre attendu par `write()` est de type `int`, mais
 Voici un exemple très simple de copie de fichier octet par octet.
 
 ~~~ {.java}
-FileReader in = new FileReader("source.txt");
-FileWriter out = new FileWriter("destination.txt");
+FileInputStream in = new FileInputStream("source.txt");
+FileOutputStream out = new FileOutputStream("destination.txt");
 int i;
 while( (i = in.read()) != -1 )
     out.write(i);
