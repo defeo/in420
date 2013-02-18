@@ -207,7 +207,7 @@ while( (i = in.read()) != -1 )
 
 2. Complétez la fonction `utf16to8`, qui réalise la conversion inverse. Modifiez le `main` pour qu'il prenne un paramètre sur la ligne de commande permettant de choisir le sens de la conversion.
 
-Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](/misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8]() et [UTF-16](). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir de la page <http://swift.prism.uvsq.fr:2401/coder.py>.
+Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](/misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8]() et [UTF-16](). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir de la page <http://apollinaire.prism.uvsq.fr/py/coder.py> (marche mieux avec Firefox).
 
 
 # Solution
