@@ -1,10 +1,10 @@
 Ce DM constitue la suite du TD [Construction du code de Huffman](). Vous êtes libres d'utiliser le code que vous avez écrit pour le TD, y compris la solution qui y est fournie.
 
-Le but de ce DM est d'écrire un programme permettant le codage et le décodage de textes par le [code de Huffman](Code de Huffman). Le texte à coder/décoder, ainsi que les fréquences d'apparition des symboles sont des entrées pour le programme. Pour simplicité, nous allons utiliser seulement les caractères ASCII de 'a' à 'z' (qui ont aussi les même encodage en [UTF-8]() et dans la plupart des encodages supportés par les ordinateurs).
+Le but de ce DM est d'écrire un programme permettant le codage et le décodage de textes par le [code de Huffman](Code de Huffman). Le texte à coder/décoder, ainsi que les fréquences d'apparition des symboles sont des entrées pour le programme. Pour simplicité, nous allons utiliser seulement les caractères (ASCII) de 'a' à 'z'.
 
 Plus précisément, votre programme doit:
 
-- Lire en entrée un fichier contenant les fréquences des symboles, par exemple fans le format du TD [Construction du code de Huffman]().
+- Lire en entrée un fichier contenant les fréquences des symboles, par exemple dans le format du TD [Construction du code de Huffman]().
 - Générer le code de Huffman correspondant aux fréquences fournies (déjà fait en TD).
 - Offrir une option pour lire un fichier au format ASCII et l'encoder avec le code de Huffman.
 - Offrir une option pour lire un fichier binaire et le décoder en un fichier ASCII avec le code de Huffman.
@@ -18,9 +18,9 @@ Dans la suite on va suggérer une façon de structurer votre code, cependant vou
 
 La lecture/écriture d'un fichier ASCII peut se faire aussi bien en mode binaire (avec [`FileInputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) et [`FileOutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html)), qu'en mode texte (avec [`FileReader`](http://docs.oracle.com/javase/6/docs/api/java/io/FileReader.html) et [`FileWriter`](http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html)). Allez voir les derniers TDs et la page [Entrées-Sorties}() en Java pour l'usage de ces classes.
 
-Au contraire, l'encodage de Huffman est à longueur variable, et basé sur les bits. Il n'est donc pas commode de lire des fichiers encodés avec un code de Huffman avec les classes par défaut de Java. La première étape consiste à créer des classes permettant de lire ou écrire un flux de données bit par bit.
+Au contraire, l'encodage de Huffman est à longueur variable, et basé sur les bits. Il n'est donc pas commode de lire des fichiers encodés avec un code de Huffman en utilisant les classes par défaut de Java. La première étape consiste à créer des classes permettant de lire ou écrire un flux de données bit par bit.
 
-Un *encapsuleur* (*wrapper* en anglais) est une classe qui prend en entrée de son constructeur un objet et qui en étend les fonctionnalités. Des exemples classiques d'encapsuleurs en Java sont [`BufferedReader`](http://docs.oracle.com/javase/6/docs/api/java/io/BufferedReader.html) et [`BufferedWriter'](http://docs.oracle.com/javase/6/docs/api/java/io/BufferedWriter.html), qui encapsulent respectivement `FileReader` et `FileWriter`, comme dans l'exemple suivant.
+Un *encapsuleur* (*wrapper* en anglais) est une classe qui prend en entrée de son constructeur un objet et qui en étend les fonctionnalités. Des exemples classiques d'encapsuleurs en Java sont [`BufferedReader`](http://docs.oracle.com/javase/6/docs/api/java/io/BufferedReader.html) et [`BufferedWriter`](http://docs.oracle.com/javase/6/docs/api/java/io/BufferedWriter.html), qui encapsulent respectivement `FileReader` et `FileWriter`, comme dans l'exemple suivant.
 
 ~~~ {.java}
 BufferedReader in = new BufferedReader(new FileReader("in.txt"));
