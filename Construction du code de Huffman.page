@@ -75,7 +75,7 @@ public class Huffman {
 }
 ~~~
 
-Un arbre binaire est un arbre dans lequel chaque nœud a soit deux soit aucun fils. La classe `Node` représente un nœud d'un arbre binaire : les champs `left` et `right` permettent de pointer vers les nœuds fils, et ils sont `null` lorsque le nœud est une feuille. En plus de ces informations, notre classe `Node` contient deux champs nécessaires à l'algorithme de Huffman : un champ `symbol` qui sert à stocker un symbole de l'alphabet à encoder, et un champ `freq` qui contient sa fréquence. Enfin, la classe `Node` implante l'interface `Comparable`, ce qui permet d'ordonner des listes de nœuds
+Un arbre binaire est un arbre dans lequel chaque nœud a soit deux soit aucun fils. La classe `Node` représente un nœud d'un arbre binaire : les champs `left` et `right` permettent de pointer vers les nœuds fils, et ils sont `null` lorsque le nœud est une feuille. En plus de ces informations, notre classe `Node` contient deux champs nécessaires à l'algorithme de Huffman : un champ `symbol` qui sert à stocker un symbole de l'alphabet à encoder, et un champ `freq` qui contient sa fréquence. Enfin, la classe `Node` implante l'interface [`Comparable`](http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html), ce qui permet d'ordonner des listes de nœuds
 
 1. Complétez la classe `Node` en remplissant la méthode `compareTo`. La comparaison doit se faire par rapport au champ `freq`. Ajoutez aussi autant de constructeurs que vous le retiendrez nécessaire.
 
@@ -83,9 +83,9 @@ Maintenant on peut passer à l'algorithme de Huffman à proprement parler. Le `m
 
 La méthode `createTree` sert à créer l'arbre de Huffman. Ses entrées sont deux tableaux, qu'on suppose de la même longueur, contenant respectivement les symboles de l'alphabet et leurs fréquences. On rappelle brièvement le principe de l'algorithme de Huffman, et on en suggère une implantation possible.
 
-- Créer les feuilles de l'arbre: une par symbole de l'alphabet, chacune marquée par sa fréquence. Vous pouvez utiliser un `ArrayList` pour créer une liste de `Node` : un pour chaque symbole.
+- Créer les feuilles de l'arbre: une par symbole de l'alphabet, chacune marquée par sa fréquence. Vous pouvez utiliser un [`ArrayList`](http://docs.oracle.com/javase/6/docs/api/java/util/ArrayList.html) pour créer une liste de `Node` : un pour chaque symbole.
 
-- Tant que l'arbre n'est pas complet, prendre les deux nœuds avec les plus petites probabilités et les relier avec un nouveau nœud. Le nouveau nœud est marqué avec la somme des fréquences des deux fils. Vous pouvez utiliser la méthode statique `Collections.sort` pour ordonner une liste de `Comparable`, ou encore la méthode `Collections.min` pour en trouver l'élément le plus petit. À chaque fois que vous unissez deux nœuds, retirez-les de la liste et ajoutez-y le nouveau nœud.
+- Tant que l'arbre n'est pas complet, prendre les deux nœuds avec les plus petites probabilités et les relier avec un nouveau nœud. Le nouveau nœud est marqué avec la somme des fréquences des deux fils. Vous pouvez utiliser la méthode statique [`Collections.sort`](http://docs.oracle.com/javase/6/docs/api/java/util/Collections.html) pour ordonner une liste de `Comparable`, ou encore la méthode [`Collections.min`](http://docs.oracle.com/javase/6/docs/api/java/util/Collections.html) pour en trouver l'élément le plus petit. À chaque fois que vous unissez deux nœuds, retirez-les de la liste et ajoutez-y le nouveau nœud.
 
 - Lorsque tous les nœud sont connectés à la racine, l'algorithme se termine. La liste de nœuds sera réduite à un seul élément, la racine, et il suffit de la renvoyer.
 
