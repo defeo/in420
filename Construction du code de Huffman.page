@@ -130,7 +130,7 @@ Pour être sûr que votre code est bon, testez avec d'autres jeux de symboles pl
 Voici la solution de cette partie.
 
 <div style="max-height:6ex;overflow:hidden"
-onclick="return;if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'">
+onclick="if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'">
 
 ~~~ {.java}
 import java.util.ArrayList;       // Cliquez pour découvrir
@@ -150,6 +150,13 @@ class Node implements Comparable<Node> {
         this.symbol = s;
         this.freq = f;
         this.left = this.right = null;
+    }
+
+    public Node(Node left, Node right) {
+        this.symbol = (char)0;
+        this.left = left;
+        this.right = right;
+        this.freq = left.freq + right.freq;
     }
     
     /* 
@@ -199,10 +206,7 @@ public class Huffman {
             Collections.sort(leaves);
             Node n1 = leaves.remove(0);
             Node n2 = leaves.remove(0);
-            Node n = new Node((char)0, n1.freq + n2.freq);
-            n.left = n1;
-            n.right = n2;
-            leaves.add(n);
+            leaves.add(new Node(n1, n2));
         }
 
         // Renvoie la racine de l'arbre
