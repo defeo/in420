@@ -1,0 +1,22 @@
+Ce DM constitue la suite du TD [Construction du code de Huffman](). Vous êtes libres d'utiliser le code que vous avez écrit pour le TD, y compris la solution qui y est fournie.
+
+Le but de ce DM est d'écrire un programme permettant le codage et le décodage d'un texte par le [code de Huffman](Code de Huffman). Le texte à coder/décoder, ainsi que les fréquences d'apparition des symboles sont des entrées pour le programme. Pour simplicité, nous n'allons pas nous intéresser à l'encodage du fichier: il suffit que le programme arrive à coder et décoder des fichiers de texte contenant que les caractères ASCII de 'a' à 'z' (encodés en ASCII ou [UTF-8](), ce qui, comme on le sait, ne change rien).
+
+Dans la suite on va suggérer une façon de structurer votre code, cependant vous n'êtes pas obligés de la suivre à la lettre, tant que votre programme atteint le but recherché.
+
+
+# Flux de bits
+
+La lecture/écriture d'un fichier ASCII peut se faire aussi bien en mode binaire (avec `FileInputStream` et `FileOutputStream`), que en mode texte (avec `FileReader` et `FileWriter`). Aller voir les derniers TDs pour l'usage de ces classes.
+
+Au contraire, l'encodage de Huffman est à longueur variable, et basé sur les bits. Il n'est donc pas commode de lire des fichiers encodés avec un code de Huffman avec les classes par défaut de Java. La première étape consiste à écrire des *encapsuleurs* autour de `InputStream` et `OutputStream` permettant de lire un fichier bit par bit.
+
+Écrire une classe `InputBitStream` avec les méthodes suivantes
+
+~~~ {.java}
+public class InputBitStream
+
+~~~
+
+
+
