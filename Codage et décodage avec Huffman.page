@@ -16,7 +16,7 @@ Dans la suite on va suggérer une façon de structurer votre code, cependant vou
 
 # Flux de bits
 
-La lecture/écriture d'un fichier ASCII peut se faire aussi bien en mode binaire (avec [`FileInputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) et [`FileOutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html)), qu'en mode texte (avec [`FileReader`](http://docs.oracle.com/javase/6/docs/api/java/io/FileReader.html) et [`FileWriter`](http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html)). Allez voir les derniers TDs et la page [Entrées-Sorties}() en Java pour l'usage de ces classes.
+La lecture/écriture d'un fichier ASCII peut se faire aussi bien en mode binaire (avec [`FileInputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileInputStream.html) et [`FileOutputStream`](http://docs.oracle.com/javase/6/docs/api/java/io/FileOutputStream.html)), qu'en mode texte (avec [`FileReader`](http://docs.oracle.com/javase/6/docs/api/java/io/FileReader.html) et [`FileWriter`](http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html)). Allez voir les derniers TDs et la page [Entrées-Sorties]() en Java pour l'usage de ces classes.
 
 Au contraire, l'encodage de Huffman est à longueur variable, et basé sur les bits. Il n'est donc pas commode de lire des fichiers encodés avec un code de Huffman en utilisant les classes par défaut de Java. La première étape consiste à créer des classes permettant de lire ou écrire un flux de données bit par bit.
 
