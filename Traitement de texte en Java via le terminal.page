@@ -62,7 +62,7 @@ On va refaire pour la n-ième Hello world en Java.
     javac Hello.java
     ~~~
 
-    Si tout va bien, ceci va créer le fichier `Hello.class`, vérifiez sa présence avec la commande `ls` (`dir`). Il se pourrait que cette commande échoue parce que le système n'arrive pas à trouver le programme `javac`. Ceci est très improbable sous Linux ; sous Windows, au contraire, cela arrivera presque sûrement. À l'aide d'une recherche, repérez le dossier contenant les exécutables `javac.exe` et `java.exe` (en général il s'agit du dossier `C:\Programmes\jdkX.X.X\bin`) et ajoutez-le à la variable d'environnement `PATH` (voir [http://java.com/fr/download/help/path.xml]()).
+    Si tout va bien, ceci va créer le fichier `Hello.class`, vérifiez sa présence avec la commande `ls` (`dir`). Il se pourrait que cette commande échoue parce que le système n'arrive pas à trouver le programme `javac`. Ceci est très improbable sous Linux ; sous Windows, au contraire, cela arrivera presque sûrement. Pour régler ce problème, allez voir [cette page](Configurer PATH et CLASSPATH).
 
 3. Maintenant vous pouvez exécuter votre programme. Tapez
 
