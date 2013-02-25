@@ -216,7 +216,7 @@ Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive
 <textarea id="ed" readonly></textarea>
 
 <style>
-  #ed { width: 100%; height: 7ex; display: block }
+  #ed { width: 100%; height: 15ex; display: block }
 </style>
 
 <script type="text/javascript">
@@ -224,13 +224,20 @@ Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive
   var enc = document.getElementById('enc');
   var ed = document.getElementById('ed');
 
-  var encodings = ['utf-8', 'utf-16', 'utf-16le', 'utf-16be', 'us-ascii',
-                   'iso-8869-1', 'iso-8859-15', 'windows-1252'];
+  var encodings = { 'utf-8'          : 'utf-8',
+                    'utf-16'         : 'utf-16be',
+                    'utf-16le'       : 'utf-16le',
+                    'utf-16-default' : 'utf-16',
+                    'us-ascii'       : 'us-ascii',
+                    'iso-8859-1'     : 'iso-8859-1', 
+                    'iso-8859-15'    : 'iso-8859-15',
+                    'windows-1252'   : 'windows-1252',
+                  };
 
   for (e in encodings) {
     var opt = document.createElement('option');
     opt.value = encodings[e];
-    opt.innerHTML = encodings[e];
+    opt.innerHTML = e;
     enc.appendChild(opt);
   }
 
