@@ -1,4 +1,4 @@
-Le [chiffre de Hill](Cryptographie classique) est une méthode de
+Le [chiffre de Hill](Chiffrement par transposition) est une méthode de
 chiffrement linéaire où la clef est constitué d'une matrice inversible
 $n\times n$ à coefficients dans $\mathbb{Z}/26\mathbb{Z}$ et le
 chiffrement se fait en décomposant le texte clair en blocs de longueur
