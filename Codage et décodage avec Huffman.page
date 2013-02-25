@@ -70,27 +70,9 @@ Dans le même esprit, écrire une classe `OutputBitStream` qui encapsule un `Out
     public void close()
     ~~~
 
-    qui écrit les bits restants dans le `OutputStream`, même si le tampon n'a pas atteint les 8 bits. Après une `close`, aucune autre écriture dans le flux devrait être possible.
+    qui écrit les bits restants dans le `OutputStream`, même si le tampon n'a pas atteint les 8 bits (il sera opportun, dans ce cas, d'ajouter assez de zéros pour arriver à un octet complet ; voir aussi [Endianness]()). Après une `close`, aucune autre écriture dans le flux devrait être possible.
 
-Pour garantir la compatibilité du code, il est opportun de se mettre d'accord sur la direction dans laquelle on lit les bits d'un octet (de gauche à droite, ou de droite à gauche). Nous allons opter pour un ordre LSB (*least significant bit*), c'est à dire d'abord les bits de *poids faible* (les plus petites puissances de deux d'abord), ou encore de droite à gauche. Si, si, je vous assure : c'est ce qui est plus pratique et naturel ! Pour faire un exemple, le texte
-
-~~~
-huffman
-~~~
-
-est encodé par les codes ASCII de ses lettres
-
-~~~
-0x68 0x75 0x66 0x66 0x6d 0x61 0x6e
-~~~
-
-ce qui, en binaire avec ordre LSB donne le flux de bits (à lire de gauche à droite)
-
-~~~
-00010110 10101110 01100110 01100110 10110110 10000110 01110110
-~~~
-
-Les séparations en blocs de 8 sont là pour vous aider à lire. Observez que pour chaque bloc de 8 bits, vous devez lire les chiffres de gauche à droite (à l'envers de ce qu'on fait d'habitude) pour obtenir les valeurs hexadécimales d'origine.
+Pour le stockage des bits à l'intérieur d'un octet, vous êtes libres de choisir la [Endianness]() que vous préférez.
 
 
 # Encoder et décoder
@@ -114,7 +96,7 @@ Finalisez votre code avec un `main` qui permet de choisir le mode d'opération (
 
 # Challenge
 
-Visitez [cette page](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman) et décodez le message fourni en suivant les instructions.
+Visitez [cette page](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman) (testé avec Firefox 10 et Chrome 24) et décodez le message fourni en suivant les instructions.
 
 Envoyez votre code source, ainsi que le texte décodé à l'aide de la boîte de dépot sur [e-campus 2](http://e-campus2.uvsq.fr/) (si e-campus ne devait pas marcher, envoyez-les directement par mail à votre [enseignant](http://www.prism.uvsq.fr/~dfl). La date limite pour envoyer vos fichiers est le mercredi 6 mars à 4h du matin. Un point de pénalité pour chaque heure de retard: le 6 mars à 23h59 c'est votre dernière chance !
 
