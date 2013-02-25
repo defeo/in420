@@ -207,7 +207,46 @@ while( (i = in.read()) != -1 )
 
 2. Complétez la fonction `utf16to8`, qui réalise la conversion inverse. Modifiez le `main` pour qu'il prenne un paramètre sur la ligne de commande permettant de choisir le sens de la conversion.
 
-Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](/misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8]() et [UTF-16](). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir de la page <http://swift.prism.uvsq.fr/py/coder.py> (marche mieux avec Firefox).
+Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](/misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8]() et [UTF-16](). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir des contrôles ci-dessous.
+
+<p>
+  <label for="file">Fichier : </label><input type="file" id="file" />
+  <label for="enc">Encodage : </label><select id="enc"></select>
+</p>
+<textarea id="ed" readonly></textarea>
+
+<style>
+  #ed { width: 100%; height: 7ex; display: block }
+</style>
+
+<script type="text/javascript">
+  var file = document.getElementById('file');
+  var enc = document.getElementById('enc');
+  var ed = document.getElementById('ed');
+
+  var encodings = ['utf-8', 'utf-16', 'utf-16le', 'utf-16be', 'us-ascii',
+                   'iso-8869-1', 'iso-8859-15', 'windows-1252'];
+
+  for (e in encodings) {
+    var opt = document.createElement('option');
+    opt.value = encodings[e];
+    opt.innerHTML = encodings[e];
+    enc.appendChild(opt);
+  }
+
+  file.onchange = enc.onchange = function(e) {
+    if (file.files[0]) {
+      console.log("Reading " + file.files[0].name + " as " + enc.value);
+      reader.readAsText(file.files[0], enc.value);
+    }
+  }
+
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    ed.value = reader.result;
+  }
+</script>
+
 
 
 # Solution
