@@ -62,7 +62,7 @@ Dans le même esprit, écrire une classe `OutputBitStream` qui encapsule un `Out
     public void writeBit(int bit)
     ~~~
 
-    qui écrit un bit dans le bit de sortie. Les bits à écrire doivent être gardés dans un tampon jusqu'à atteindre 8 bits, moment auquel un octet complet pourra être écrit dans le `OutputStream`.
+    qui écrit un bit dans le flux de sortie. Les bits à écrire doivent être gardés dans un tampon jusqu'à atteindre 8 bits, moment auquel un octet complet pourra être écrit dans le `OutputStream`.
 
 - Une méthode
 
@@ -73,6 +73,8 @@ Dans le même esprit, écrire une classe `OutputBitStream` qui encapsule un `Out
     qui écrit les bits restants dans le `OutputStream`, même si le tampon n'a pas atteint les 8 bits (il sera opportun, dans ce cas, d'ajouter assez de zéros pour arriver à un octet complet ; voir aussi [Endianness]()). Après une `close`, aucune autre écriture dans le flux devrait être possible.
 
 Pour le stockage des bits à l'intérieur d'un octet, vous êtes libres de choisir la [Endianness]() que vous préférez.
+
+Avant de passer à la suite, il est conseiller de bien débugguer cette partie en vérifiant que la lecture et l'écriture bit par bit d'un fichier de texte réalisent une copie parfaite. Pour vous aider à débugguer cette partie du code, vous pouvez utiliser un outil de lecture de fichiers binaires. Sous Linux et MacOS, la commande `hd` fournit un tel outil. Sous Windows vous pouvez installer [Hexdump](http://www.richpasco.org/utilities/hexdump.html).
 
 
 # Encoder et décoder
