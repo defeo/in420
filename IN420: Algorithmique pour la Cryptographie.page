@@ -57,7 +57,7 @@ TD 4 (19/02/2012)
 TD 5 (26/02/2012)
   ~ [Algèbre linéaire et chiffre de Hill]().
 TD 6 (05/03/2012)
-  ~ 
+  ~ [Bit twiddling et LFSR]().
 TD 7 (19/03/2012)
   ~ 
 TD 8 (26/03/2012)
@@ -84,10 +84,10 @@ DM 3  (à rendre le 05/05/2012)
 
 Travaillez ces chapitres, et vous validerez le cours sans problèmes.
 
-- [Cryptographie classique](), [LFSR](Chiffrement par flot): **D. Stinson**. *Cryptographie -- Théorie et pratique*. Chapitre 1.
-- [Codes correcteurs d'erreurs](): **B. Martin**. *Codage, cryptologie et applications*. Chapitres 3-5.
-- [Cryptographie asymétrique](): **J. A. Buchmann**. *Introduction à la cryptographie*. Chapitre 8.
-- [Arithmétique modulaire](Cryptographie asymétrique): **J. Vélu**. *Méthodes Mathématiques pour l'Informatique*. Chapitres 15-16, vous pouvez sauter la section 16.2.
+- Cryptographie symétrique : **D. Stinson**. *Cryptographie -- Théorie et pratique*. Chapitre 1. **P. Vigoureux**. *Comprendre les codes secrets*. Chapitre 2.
+- Codes correcteurs d'erreurs: **B. Martin**. *Codage, cryptologie et applications*. Chapitres 3-5.
+- Cryptographie asymétrique: **J. A. Buchmann**. *Introduction à la cryptographie*. Chapitre 8.
+- Arithmétique modulaire: **J. Vélu**. *Méthodes Mathématiques pour l'Informatique*. Chapitres 15-16, vous pouvez sauter la section 16.2.
 
 Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Allez aussi voir [cette page](http://swift.prism.uvsq.fr:2401/in420.py/biblio).
 
@@ -105,7 +105,18 @@ Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographi
 
 # Bibliographie
 
+
+Pour se rafraîchir la mémoire sur java
+
+J. Brondeau. *Introduction à la programmation en Java*.
+:   Côte BU: 005.13jav BRO. Un peu daté, mais toujours d'actualité. Couvre bien les aspects de Java en tant que langage orienté aux objets. Le chapitre 8 traite en détail les flux d'entrée/sortie.
+
+---------
+
 Ces références concernent la cryptographie, les codes et les algorithmes.
+
+P. Vigoureux. *Comprendre les codes secrets*.
+:    Ellipses, Paris, 2010. ISBN: 978–2–7298–5368–6. Côte BU: 005.82 VIG. Ouvrage d'introduction à la cryptographie. Très simple à lire.
 
 D. Stinson. *Cryptographie -- Théorie et pratique*.
 :   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Côte BU: 005.82 STI. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
@@ -134,13 +145,6 @@ T. H. Cormen, C. E. Leiserson, R. L. Rivest, X. Cazin *Introduction à l'algorit
 
 T. Brugère, A. Mollard. *Mathématiques à l'usage des informaticiens*.
 :   Ellipses, 2003. ISBN 2-7298-1399-3. Côte BU: 004.01. Chapitres 8 (calcul matriciel et algèbre linéaire), 10 (arithmétique des entiers) et 11 (cryptographie). Ce livre se place à un niveau plus élevé que celui de Vélu.
-
--------
-
-Pour se rafraîchir la mémoire sur java
-
-J. Brondeau. *Introduction à la programmation en Java*.
-:   Côte BU: 005.13jav BRO
 
 -------
 
