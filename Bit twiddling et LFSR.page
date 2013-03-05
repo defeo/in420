@@ -150,7 +150,7 @@ besoin de faire appel à **`parite`**.
 
 Voici une solution complète. Essayez de compléter le TD avant de la regarder.
 
-<div onclick="return;if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'" style="max-height:6ex;overflow:hidden">
+<div onclick="if(this.style.maxHeight!='none')this.style.maxHeight='none';else this.style.maxHeight='6ex'" style="max-height:6ex;overflow:hidden">
 
 ~~~ {.java}
 public class LFSR {           // cliquez ici pour voir la solution
