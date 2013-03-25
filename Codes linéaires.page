@@ -1,7 +1,7 @@
 Ce TD, développé sur deux séances, est consacré aux codes correcteurs
 d'erreurs linéaires, et aux codes de Hamming en particulier.
 
-Avant de commencer ce TD vous devez avoir compris les concepts d'*espace vectoriel* et d'*application linéaires*, en particulier à coefficients dans le corps à deux éléments $\mathbb{F}_2$. Allez voir la page [Codes correcteurs d%27erreurs]() pour vous rafraîchir la mémoire.
+Avant de commencer ce TD vous devez avoir compris les concepts d'*espace vectoriel* et d'*application linéaires*, en particulier à coefficients dans le corps à deux éléments $\mathbb{F}_2$. Allez voir la page [Codes correcteurs d'erreurs](Codes correcteurs d%27erreurs) pour vous rafraîchir la mémoire.
 
 # Codage linéaire
 
