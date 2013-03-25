@@ -156,11 +156,11 @@ Pour appliquer l'indice de coïncidence à la cryptanalyse de Vigenère, il suff
   
 Supposons alors qu'on ne connaisse pas la longueur $n$ de la clef. Pour la deviner on procède comme suit:
 
-- Découpe le texte chiffré en $n$ textes comme auparavant.
+- Découpee le texte chiffré en $n$ textes comme auparavant.
 - Si on a deviné la bonne longueur, chaque texte est le chiffré de César d'une portion d'un texte français, il a donc un indice de coïncidence proche de 0.077.
 - Si on n'a pas deviné la bonne longueur, on s'attend à un texte proche de l'aléatoire, et donc avec un indice proche de $1/26$.
 
-On appliquant cette méthode à des $n$ de plus en plus grands, on s'arrête lorsqu'on rencontre un $n$ qui donne les bons indices de coïncidence. Observez que cette procédure demande de calculer les occurrences des lettres une seule fois, plutôt que de les recalculer pour chaque $n$.
+On appliquant cette méthode à des $n$ de plus en plus grands, on s'arrête lorsqu'on rencontre un $n$ qui donne les bons indices de coïncidence.
 
 
 ## À vos `javac`
