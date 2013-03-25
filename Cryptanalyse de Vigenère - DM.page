@@ -17,6 +17,8 @@ Voici un exemple de chiffrement du message "Attaquer à l'aube":
 
 1. Écrire un programme Java qui réalise le chiffrement et le déchiffrement d'un fichier par la méthode de Vigenère.
 
+Pour lire et écrire un fichier au format texte il est conseillé d'utiliser les classes [`FileReader`](http://docs.oracle.com/javase/6/docs/api/java/io/FileReader.html) et [`FileWriter`](http://docs.oracle.com/javase/6/docs/api/java/io/FileWriter.html), qui réalisent les lectures et écriture caractère par caractère. Allez voir aussi [Entrées-Sorties en Java]().
+
 
 # Cryptanalyse
 
