@@ -629,7 +629,7 @@ plus petit code de Hamming intéressant est le code $(7,4)$.
 La construction d'un code de Hamming est très simple. On commence par
 choisir l'entier $m$, qui est le nombre de *bits de contrôle*. On
 construit alors la *matrice de parité* du code, qui est la matrice
-$m\times (2^m-1)$ où les lignes sont les écritures en base $2$ des
+$m\times (2^m-1)$ où les colonnes sont les écritures en base $2$ des
 entiers compris entre $1$ et $2^m-1$. Voici la matrice de parité du
 code $(7,4)$:
 
