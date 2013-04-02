@@ -84,12 +84,13 @@ DM 3  (à rendre le 05/05/2012)
 
 Travaillez ces chapitres, et vous validerez le cours sans problèmes.
 
+- Codage source : **J.-C. Chappelier**. *Introduction à la Théorie de l'Information et ses applications*. Chapitre 2.
 - Cryptographie symétrique : **D. Stinson**. *Cryptographie -- Théorie et pratique*. Chapitre 1. **P. Vigoureux**. *Comprendre les codes secrets*. Chapitre 2.
-- Codes correcteurs d'erreurs: **B. Martin**. *Codage, cryptologie et applications*. Chapitres 3-5.
+- Codes correcteurs d'erreurs: **B. Martin**. *Codage, cryptologie et applications*. Chapitres 3-5. Ou **J.-C. Chappelier**. *Introduction à la Théorie de l'Information et ses applications*. Sections 6.1, 6.2.
 - Cryptographie asymétrique: **J. A. Buchmann**. *Introduction à la cryptographie*. Chapitre 8.
 - Arithmétique modulaire: **J. Vélu**. *Méthodes Mathématiques pour l'Informatique*. Chapitres 15-16, vous pouvez sauter la section 16.2.
 
-Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Allez aussi voir [cette page](http://swift.prism.uvsq.fr/py/in420.py/biblio).
+Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Le cours de J.-C. chappelier est ici : <http://icwww.epfl.ch/~chappeli/it/courseFR/index.php?shownav=yes>. Allez aussi voir [cette page](http://swift.prism.uvsq.fr/py/in420.py/biblio).
 
 
 # Pages utiles
@@ -113,6 +114,9 @@ J. Brondeau. *Introduction à la programmation en Java*.
 ---------
 
 Ces références concernent la cryptographie, les codes et les algorithmes.
+
+F. Bavaud, J.-C. Chappelier, J. Kohlas. *Introduction à la Théorie de l'Information et ses applications*.
+:    Cours EPFL. version 2.4FR. <http://icwww.epfl.ch/~chappeli/it/courseFR/index.php?shownav=yes>.
 
 P. Vigoureux. *Comprendre les codes secrets*.
 :    Ellipses, Paris, 2010. ISBN: 978–2–7298–5368–6. Côte BU: 005.82 VIG. Ouvrage d'introduction à la cryptographie. Très simple à lire.
