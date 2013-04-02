@@ -868,3 +868,36 @@ public class Hamming {
 ~~~
 
 </div>
+
+
+
+# Décodage syndrome
+
+Allez d'abord réviser la théorie du [Décodage syndrome](). Ensuite
+
+1. Ajoutez à votre classe `Hamming` une méthode
+
+    ~~~ {.java}
+    public BinVector addError(BinVector c)
+    ~~~
+
+    qui prend en entrée un mot de code et qui y ajoute une erreur à une position aléatoire. Pour choisir une position aléatoire, vous pouvez utliser un code similaire au suivant:
+
+    ~~~ {.java}
+    int alea = (int)(Math.random() * 10);
+    ~~~
+    
+    qui génère un entier aléatoire entre 0 et 9 inclus.
+
+2. Ajoutez à votre classe `Hamming` une méthode
+
+    ~~~ {.java}
+    public BinVector decode(BinVector y)
+    ~~~
+
+    qui réalise le décodage syndrome.
+
+
+Si vous avez envie d'aller plus loin, allez voir le
+[DM de l'an dernier sur le décodage syndrome](http://apollinaire.prism.uvsq.fr/DM2 - Décodage par syndrome) et résolvez le challenge.
+
