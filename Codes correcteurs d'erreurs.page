@@ -104,7 +104,26 @@ $\mathbb{F}_2^n\to\mathbb{F}_2^m$ un peu spéciale.
 Nous avons vu en cours les définitions de base des codes *correcteurs d'erreurs* et des *codes linéaires*.
 
 
+# Forme systématique
+
+Nous avons vu en cours comment mettre les matrices génératrice et de parité sous forme systématique.
+
+
+# Codes de Hamming
+
+Nous avons vu en cours les définitions de base des codes *correcteurs d'erreurs* et des *codes linéaires*.
+
+# Décodage syndrome
+
+voir [Décodage syndrome]().
+
+
 # Références
+
+
+J.-C. Chappelier. *Introduction à la Théorie de l'Information et ses applications*
+:   Chapitre 6. <http://icwww.epfl.ch/~chappeli/it/courseFR/I2chap_moduleI2.php?shownav=yes>
+
 
 B. Martin. *Codage, cryptologie et applications*.
 :   Presse polytechniques et universitaires romandes. ISBN: 2–88074–569–1. Côte BU: 005.82 MAR. Chapitres 3-5.
