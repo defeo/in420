@@ -1,0 +1,70 @@
+Le but de ce DM est d'implanter un algorithme pour la résolution du problème du *logarithme discret*, problème sous-jacent à la sécurité du protocole de Diffie-Hellman et de nombreux autres protocoles (El Gamal, DSA, etc.).
+
+
+# Le logarithme discret
+
+Soit $p$ un nombre premier. Le problème du *logarithme discret* dans un *corps fini* $\mathbb{Z}/p\mathbb{Z}$ est défini comme suit.
+
+**Entrées:** Le nombre premier $p$, un élément $g\in\mathbb{Z}/p\mathbb{Z}$ d'ordre maximal, un autre élément $a\in\mathbb{Z}/p\mathbb{Z}$.
+
+**Sorties:** L'unique exposant $0 \le x < p-1$ tel que $a = g^x \mod p$.
+
+
+# Avant de commencer l'attaque
+
+1. Écrivez une fonction
+
+    ~~~ {.java}
+    public static long inverse(long a, long p)
+    ~~~
+
+    qui calcule l'inversion $\frac{1}{a} \mod p$ en utilisant l'algorithme d'Euclide étendu (voir TD [Torus Wars]()).
+
+2. Écrivez une fonction
+
+    ~~~ {.java}
+    public static long modPow(long g, long x, long p)
+    ~~~
+
+    qui calcule $g^x \mod p$ en utilisant l'algorithme d'exponentiation binaire (voir TD [Arithmétique modulaire]()). La fonction doit accepter des valeurs négatives pour `g` et pour `x`. Souvenez vous que $g^{-x} = \frac{1}{g^x}$.
+
+3. Testez vos fonctions sur des petites valeurs pour être sûrs qu'elle marchent bien. Enfin, vérifiez que
+
+    ~~~ {.java}
+    modPow(-2, -12345, 1073741827) == 11418853
+    ~~~
+
+    Si vous n'obtenez pas ce résultat, l'un des problèmes possibles est dû à un dépassement de la précision des `long` (63 bits,  plus un bit pour le signe) : vous n'avez pas systématiquement réduit modulo `p`.
+
+
+# Attaque par recherche exhaustive
+
+L'algorithme le plus simple que l'on puisse imaginer pour résoudre le problème du log discret consiste à essayer toutes les puissances $0 \le x < p-1$ jusqu'à tomber sur la bonne.
+
+1. Écrire un programme Java qui prend en entrée $p$, $g$ et $a$ et qui donne en sortie le logarithme discret $\log_g a$.
+
+Testez votre programme sur des petites entrées dont vous connaissez le logarithme. Ensuite, allez résoudre le premier [challenge](http://swift.prism.uvsq.fr/py/in420-dms13.py/bsgs).
+
+**Suggestion:** la résolution des challenges peut prendre du temps. Pour avoir une idée d'où votre algorithme en est, faites des affichages de contrôle réguliers dans vos boucles. Un bon compromis entre trop et pas assez est de faire un affichage toutes les $2^20$ itérations.
+
+
+# Précision arbitraire avec `BigInteger`
+
+5-10 min
+
+
+# Pas de Bébé, pas de géant
+
+Il est facile de se rendre compte que la recherche exhaustive fait en moyenne $O(p)$ multiplications dans $\mathbb{Z}/p\mathbb{Z}$. Dès que $p$ dépasse $\sim 2^30$, ce coût commence à devenir prohibitif.
+
+L'algorithme *pas de bébé - pas de géant* fait partie de la famille des algorithmes *meet in the middle*. Il permet de réduire le temps de calcul de la recherche exhaustive en échange d'une occupation mémoire accrue. Avec une occupation de mémoire de $O(m)$, il permet de trouver un logarithme discret en seulement $O(\max(m, p/m))$ multiplications dans $\mathbb{Z}/p\mathbb{Z}$. L'optimum est atteint lorsque $m=\sqrt{p}$, alors le temps de calcul devient de $O(\sqrt{p})$ (en supposant qu'on ait assez de mémoire à disposition).
+
+Avec assez de mémoire vive à disposition, il devrait alors être possible de calculer des logarithmes discrets pour $p$ jusqu'à $\sim 2^60$ sur des machines ordinaires.
+
+
+# Tableaux de hachage et optimisation de la mémoire
+
+
+# Notes sur la vraie vie
+
+Pollard Rho, NFS, FFS, ...
