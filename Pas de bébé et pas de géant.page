@@ -69,7 +69,7 @@ la variable `tmp` prend exactement les mêmes valeurs, mais la deuxième boucle 
 
 On a déjà fait la remarque : les données de type `long` sont limitées à 8 octets, c'est à dire 64 bits (représentation en *complément à deux*, qui utilise un bit pour le signe). Lorsque l'on multiplie entre eux deux `long` de taille supérieure à 32 bits, le résultat dépasse alors la taille maximale, et il est donc tronqué.
 
-Pour pouvoir résoudre des logarithmes discrets plus grands, il va falloir utiliser une bibliothèque d'*entiers multi-précision', garantissant un résultat toujours correct. Java implante cela dans l'objet [`java.math.BigInteger`](http://docs.oracle.com/javase/6/docs/api/java/math/BigInteger.html).
+Pour pouvoir résoudre des logarithmes discrets plus grands, il va falloir utiliser une bibliothèque d'*entiers multi-précision*, garantissant un résultat toujours correct. Java implante cela dans l'objet [`java.math.BigInteger`](http://docs.oracle.com/javase/6/docs/api/java/math/BigInteger.html).
 
 Les opérateurs usuels `+`, `*`, etc. ne sont pas utilisables sur les `BigInteger` : ils sont remplacés par des méthodes. Voici un bref comparatif des opérations arithmétiques sur les entiers (`int` ou `long`) et sur les `BigInteger`.
 
