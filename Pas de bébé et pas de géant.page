@@ -55,7 +55,7 @@ et
 ~~~
 tmp = 1
 pour 0 <= x < p-1 :
-    tmp = tmp * g
+    tmp = tmp * g % p
 ~~~
 
 la variable `tmp` prend exactement les mêmes valeurs, mais la deuxième boucle est largement plus efficace car elle fait une seule multiplication à chaque itération.
