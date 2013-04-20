@@ -167,10 +167,10 @@ $$
 On calcule $2^{8} = 54 \mod 101$. On fait maintenant les pas de géant (pour cette phase, pas besoin de stocker les résultats dans une table):
 
 - $48$ n'est pas dans la table,
-- $48\cdot 2^{8} = 57\cdot 48 = 67 \mod p$,
-- $48\cdot 2^{16} = 57\cdot 48^2 = 83 \mod p$,
-- $48\cdot 2^{24} = 57\cdot 48^3 = 38 \mod p$,
-- $48\cdot 2^{32} = 57\cdot 48^4 = 32 \mod p$, finalement une entrée de la table !
+- $48\cdot 2^{8} = 48\cdot 54 = 67 \mod p$,
+- $48\cdot 2^{16} = 48\cdot 54^2 = 83 \mod p$,
+- $48\cdot 2^{24} = 48\cdot 54^3 = 38 \mod p$,
+- $48\cdot 2^{32} = 48\cdot 54^4 = 32 \mod p$, finalement une entrée de la table !
 
 On déduit que 
 
