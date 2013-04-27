@@ -60,7 +60,7 @@ pour 0 <= x < p-1 :
 
 la variable `tmp` prend exactement les mêmes valeurs, mais la deuxième boucle est largement plus efficace car elle fait une seule multiplication à chaque itération.
 
-5. Testez votre programme sur des petites entrées dont vous connaissez le logarithme. Ensuite, allez résoudre les premiers [challenges](http://it-katas.defeo.lu/dlog).
+5. Testez votre programme sur des petites entrées dont vous connaissez le logarithme. Ensuite, allez résoudre les premiers [challenges](http://it-katas.defeo.lu/dlog) (jusqu'à $p \sim 2^30$).
 
 **Suggestion:** la résolution des challenges peut prendre du temps. Pour avoir une idée d'où votre algorithme en est, faites des affichages de contrôle réguliers dans vos boucles. Un bon compromis entre trop et pas assez est de faire un affichage toutes les $2^{20}$ itérations.
 
@@ -111,14 +111,14 @@ D'autres opérations encore sont définies sur les `BigInteger`, allez voir la [
 
 6. Récrivez votre code en utilisant des `BigInteger` à la place des `long`. Vous pouvez vous épargner le travail de récrire `inverse` et `modPow`, car ils sont déjà implantés dans la bibliothèque Java.
 
-Utilisez votre code pour résoudre les [challenges](http://it-katas.defeo.lu/dlog) suivants. Attention : cela peut prendre une dizaine de minutes de résoudre un logarithme de taille $p\sim 2^{32}$ avec l'algorithme naïf.
+Utilisez votre code pour résoudre les [challenges](http://it-katas.defeo.lu/dlog) suivants. Attention : cela peut prendre une dizaine de minutes de résoudre un logarithme de taille $p\sim 2^{32}$ (32 bits) avec l'algorithme naïf... difficile d'aller au dela des 35 bits !
 
 
 # Pas de Bébé, pas de géant
 
-Il est facile de se rendre compte que la recherche exhaustive fait en moyenne $O(p)$ multiplications d'entiers modulo $p$. Dès que $p$ dépasse $\sim 2^{30}$, ce coût commence à devenir prohibitif.
+Il est facile de se rendre compte que la recherche exhaustive fait en moyenne $O(p)$ multiplications d'entiers modulo $p$. Dès que $p$ dépasse les 30 bits, ce coût commence à devenir prohibitif.
 
-L'algorithme *pas de bébé - pas de géant* fait partie de la famille des algorithmes *meet in the middle*. Il permet de réduire le temps de calcul de la recherche exhaustive en échange d'une occupation de mémoire accrue. Avec une occupation de mémoire de $O(m)$, il permet de trouver un logarithme discret en seulement $O(\max(m, p/m))$ multiplications. L'optimum est atteint lorsque $m=\sqrt{p}$ (en supposant qu'on ait assez de mémoire à disposition), alors le temps de calcul devient de $O(\sqrt{p})$. Avec assez de mémoire vive à disposition, il devrait alors être possible de calculer des logarithmes discrets pour $p$ jusqu'à $\sim 2^{60}$ sur des machines ordinaires.
+L'algorithme *pas de bébé - pas de géant* fait partie de la famille des algorithmes *meet in the middle*. Il permet de réduire le temps de calcul de la recherche exhaustive en échange d'une occupation de mémoire accrue. Avec une occupation de mémoire de $O(m)$, il permet de trouver un logarithme discret en seulement $O(\max(m, p/m))$ multiplications. L'optimum est atteint lorsque $m=\sqrt{p}$ (en supposant qu'on ait assez de mémoire à disposition), alors le temps de calcul devient de $O(\sqrt{p})$. Avec assez de mémoire vive à disposition, il devrait alors être possible de calculer des logarithmes discrets pour $p$ jusqu'à 60 bits sur des machines ordinaires.
 
 ## Description de l'algorithme
 
@@ -212,7 +212,7 @@ System.out.println(table.get(BigInteger.valueOf(10));     // Affiche 1
 System.out.println(table.get(BigInteger.valueOf(1)));     // Affiche null
 ~~~
 
-8. Modifiez votre code pour qu'il utilise une table de Hachage pour stocker les pas de bébé. Résolvez les [challenges](http://it-katas.defeo.lu/dlog) suivants.
+8. Modifiez votre code pour qu'il utilise une table de Hachage pour stocker les pas de bébé. Résolvez les [challenges](http://it-katas.defeo.lu/dlog) suivants (les 40 bits devraient être atteignables).
 
 **Remarque:** Vous aurez peut-être besoin d'augmenter la mémoire à disposition de la JVM afin de résoudre certains challenges. Pour cela, vous pouvez lancer la JVM avec le paramètre `-Xmx`, comme ceci (initialisation de la mémoire à 3 giga-octets) :
 
@@ -222,7 +222,7 @@ java -Xmx3g PasDeBebe
 
 ## Optimisation de la mémoire
 
-Lorsque $m$ frôle $2^{20}$, les tables de hachage de Java commencent à devenir insuffisants. Il y a deux raisons pour cela:
+Lorsque $m$ frôle les 20 bits, les tables de hachage de Java commencent à devenir insuffisants. Il y a deux raisons pour cela:
 
 - Les `BigInteger` occupent trop de mémoire par rapport à un `long`,
 - L'implantation de `Hashtable` et `HashMap` utilise des listes chaînées et de l'allocation dynamique.
@@ -250,7 +250,7 @@ Il nous faut choisir une fonction de hachage pour calculer $h(x)$ pour chaque en
 
 9. Créez votre propre table de hachage à adressage ouvert, et utilisez-la dans l'algorithme précédent.
 
-Essayez de résoudre les [challenges](http://it-katas.defeo.lu/dlog) restants. À moins que vous n'ayez un super-calculateur à la maison, doté de centaines de GO de RAM, vous serez sans doutes amenés à utiliser un paramètre $m$ bien inférieur à $\sqrt{p}$.
+Essayez de résoudre les [challenges](http://it-katas.defeo.lu/dlog) restants (50 bits devrait être faisable, 60 bits va être dur...). À moins que vous n'ayez un super-calculateur à la maison, doté de centaines de GO de RAM, vous serez sans doutes amenés à utiliser un paramètre $m$ bien inférieur à $\sqrt{p}$.
 
 
 # Le mot de la fin
