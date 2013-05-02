@@ -60,7 +60,7 @@ pour 0 <= x < p-1 :
 
 la variable `tmp` prend exactement les mêmes valeurs, mais la deuxième boucle est largement plus efficace car elle fait une seule multiplication à chaque itération.
 
-5. Testez votre programme sur des petites entrées dont vous connaissez le logarithme. Ensuite, allez résoudre les premiers [challenges](http://it-katas.defeo.lu/dlog) (jusqu'à $p \sim 2^30$).
+5. Testez votre programme sur des petites entrées dont vous connaissez le logarithme. Ensuite, allez résoudre les premiers [challenges](http://it-katas.defeo.lu/katas/dlog) (jusqu'à $p \sim 2^30$).
 
 **Suggestion:** la résolution des challenges peut prendre du temps. Pour avoir une idée d'où votre algorithme en est, faites des affichages de contrôle réguliers dans vos boucles. Un bon compromis entre trop et pas assez est de faire un affichage toutes les $2^{20}$ itérations.
 
@@ -111,7 +111,7 @@ D'autres opérations encore sont définies sur les `BigInteger`, allez voir la [
 
 6. Récrivez votre code en utilisant des `BigInteger` à la place des `long`. Vous pouvez vous épargner le travail de récrire `inverse` et `modPow`, car ils sont déjà implantés dans la bibliothèque Java.
 
-Utilisez votre code pour résoudre les [challenges](http://it-katas.defeo.lu/dlog) suivants. Attention : cela peut prendre une dizaine de minutes de résoudre un logarithme de taille $p\sim 2^{32}$ (32 bits) avec l'algorithme naïf... difficile d'aller au dela des 35 bits !
+Utilisez votre code pour résoudre les [challenges](http://it-katas.defeo.lu/katas/dlog) suivants. Attention : cela peut prendre une dizaine de minutes de résoudre un logarithme de taille $p\sim 2^{32}$ (32 bits) avec l'algorithme naïf... difficile d'aller au dela des 35 bits !
 
 
 # Pas de Bébé, pas de géant
@@ -187,7 +187,7 @@ où l'avant-dernière égalité découle du *petit thèorème de Fermat* (qui af
 
 7. Écrivez un programme qui implante l'algorithme pas de bébé - pas de géant. Il doit prendre en entrée les nombres $p$, $g$ et $a$, ainsi que le paramètre $m$ déterminant son utilisation de la mémoire.
 
-Vérifiez votre programme sur les [challenges](http://it-katas.defeo.lu/dlog) que vous avez déjà résolu.
+Vérifiez votre programme sur les [challenges](http://it-katas.defeo.lu/katas/dlog) que vous avez déjà résolu.
 
 
 # Tables de hachage et optimisation de la mémoire
@@ -212,7 +212,7 @@ System.out.println(table.get(BigInteger.valueOf(10));     // Affiche 1
 System.out.println(table.get(BigInteger.valueOf(1)));     // Affiche null
 ~~~
 
-8. Modifiez votre code pour qu'il utilise une table de Hachage pour stocker les pas de bébé. Résolvez les [challenges](http://it-katas.defeo.lu/dlog) suivants (les 40 bits devraient être atteignables).
+8. Modifiez votre code pour qu'il utilise une table de Hachage pour stocker les pas de bébé. Résolvez les [challenges](http://it-katas.defeo.lu/katas/dlog) suivants (les 40 bits devraient être atteignables).
 
 **Remarque:** Vous aurez peut-être besoin d'augmenter la mémoire à disposition de la JVM afin de résoudre certains challenges. Pour cela, vous pouvez lancer la JVM avec le paramètre `-Xmx`, comme ceci (initialisation de la mémoire à 3 giga-octets) :
 
@@ -250,7 +250,7 @@ Il nous faut choisir une fonction de hachage pour calculer $h(x)$ pour chaque en
 
 9. Créez votre propre table de hachage à adressage ouvert, et utilisez-la dans l'algorithme précédent.
 
-Essayez de résoudre les [challenges](http://it-katas.defeo.lu/dlog) restants (50 bits devrait être faisable, 60 bits va être dur...). À moins que vous n'ayez un super-calculateur à la maison, doté de centaines de GO de RAM, vous serez sans doutes amenés à utiliser un paramètre $m$ bien inférieur à $\sqrt{p}$.
+Essayez de résoudre les [challenges](http://it-katas.defeo.lu/katas/dlog) restants (50 bits devrait être faisable, 60 bits va être dur...). À moins que vous n'ayez un super-calculateur à la maison, doté de centaines de GO de RAM, vous serez sans doutes amenés à utiliser un paramètre $m$ bien inférieur à $\sqrt{p}$.
 
 
 # Le mot de la fin
