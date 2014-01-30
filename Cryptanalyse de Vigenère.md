@@ -1,0 +1,446 @@
+---
+layout: post
+title: Cryptanalyse de Vigenère
+---
+
+## La méthode de Kasiski-Friedman
+
+On sait que le chiffre de Vigenère est vulnérable à des attaques
+statistiques dès lors qu'on a deviné la longueur de la clef. Étant
+donné qu'en général la longueur d'une clef de Vigenère est limitée à
+quelque dizaine de caractères au plus, ceci ne constitue pas un
+obstacle majeur: avec l'aide d'un ordinateur il suffit d'essayer
+toutes les longueurs possibles jusqu'à tomber sur la bonne. Au pire
+ceci va ralentir de quelques dizaine de fois une recherche qui reste
+tout de même assez aisée.
+
+Lorsque l'on attaque un Vigenère à la main, par contre, il est
+intéressant de tomber rapidement sur la bonne longueur. Le test de
+Kasiski-Friedman permet de vérifier rapidement si une longueur
+soupçonnée est correcte ou pas. Nous allons étudier leur méthode pour
+cryptanalyser le chiffré suivant.
+
+> rvegosntfyuunmrvlehohdjvrhbdaauquxrdckcyrtplbimgyohztfjnwtqhgtqwntrapadiaofumrpoetofnquyaavpuhyrtsrlsywlrrehgyjqagqzddyekidgyboxrlchpdhpfeydpkghrquneqqgkqocsibkohpnnkxkrordtgyhdpdrnmwrohpavcsqteavhyzshdkfcmitxccvqkbponrqgkxfvvpunevdpnpqyburbefvohzbbgqhpfyggxmfdtrbgqcpxrtguvcjqiuypkppntewvkegkysmqarrupqydgdirqdhligrihhbththrhbpmrpxkrdtlvfnqunirwbyppptzpfnydiecyssxiqgvpdkysrwptimtrgygmulsrvgxsshhxpckktqhkhemdeqkfcmjprygtbycshtgcqueoenigyoarkgpnkgeqcrigohbuabhjtoauwygocdygjdtprakihsndhzacbudsnkvuqocsyrpdifmrtpuvorhzqcseftrnevjkxqkqcrdzmfrvetbtrvrsuuytzgquxdgdyhpkqgovgidxbtzagpdineywmtitdzsqybedtngximvtrzdsdbburrehxnpmypccenuzgrjmvcdvrssugiqgqcixilgaotucahfihrstqvnpzwcacjibibphyblmuxeavhkqkvhygpzjptnkxbsqxparrqudcrtxqmxtlkarhblvnkxheshntqcueflbkvteldqjrvdhneevskxohkkfpdidohtguwntruacrfcigfisviesuymfkpshtpuhogmorpoqcattefloadbbgbyneccvqkbponrazhtlruxdimtryngquoeygvuqoisxrqnkdlrucuyhstrrasufrnhmdhobntgpdhnozoidxecztnjxieennpqmdtlvymxucsrujqgeaskfykqoepqylibidjrjzlprvvifliyrrlbcgqdmzkqwqoywdcgnrksphhbeytmvmboedkxoifhwgalnnxovltcclewoalbjzzxcjijsjhkkglocgfsqzfhzpiduwxdzjlikqcwtpeadtgwnzxpojqhtfzohpeloskoyqhpkhzudcceghwveoarekwofhdjtphbgfiemguaqkwjyzfgorcfndehifhgjrfrtgxgxsnsgtcuuntarvjjzgmiooyebebvhcgopmluicugorkfwgcyzxobsrwgugmylokfrtiyfygjgmtjoaoqvtpoytmrhzhcidwipslhdxiypkplrupykxtrjhbnsfmrpxdefphkardjpdvxmiiohmocyqcztfpmciwtogenghlsruijuetkgcmmseunvmeribztdszyecrvxugsgbuaqsqycrpifsekzogotuyrrphhivpkkprthpbrcysseeorhqcyqfvembifdxuaqbuaeafedxctcoggkitqhgpgyopryrkablgrfibidiqkfqdcmlrhshqogckfknjdjrpxurnhckpcrcztffsdxvtmuzzquoefesdwycmkfnzhcacrshxkjwbbwdbwefrihqoikgcpndznpkejmycdzqyaecdnwhufeiikimhiwezqxfliekafjnyylrosjkkhsorlrkuutkruhsgzogmmflsygreqntbkgrdltlygevvsrzoacrkclrufevnhcagymwlnnkoquetuorlsvliegguxdtbogccqysgqyjgoazvysrbziaxsypkadsbrxfzefvguhycbjhequneauyyxordygpxcaullshtrtsumhtwraluypkbjykgytflrnxedxbtcrrraeyvbkpqhojwsbrrqygycmitexruucrovaynsdwocbuectdpfbkwbiwdsxlkoktsygqexyinrrhtwpjntvyuetyrngrilrrvscfogkgamsynervwutbxsgecebpcukvfixsztgotuwqhgwyrciztgqsefsygwcsdhparhdhpmntukinpmypcsjplrexkvohnszyhhpmrpxvesidyblsrtzntvuwctcoggkuyvrtmjibxdtagmttqhgpuybequicmqycrniiyxhntgsmqtrttispohzagpdifnnutugdwnryymtlifeikbmxttrrnkcnhtiqrqazofcbufxycrerdptihlzycsnpwssweskeotywynfiiwoghkfbdsznfqrdicftoragqaprpxqxyjskcpndznpkejmycgazyhdpdremtiwtmzvjmudeectqwppboyccueaonmhpkrkksbdspceatjsqgzszckuddbkkjwnjlgtgrjcagescqocbkecmjlbnvxhicjqyblakcenwydicdqzrbdttaaggeqwtroyctjgohnyhifthrycqipsscgkpdtrkabnhxiruzecycrjblbtlbbthtmdxkibkaypnvnwuxbdtbrbdbptgtiihkcrirnzhlgectxisabuznsqwepteosxpkgzyhdoehzgurdhnokymjpsrkduhsihrrfaypnvnwqksickqcsucmvpihqkxmzrlzdednpwgyoakkcpnfzrgksdgohcoicqipsygxjvohrkgpnkgeaveiwobarrcrbpshpiitkgqgcnnheahzekxbtrirancatrhyjyxedacjtiwoaieuxkqkoejdzfgrlehvsftkmyuqttegthmcadjbatcpngryywcdmieyxeyaycqqmxxktbrzyesheguwcxukzcmjnhnsyupoisxrqtygaavpevngdgyngqmegkukiecpanpstsehtiqtbtroyyuqttbdxureadznzkulufwmlexiznnfeyelrlywitpqxvotukuagthiwxdxrmaipricxysxbdleyofpcruxgyoghkaotuoaaugutkgzmeyoxptbwxuwvtrrrrshpsqgpqpzwzhrrndeeggictvdxkrqbudtnuwudoiqgaeduyeshijuetkuanquynrcyxecpqjqymifnykzhimtpavjeqftqgpykxtrvbsqsznggryvnttdpcmjdovzedxohdomckuetegwuxmtrkeyaypnecvuwsrggpsmtpsfkkdicsdrnjoxlbrvcvmqjqknnqudtbwxsizttzrrqufnfkqfpotelrrcksafcvttexrvnqrqytnwrqydgduebquoiqgiiyxtparqsyzncnyimwenxgymjpsrfmjmvrdygbdlzieumbicknerjkudsbpxqyhrntfmmdpsqcripkequcmqjtoapshqkadrrkzwtsgtejvoeqogqndnrnasdjsikkqcbexpgghuwfdxkyjdiptbdxyrdadinjbkwshkzqrdphtfgcyeiykpoenpmypcsqwiageisehsxnasyznscmjicdhdnlsubunvvuzyndrycrszngtitiembkarcefzresdwycmkfcgrteaoeywmtrzyyohzpbtxysxcnxzykunefvetmbtttpgmgfiroiurfxquaancxeqcripkaonnzdjzoaesctdtroktnoplygwiybkhttrbyyqygxjvohhrrqstznprsiwsqkkdsdspdbeycixizogcsupcekxtexhkgyymwfeqgrexbtoglqlqtsdwibecxftvdhsltvqrtimwzwhckuetegeyxoidyrskuxeavgxexvdkbpryplygeuxobnjvdhuprriybmogdsrlsituadejseynaeqdjprrrvuwocskcyqkylccvuboborrsmeaaewrlyxvogesmafnhrehyxgdzphdlpukrihhbtlgcjzspdrlywikbztnmryueacvhmftogfykycepghegebdtgcggfavlitsxrzlngqudipgruwdpoxbadtprfwmlexikgzcsxzdrfisiqgztqeddtenpebcdxparotydefvreqwtdjtyqtaornizyqtigephgfemgrfebaztgyhddiscmiesizrysryznnwruryjukyjdtfcrnirvognsnlbyprnoihmmphtdshudthpgxipstbecpktnnreipeadypyqqmerfshhkcrirrsuyohxibpojmiewojzgecqcimdlvbqdqwasqmihorgosdquddrnijxbtrjrqhwyefcpwilghwhcrtlsggvywajdyqcoetnguijzsgfaycrudtfqycmcpttrkdjsoqgzuvsizhycluytzcxxiwpsodsdueiyrehzstmzncshpdrelyjpgdjnlrtpspqrtmdxntfcwjcabthyrkxqkfotuwefchcmbpskhprtpcrvijvkcfkrqohttagtuyftmzntnycohdpyioh
+{: style="word-wrap:break-word"}
+
+**Remarque:** Il s'agit d'un texte français. Avant le chiffrement on a
+éliminé tous les espaces du texte clair et on a éliminé la casse.
+
+
+### L'indice de coïncidence
+
+On sait déjà que dans un texte français les lettres ne sont pas
+uniformément distribuées. Ceci n'est pas le seul biais statistique
+présent. L'*indice de coïncidence* mesure la probabilité que, si on
+prends deux lettres au hasard dans un texte donné, ces deux lettres
+soient la même.
+
+On considère un texte (peu importe si clair ou chiffré) de longueur
+$$n$$, et on note $$f_A, f_B, f_C, \ldots$$ le nombre d'occurrences des
+lettres A, B, C, etc.
+
+- Si on prend une lettre au hasard dans le texte, quelle est sa
+  probabilité d'être un A? Et un B?
+- Combien de façons y a-t-il de sélectionner deux lettres quelconques
+  parmi les $$n$$ lettres du texte?
+- Combien de façons y a-t-il de sélectionner deux A dans le texte? Et
+  deux B?
+- Quelle est donc la probabilité de sélectionner deux A?
+- Plus généralement, quelle est la probabilité de sélectionner deux
+  lettres égales? Écrire la formule.
+
+On appelle *indice de coïncidence* cette probabilité. Elle dépend,
+bien sûr, du texte choisi. Plus le texte est biaisé, plus elle sera
+grande: par exemple, si le texte ne contient que des A, l'indice de
+coïncidence vaut $$1$$, car, peu importe comment on les choisit, on est
+sûrs de tomber sur deux lettres identiques.
+
+
+### L'indice de coïncidence attendu
+
+On cherche maintenant une approximation de l'indice de coïncidence
+pour la langue française. Nous allons appeler *indice de coïncidence
+attendu* cette approximation.
+
+On considère un texte de longueur assez grande (on va faire comme si
+elle était infinie). On appelle $$p_A, p_B, p_C, \ldots$$ la probabilité
+de tomber sur un A, un B, etc. si on prend une lettre au hasard dans
+ce texte.
+
+- Si on sélectionne deux lettres quelconques du texte, quelle est la
+  probabilité de tomber sur deux A?
+- Plus généralement, quelle est la probabilité de tomber sur deux
+  lettres égales?
+  
+Pour un texte dans une langue (ou un encodage) connu, on appelle
+*indice de coïncidence attendu* cette probabilité; il est évident
+qu'il ne dépend que des probabilités d'apparition de chaque lettre.
+
+
+### Indices de coïncidence dans la vrai vie
+
+- On considère un texte avec des lettres équidistribuées, i.e. telles
+    que $$p_A=p_B=\cdots=1/26$$. Combien vaut son indice de coïncidence
+    attendu?
+
+- On considère la langue française, dont les fréquence sont données
+    dans le tableau ci-contre
+
+     | E | 15,87% | N | 7,15% | D | 3,39% | Q | 1,06% | H | 0,77%
+     | A | 9,42% | R | 6,46% | M | 3,24% | G | 1,04% | Z | 0,32%
+     | I | 8,41% | U | 6,24% | P | 2,86% | B | 1,02% | X | 0,30%
+     | S | 7,90% | L | 5,34% | C | 2,64% | F | 0,95% | Y | 0,24%
+     | T | 7,26% | O | 5,14% | V | 2,15% | J | 0,89% | K,W | 0%
+
+    Sortez votre calculette et calculez l'indice de coïncidence du
+    français.
+    
+- On considère un texte français chiffré avec un chiffre de César de
+  décalage 2. Quelle est son indice de coïncidence?
+  
+On constante donc que le calcul de l'indice de coïncidence nous permet
+de distinguer aisément un texte chiffré avec César d'un texte
+aléatoire.
+
+
+### Trouver la longueur de la clef dans un chiffre de Vigenère
+
+On considère maintenant un texte chiffré avec Vigenère. Prenons le
+texte
+
+> No one knows what it's like  
+> To be the bad man  
+> To be the sad man  
+> Behind blue eyes  
+> And no one knows  
+> What it's like to be hated  
+> To be fated to telling only lies  
+
+qui, chiffré avec la clef WHO (après avoir enlevé les espaces) donne
+
+> jvcjlyjvkodvwawpzzerspvpaavaioztojacxlhdlgwkawupaowjkphbsafs
+> ohbzuckusgucszkdhheaghpyaacxlvwaszacxltwaszacplzhpbcvbhfzelg
+
+Analysons maintenant le texte chiffré. On l'écrit du haut en bas dans
+un tableau ayant autant de lignes que la longueur de la clef, comme ceci
+
+~~~
+jjjowpepaazjxdwwajhaozkgsdehaxwzxwzphche
+vlvdazrvaitallkuokbfhuuuzhapalaalaalpvfl
+cykvwzspvoochgapwpssbcsckhgycvsctsczbbzg
+~~~
+
+- Quel est l'indice de coïncidence attendu pour chacune des lignes?
+- Que se passe-t-il si on fait un tableau avec plus ou moins de lignes
+  que la longueur de la clef?
+  
+  
+
+## Cryptanalyse de Vigenère
+
+Maintenant que nous savons comment trouver la longueur d'une clef de
+Vigenère nous allons pouvoir cryptanalyser le texte donné à l'aide de
+l'ordinateur.
+
+L'idée de la cryptanalyse consiste à deviner d'abord la longueur de la
+clef. Ensuite on dispose le texte chiffré dans un tableau ayant autant
+de lignes que la longueur de la clef, et on cryptanalyse chaque ligne
+séparément: ceci est possible car chaque ligne est équivalente à un
+simple César, et l'analyse statistique est très aisée sur ce genre de
+chiffre.
+
+Créez une classe
+
+~~~
+public class Vigenere {
+    private String[] lignes;
+    
+    /* Divise le texte en autant de lignes que longueur
+       et sauvegarde le resultat */
+    public Vigenere(String texte, int longueur) {}
+    
+    /* Donne un tableau comptant le nombre d'occurrences de
+       chaque lettre dans ligne */
+    private static int[] compte(String ligne) {}
+    /* Donne l'indice de coincidence reel du texte */
+    public float[] coincidence() {}
+
+    /* Dechiffre le texte en utilisant la clef et sauvegarde
+       le resultat */
+    public void dechiffre(String clef) {}
+
+    /* Prend une chaine de caracteres arbitraire et donne une chaine
+       contenant chaque caractere une seule fois, dans l'ordre de
+       frequence decroissant */
+    public static String ordonne(String ligne) {}
+    
+    /* Fonction pour afficher le texte */
+    public void affiche() {}
+    
+    /* Execute le programme */
+    public static void main(String[] args) throws IOException {
+	if (args.length < 2) {
+	    System.out.println("Pas assez d'arguments");
+	    System.exit(0);
+	}
+	
+	String fichier = args[0];
+	String op = args[1];
+	String x = "";
+	if (args.length > 2)
+	    x = args[2];
+
+	int longueur = 0;
+	if (op.equals("coincidence")) {
+	    longueur = Integer.parseInt(x);
+	    if (longueur == 0) {
+		System.out.println("Clef trop courte");
+		System.exit(0);
+	    }
+	} else {
+	    longueur = x.length();
+	}
+	
+	BufferedReader in = new BufferedReader(new FileReader(fichier));
+	String texte = "", ligne;
+	while ((ligne = in.readLine()) != null) {
+	    texte += ligne;
+	}
+
+	Vigenere vig = new Vigenere(texte, longueur);
+
+	if (!op.equals("coincidence") && !x.equals(""))
+	    vig.dechiffre(x);
+
+	if (op.equals("coincidence")) {
+	    float[] ic = vig.coincidence();
+	    for (float i : ic)
+		System.out.println(i);
+	} else if (op.equals("frequence")) {
+	    for (String l : vig.lignes)
+		System.out.println(vig.ordonne(l));
+	} else if (op.equals("affiche")) {
+	    vig.affiche();
+	} else {
+	    System.out.println("Operation inconnue: " + op);
+	}
+    }
+}
+~~~
+
+Structurez le code comme suit.
+
+- Le `main` est déjà fourni. Il prend deux ou trois arguments:
+
+    - Le premier argument est le nom d'un fichier contenant le texte à déchiffrer.
+
+    - Le deuxième argument est le nom de l'opération à effectuer. Trois opérations sont possible:
+    
+        - `coincidence`: il calcule et affiche les indices de
+          coincidence; dans ce cas le troisième argument doit être la longueur
+          putative de la clef.
+        - `frequence`: s'il y a une clef comme troisième argument, il
+          utilise `dechiffre`; ensuite il utilise `ordonne` sur chaque
+          ligne et affiche le résultat.
+        - `affiche`: s'il y a une clef comme troisième argument, il
+          utilise `dechiffre`; ensuite il appelle `affiche`.
+
+    Au fur et à mesure que vous avancez dans le code, utilisez le main
+    pour tester votre programme.
+
+- Le constructeur prend une chaîne de caractères et un entier $$n$$ et
+  divise la chaîne en $$n$$ lignes. Le texte exemple serait divisé
+  ainsi:
+  
+  ~~~
+  lignes[0] = "jjjowpepaazjxdwwajhaozkgsdehaxwzxwzphche";
+  lignes[1] = "vlvdazrvaitallkuokbfhuuuzhapalaalaalpvfl";
+  lignes[2] = "cykvwzspvoochgapwpssbcsckhgycvsctsczbbzg";
+  ~~~
+
+- La méthode `compte` compte le nombre d'occurrences de chaque lettre
+  dans la chaîne passée en argument et retourne le résultat sous forme
+  d'un tableau d'entiers. Elle est déclarée `static` puisqu'elle ne
+  travaille pas sur le contenu de la classe.
+  
+- La méthode `coincidence` utilise la méthode `compte` pour calculer
+  les indices de coïncidence de chacune des lignes du texte et
+  retourne le résultat sous forme de tableau d'entiers. Elle va être
+  utile pour vérifier que votre intuition sur la longueur de la clef
+  est juste.
+
+- La méthode `dechiffre` applique la clef de déchiffrement aux lignes
+  du texte et remplace ces dernières avec le texte clair.
+
+- La méthode `ordonne` prend en entrée une chaîne de caractères
+  quelconque et donne en sortie une chaîne contenant exactement une
+  fois chaque caractère, en ordre de fréquence décroissant. Par
+  exemple, le résultat de cette méthode sur la première ligne du texte
+  exemple est le suivant:
+  
+  ~~~
+  wjazhxpeodskgc
+  ~~~
+  
+  Elle est utile pour vérifier que votre intuition sur (une partie de)
+  la clef de déchiffrement est juste. Elle est déclarée `static`
+  puisqu'elle ne travaille pas sur le contenu de la classe.
+    
+- La méthode `affiche` imprime à l'écran le contenu des lignes de
+  façon lisible.
+  
+
+Utilisez votre programme pour déchiffrer le texte au début du TD.
+
+Voici la solution complète. Ne lisez pas avant d'avoir tenté vous mêmes.
+
+~~~
+import java.io.*;       // Cliquez ici pour voir la solution
+
+public class Vigenere {
+    private String[] lignes;
+
+    /* Divise le texte en autant de lignes que longueur
+       et sauvegarde le resultat */
+    public Vigenere(String texte, int longueur) {
+	lignes = new String[longueur];
+	for (int i = 0; i < longueur; i++)
+	    lignes[i] = "";
+
+	for (int i = 0; i < texte.length(); i++) {
+	    char c = texte.charAt(i);
+	    // Pour eviter de prendre en compte les espaces
+	    if ('a' <= c && c <= 'z')
+		lignes[i % longueur] += c;
+	}
+    }
+
+    /* Donne un tableau comptant le nombre d'occurrences de
+       chaque lettre dans ligne */
+    private static int[] compte(String ligne) {
+	int[] occ = new int[26];
+	
+	for (int i = 0; i < ligne.length(); i++)
+	    occ[ligne.charAt(i) - (int)'a']++;
+
+	return occ;
+    }
+    /* Donne les indices de coincidence reels du texte */
+    public float[] coincidence() {
+	float[] ic = new float[lignes.length];
+	
+	for (int i = 0; i < ic.length; i++) {
+	    int[] occ = compte(lignes[i]);
+	    float sum = 0;
+	    for (int j = 0; j < 26; j++)
+		sum += occ[j] * (occ[j] - 1);
+	    ic[i] = sum / (lignes[i].length() * (lignes[i].length() - 1));
+	}
+	return ic;
+    }
+
+    /* Dechiffre le texte en utilisant la clef et sauvegarde
+       le resultat */
+    public void dechiffre(String clef) {
+	for (int i = 0 ; i < lignes.length ; i++) {
+	    String newligne = "";
+	    for (int j = 0 ; j < lignes[i].length() ; j++)
+		newligne += (char)((lignes[i].charAt(j) - clef.charAt(i) + 26) % 26 + 'a');
+	    lignes[i] = newligne;
+	}
+    }
+
+    /* Prend une chaine de caracteres arbitraire et donne une chaine
+       contenant chaque caractere une seule fois, dans l'ordre de
+       frequence decroissant */
+    public static String ordonne(String ligne) {
+	int[] occ = compte(ligne);
+	String ord = "";
+
+	/* Un algorithme de tri TRES naif */
+	for (int i = 0 ; i < 26 ; i++) {
+	    /* Recherche du maximum */
+	    int max = 0, pos = -1;
+	    for (int j = 0 ; j < 26 ; j++) {
+		if (occ[j] > max) {
+		    max = occ[j];
+		    pos = j;
+		}
+	    }
+	    /* Si le maximum est superieur a 0,
+	       on le met dans la sortie et on
+	       l'efface du tableau */
+	    if (max > 0) {
+		occ[pos] = 0;
+		ord += (char)('a' + pos);
+	    }
+	    /* Sinon on a termine */
+	    else
+		break;
+	}
+	return ord;
+    }
+
+    /* Fonction pour afficher le texte */
+    public void affiche() {
+	Boolean cont = true;
+	for (int i = 0; cont; i++) {
+	    if (lignes[i % lignes.length].length() > i / lignes.length)
+		System.out.print(lignes[i % lignes.length].charAt(i / lignes.length));
+	    else
+		cont = false;
+	}
+    }
+
+    /* Execute le programme */
+    public static void main(String[] args) throws IOException {
+	if (args.length < 2) {
+	    System.out.println("Pas assez d'arguments");
+	    System.exit(0);
+	}
+	
+	String fichier = args[0];
+	String op = args[1];
+	String x = "";
+	if (args.length > 2)
+	    x = args[2];
+
+	int longueur = 0;
+	if (op.equals("coincidence")) {
+	    longueur = Integer.parseInt(x);
+	    if (longueur == 0) {
+		System.out.println("Clef trop courte");
+		System.exit(0);
+	    }
+	} else {
+	    longueur = x.length();
+	}
+	
+	BufferedReader in = new BufferedReader(new FileReader(fichier));
+	String texte = "", ligne;
+	while ((ligne = in.readLine()) != null) {
+	    texte += ligne;
+	}
+
+	Vigenere vig = new Vigenere(texte, longueur);
+
+	if (!op.equals("coincidence") && !x.equals(""))
+	    vig.dechiffre(x);
+
+	if (op.equals("coincidence")) {
+	    System.out.println("Indices de coincidence:");
+	    float[] ic = vig.coincidence();
+	    for (float i : ic)
+		System.out.println(i);
+	} else if (op.equals("frequence")) {
+	    for (String l : vig.lignes)
+		System.out.println(vig.ordonne(l));
+	} else if (op.equals("affiche")) {
+	    vig.affiche();
+	} else {
+	    System.out.println("Operation inconnue: " + op);
+	}
+    }
+}
+~~~
+{: .collapsible .collapsed}

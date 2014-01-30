@@ -3,6 +3,7 @@
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
 
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
     <style>
       footer {
         border-top: solid thin black;
@@ -47,7 +48,6 @@
       table { border-collapse: collapse }
       td { padding: 1ex; }
       .centered {
-        display: block;
         margin: auto;
         text-align: center;
       }
@@ -59,6 +59,10 @@
       }
       :not(pre)>code {
         color: #d00;
+      }
+      .collapsed {
+        height: 6ex;
+        overflow: hidden;
       }
       
       @media print {
@@ -126,6 +130,8 @@
     </div>
 
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script src="js/local.js"></script>
     {% for s in page.scripts %}
     <script src="{{ s }}"></script>
     {% endfor %}
