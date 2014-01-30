@@ -3,9 +3,9 @@ layout: index
 title: IN420 – Algorithmique pour la cryptographie
 ---
 
-## IN420 – Algorithmique pour la cryptographie
+# IN420 – Algorithmique pour la cryptographie
 
-### Informations pratiques
+## Informations pratiques
 
 **Chargé de cours:** Luca De Feo <http://www.prism.uvsq.fr/~dfl>
 
@@ -13,11 +13,8 @@ title: IN420 – Algorithmique pour la cryptographie
 
 **TDs:** Mardi 13h30 - 16h45, salle G101
 
-**Examens:**
 
-- Prémière session -- 16 mai 2012: [sujet corrigé](examen-12-05-16.pdf)
-
-### Cours
+## Cours
 
 Cours 1 (25/01/2012)
 :  Définitions de base, [Chiffres monoalphabétiques](Cryptographie classique).
@@ -55,7 +52,7 @@ Cours 11 (18/04/2012)
 Cours 12 (02/05/2012)
 :  Cryptosystème de McEliece.
 
-### TDs
+## TDs
 
 TD 1 (31/01/2012)
 :  [Cryptanalyse des chiffres monoalphabétiques](Cryptanalyse des chiffres monoalphabétiques).
@@ -93,7 +90,7 @@ TD 11 (17/04/2012)
 TD 12 (09/05/2012)
 :  [Révision examen](TD12.pdf)
 
-### Devoirs maison
+## Devoirs maison
 
 DM 1 (à rendre le 29/02/2012)
 :  [Chiffre VIC](DM1 - Chiffre VIC), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/vic).
@@ -104,7 +101,7 @@ DM 2 (à rendre le 04/04/2012)
 DM 3  (à rendre le 03/05/2012)
 :  [Test de Miller-Rabin](DM3 - Test de Miller-Rabin), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/primes).
 
-### Bibliographie essentielle.
+## Bibliographie essentielle.
 
 Travaillez ces chapitres, et vous validerez le cours sans problèmes.
 
@@ -116,18 +113,23 @@ Travaillez ces chapitres, et vous validerez le cours sans problèmes.
 Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Allez aussi voir [cette page](http://swift.prism.uvsq.fr:2401/in420.py/biblio).
 
 
-### Pages utiles
+## Pages utiles
 
 - [Entrées-Sorties en Java](Entrées-Sorties en Java).
 
 
-### Liens
+## Liens
 
 -   Les APIs Java: <http://docs.oracle.com/javase/6/docs/api/>
 -   Les machines virtuelles: <http://www.prism.uvsq.fr/~qst/VM/>
 
+## Sujets d'examen
 
-### Bibliographie
+- Le [partiel 2012](examen-12-06-28.pdf) session de rattrapage, avec solution.
+- Le [partiel 2012](examen-12-05-16.pdf) avec solution.
+
+
+## Bibliographie
 
 Ces références concernent la cryptographie, les codes et les algorithmes.
 
