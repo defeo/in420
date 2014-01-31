@@ -9,100 +9,97 @@ title: IN420 – Algorithmique pour la cryptographie
 
 **Chargé de cours:** Luca De Feo <http://defeo.lu>
 
-**Cours magistral:** Mercredi 11h30 - 13h, salle G101
+**Chargée de TDs:** Christina Boura <http://christina-boura.info/>
 
-**TDs:** Mardi 13h30 - 16h45, salle G101
+**Cours magistral:** Lundi 15h15 - 16h45, amphi H
+
+**TD:** Mardi 13h30 - 16h45, salle G101
 
 ## Cours
 
-Cours 1 (23/01/2012) *Attention: cours de 12h à 13h seulement*
+Cours 1 (20/01/2013)
 :  Codage ASCII, types de données en Java.
 
-Cours 2 (30/01/2012)
+Cours 2 (27/01/2013)
 :  [UTF-16](UTF-16), [UTF-8](UTF-8).
 
-Cours 3 (06/02/2012)
+Cours 3 (03/02/2013)
 :  [Codage de Huffman](Codage de Huffman), [Codes instantanés](Codes instantanés), [Codage de Ziv-Lempel](Codage de Ziv-Lempel).
 
-Cours 4 (13/02/2012)
+Cours 4 (10/02/2013)
 :  [Chiffrement par substituion](Chiffrement par substituion).
 
-Cours 5 (20/02/2012)
+Cours 5 (17/02/2013)
 :  [Notions de sécurité](Notions de sécurité), [Chiffrement par transposition](Chiffrement par transposition).
 
-Cours 6 (27/02/2012)
+Cours 6 (03/03/2013)
 :  [Chiffrement par flot](Chiffrement par flot), [LFSR](Chiffrement par flot).
 
-Cours 7 (06/03/2012)
+Cours 7 (10/03/2013)
 :  [Codes correcteurs d'erreurs](Codes correcteurs d%27erreurs).
 
-Cours 8 (20/03/2012)
+Cours 8 (17/03/2013)
 :  [Codes de Hamming](Codes correcteurs d%27erreurs).
 
-Cours 9 (27/03/2012)
+Cours 9 (24/03/2013)
 :  [Forme systématique](Codes correcteurs d%27erreurs), [Décodage syndrome](Décodage syndrome)
 
-Cours 10 (03/04/2012)
+Cours 10 (31/03/2013)
 :  [Cryptographie asymétrique](Cryptographie asymétrique), [Arithmétique modulaire](Cryptographie asymétrique).
 
-Cours 11 (10/04/2012)
+Cours 11 (07/04/2013)
 :  [Algorithme d'Euclide étendu et Inversion modulaire](Cryptographie asymétrique).
 
-Cours 12 (17/04/2012)
+Cours 12 (14/04/2013)
 :  [RSA](Cryptographie asymétrique).
 
 ## TDs
 
-TD 1 (29/01/2012)
+TD 1 (28/01/2013)
 :  [Traitement de texte en Java via le terminal](Traitement de texte en Java via le terminal).
 
-TD 2 (05/02/2012)
+TD 2 (04/02/2013)
 :  [Coder et décoder en UTF-8 et UTF-16](Coder et décoder en UTF-8 et UTF-16).
 
-TD 3 (12/02/2012)
+TD 3 (11/02/2013)
 :  [Coder et décoder en UTF-8 et UTF-16](Coder et décoder en UTF-8 et UTF-16).
 
-TD 4 (19/02/2012)
+TD 4 (18/02/2013)
 :  [Construction du code de Huffman](Construction du code de Huffman).
 
-TD 5 (26/02/2012)
+TD 5 (04/03/2013)
 :  [Algèbre linéaire et chiffre de Hill](Algèbre linéaire et chiffre de Hill).
 
-TD 6 (05/03/2012)
+TD 6 (11/03/2013)
 :  [Bit twiddling et LFSR](Bit twiddling et LFSR).
 
-TD 7 (19/03/2012)
+TD 7 (18/03/2013)
 :  [Codes linéaires](Codes linéaires).
 
-TD 8 (26/03/2012)
+TD 8 (26/03/2013)
 :  [Codes linéaires](Codes linéaires).
 
-TD 9 (02/04/2012)
+TD 9 (01/04/2013)
 :  [Codes linéaires](Codes linéaires).
 
-TD 10 (09/04/2012)
+TD 10 (08/04/2013)
 :  [Arithmétique modulaire](Arithmétique modulaire).
 
-TD 11 (16/04/2012)
+TD 11 (15/04/2013)
 :  [Torus Wars](Torus Wars).
 
-TD 12 (23/04/2012)
+TD 12 (29/04/2013)
 :  [Révision examen](misc/TD12-2013.pdf).
 
 
 ## Devoirs maison
 
-DM 1 (à rendre le 05/03/2012)
-:  [Codage et décodage avec Huffman](Codage et décodage avec Huffman) et son [challenge](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman).
-
-DM 2 (à rendre le 10/04/2012)
-:  [Cryptanalyse de Vigenère](Cryptanalyse de Vigenère - DM) et son [challenge](http://it-katas.defeo.lu/katas/vigenere).
-
-DM 3  (à rendre le 09/05/2012)
-:  [Pas de bébé et pas de géant](Pas de bébé et pas de géant) et son [challenge](http://it-katas.defeo.lu/katas/dlog).
 
 ### Anciens devoirs
 
+- [Codage et décodage avec Huffman](Codage et décodage avec Huffman) et son [challenge](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman).
+- [Cryptanalyse de Vigenère](Cryptanalyse de Vigenère - DM) et son [challenge](http://it-katas.defeo.lu/katas/vigenere).
+- [Pas de bébé et pas de géant](Pas de bébé et pas de géant) et son [challenge](http://it-katas.defeo.lu/katas/dlog).
 - [Chiffre VIC](DM1 - Chiffre VIC), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/vic).
 -  [Décodage par syndrome](DM2 - Décodage par syndrome), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/syndrome).
 -  [Test de Miller-Rabin](DM3 - Test de Miller-Rabin), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/primes).
@@ -126,7 +123,9 @@ Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographi
 - [Entrées-Sorties en Java](Entrées-Sorties en Java).
 - [Endianness](Endianness).
 - Les APIs Java: <http://docs.oracle.com/javase/6/docs/api/>
-
+- La
+  [machine virtuelle Linux](https://transfert.uvsq.fr/recupIMAGEfree.php?f=/cartnumf/43lqu_info.ova)
+  du département d'info, avec un environnement configuré pour ce cours.
 
 ## Sujets d'examen
 
