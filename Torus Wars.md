@@ -120,7 +120,7 @@ reviendra sur vous et vous tuera.
 Faisons un exemple: prenons l'arène $$5\times 5$$ dans la configuration
 suivante
 
-![](screenshot.png)
+![](misc/screenshot.png)
 {:.centered}
 
 Le joueur est dans la case $$(0, 4)$$ et tire dans la direction $$(1,-3)$$

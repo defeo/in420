@@ -216,7 +216,7 @@ while( (i = in.read()) != -1 )
 
 2. Complétez la fonction `utf16to8`, qui réalise la conversion inverse. Modifiez le `main` pour qu'il prenne un paramètre sur la ligne de commande permettant de choisir le sens de la conversion.
 
-Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](/misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8](UTF-8) et [UTF-16](UTF-16). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir des contrôles ci-dessous.
+Testez votre transcodeur sur les fichiers mis à disposition dans [cette archive](misc/textes.zip). Chaque fichier y est présent aux formats [UTF-8](UTF-8) et [UTF-16](UTF-16). Pour vous aider à visualiser ces fichiers (et ceux produits par votre programme) dans le bon encodage, vous pouvez vous servir des contrôles ci-dessous.
 
 <div id='file-opener'></div>
 

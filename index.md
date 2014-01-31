@@ -87,7 +87,7 @@ TD 11 (16/04/2012)
 :  [Torus Wars](Torus Wars).
 
 TD 12 (23/04/2012)
-:  [Révision examen](TD12-2013.pdf).
+:  [Révision examen](misc/TD12-2013.pdf).
 
 
 ## Devoirs maison
@@ -130,10 +130,10 @@ Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographi
 
 ## Sujets d'examen
 
-- Le [partiel 2013](examen-13-06-28.pdf) session de rattrapage, avec solution.
-- Le [partiel 2013](examen-13-05-22.pdf) avec solution.
-- Le [partiel 2012](examen-12-06-28.pdf) session de rattrapage, avec solution.
-- Le [partiel 2012](examen-12-05-16.pdf) avec solution.
+- Le [partiel 2013](misc/examen-13-06-28.pdf) session de rattrapage, avec solution.
+- Le [partiel 2013](misc/examen-13-05-22.pdf) avec solution.
+- Le [partiel 2012](misc/examen-12-06-28.pdf) session de rattrapage, avec solution.
+- Le [partiel 2012](misc/examen-12-05-16.pdf) avec solution.
 
 
 ## Bibliographie

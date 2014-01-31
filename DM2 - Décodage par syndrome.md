@@ -259,7 +259,7 @@ lire la page [Entrées-Sorties en Java](Entrées-Sorties en Java).
     4. Renvoie un tableau de bits qui est l'enchaînement des blocs codés
 
 Encore quelques mots sur l'enchaînement des fonctions que vous avez écrites jusqu'à maintenant. Chaque octet du fichier d'origine vous fournit huit bits, ce qui fait deux blocs de 4 bits. Par exemple, le fichier codé en ASCII
-que vous pouvez télécharger [ici](dm2_ham.txt) contient le texte
+que vous pouvez télécharger [ici](misc/dm2_ham.txt) contient le texte
 
 ~~~
 Ham
@@ -286,7 +286,7 @@ Chaque bloc est encodé sur sept bits, et les résultats sont concaténés, ce q
 On obtient $$6\times 7=42$$ bits au total, ce qui n'est pas un multiple
 de 8. Pour encoder ceci dans un fichier, on ajoute assez de 0 à droite
 jusqu'à obtenir un multiple de 8 (le multiple suivant est 48). Le
-résultat est donc le fichier, que vous pouvez télécharger [ici](dm2_ham.bin), contenant les octets suivants
+résultat est donc le fichier, que vous pouvez télécharger [ici](misc/dm2_ham.bin), contenant les octets suivants
 
 ~~~
 01001011 00011001 10110000 11110110 11011011 00000000
