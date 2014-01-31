@@ -9,7 +9,7 @@ title: IN420 – Algorithmique pour la cryptographie
 
 **Chargé de cours:** Luca De Feo <http://defeo.lu>
 
-**Chargée de TDs:** Christina Boura <http://christina-boura.info/>
+**Chargée de TD:** Christina Boura <http://christina-boura.info/>
 
 **Cours magistral:** Lundi 15h15 - 16h45, amphi H
 
