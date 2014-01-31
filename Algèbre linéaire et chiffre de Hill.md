@@ -3,7 +3,7 @@ layout: post
 title: Algèbre linéaire et chiffre de Hill
 ---
 
-Le [chiffre de Hill](Cryptographie classique) est une méthode de
+Le [chiffre de Hill](Chiffrement par transposition) est une méthode de
 chiffrement linéaire où la clef est constitué d'une matrice inversible
 $$n\times n$$ à coefficients dans $$\mathbb{Z}/26\mathbb{Z}$$ et le
 chiffrement se fait en décomposant le texte clair en blocs de longueur
@@ -97,14 +97,7 @@ public class Matrice {
 }
 ~~~
 
-
-Pour compiler ce fichier, dans un terminal vous allez taper la commande
-
-~~~
-javac Matrice.java
-~~~
-
-Le programme s'attends à recevoir sur la ligne de commande deux
+Le code déjà écrit s'attend à recevoir sur la ligne de commande deux
 matrices d'entiers séparées par une opération, `+` pour l'addition, toute autre chose pour la multiplication (mais attention à utiliser `*` de la ligne de commande: le terminal peut l'interpréter de façon bizarre).
 
 Les matrices sont codées de la façon suivante: les éléments de chaque
@@ -113,7 +106,7 @@ séparée de la suivante par un deux points (`:`). Internement les
 matrices sont stockées dans des tableaux bidimensionnels d'entiers.
 
 Le programme lit les matrices et exécute l'opération demandée. Voici
-un exemple d'exécution pour le programme complet:
+un exemple d'exécution pour le programme une fois que vous aurez complété les autres fonctions :
 
 ~~~
 $ java Matrice 1,2:3,3 + 2,1:3,3

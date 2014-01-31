@@ -4,112 +4,14 @@ title: Codes linéaires
 ---
 
 Ce TD, développé sur deux séances, est consacré aux codes correcteurs
-d'erreurs linéaires, et aux codes de Hamming en particulier. Le code
-que vous allez développer vous sera utile pour le prochain DM,
-profitez donc des séances de TD pour écrire un code complet.
+d'erreurs linéaires, et aux codes de Hamming en particulier.    
 
-## L'espace vectoriel $$\mathbb{F}_2^n$$
+Avant de commencer ce TD vous devez avoir compris les concepts
+d'*espace vectoriel* et d'*application linéaires*, en particulier à
+coe fficients dans le corps à deux éléments $$\mathbb{F}_2$$. Allez voir
+la page [Codes correcteurs d'erreurs](Codes correcteurs d'erreurs)
+pour vous rafraîchir la mémoire.
 
-On commence avec quelques notions d'algèbre élémentaire, juste pour
-fixer les idées.
-
-On rappelle qu'un corps est la donne d'un ensemble $$K$$ muni d'une
-*addition*, notée $$+$$, et d'une *multiplication*, notée $$\times$$ (ou
-$$\cdot$$), avec les propriétés suivantes:
-
-- $$(K,+)$$ forme un groupe abélien: c'est à dire l'addition est
-  associative, commutative, a un élément neutre, noté $$0$$, et tout
-  élément a un inverse.
-- On note $$K^\ast$$ l'ensemble $$K$$ privé de l'identité additive
-  $$0$$. $$(K^\ast,\times)$$ est un groupe abélien, son élément neutre est
-  noté $$1$$.
-
-On note $$\mathbb{F}_2$$ le *corps à deux éléments*, c'est à dire
-l'ensemble $$\{0,1\}$$ avec l'addition et la multiplication définies
-comme suit:
-
-$$0 + 0 = 1 + 1 = 0, \qquad 0 + 1 = 1 + 0 = 1,$$
-
-$$0 \cdot 0 = 0 \cdot 1 = 1 \cdot 0 = 0, \qquad 1 \cdot 1 = 1.$$
-
-Vous aurez reconnu le XOR dans l'addition et le ET dans la
-multiplication. Oui, vous avez aussi reconnu les opérations modulo
-$$2$$.
-
-L'*espace vectoriel* $$\mathbb{F}_2^n$$ est l'ensemble de tous les
-vecteurs à $$n$$ composantes à coefficients dans $$\mathbb{F}_2$$. Voici,
-par exemple, les éléments de $$\mathbb{F}_2^3$$:
-
-$$\begin{pmatrix}0\\0\\0\end{pmatrix},\;
-\begin{pmatrix}0\\0\\1\end{pmatrix},\;
-\begin{pmatrix}0\\1\\0\end{pmatrix},\;
-\begin{pmatrix}1\\0\\0\end{pmatrix},\;
-\begin{pmatrix}0\\1\\1\end{pmatrix},\;
-\begin{pmatrix}1\\0\\1\end{pmatrix},\;
-\begin{pmatrix}1\\1\\0\end{pmatrix},\;
-\begin{pmatrix}1\\1\\1\end{pmatrix}.$$
-
-Les éléments de $$\mathbb{F}_2^n$$ sont munis d'une *addition* et d'une
-*multiplication externe* (dit aussi *produit par un
-scalaire*). L'addition se fait composante par composante,
-$$\mathbb{F}_2^n$$ muni de l'addition forme un groupe abélien.
-
-1. Calculer les sommes suivantes:
-   
-   $$\begin{pmatrix}0\\0\\0\end{pmatrix} + \begin{pmatrix}1\\1\\0\end{pmatrix},\qquad
-   \begin{pmatrix}1\\1\\0\end{pmatrix} + \begin{pmatrix}1\\0\\1\end{pmatrix},\qquad
-   \begin{pmatrix}0\\1\\1\end{pmatrix} + \begin{pmatrix}0\\1\\1\end{pmatrix}.\qquad$$
-
-2. Calculer l'inverse additif de
-   $$\begin{pmatrix}1\\0\\1\end{pmatrix}.$$
-
-La *multiplication externe*, souvent notée en mettant les opérandes
-côte à côte, est une lois
-$$\mathbb{F}_2\times\mathbb{F}_2^n\to\mathbb{F}_2^n$$, c'est à dire
-qu'on multiplie un vecteur par un élément, dit *scalaire*, de
-$$\mathbb{F}_2^n$$ (soit un $$0$$, soit un $$1$$). Le résultat est
-calculé en appliquant le multiplieur à chacune des composantes, ce qui
-donne la lois suivante (on peut difficilement faire plus simple):
-
-$$0\begin{pmatrix}a\\b\\\vdots\end{pmatrix} = \begin{pmatrix}0\\0\\\vdots\end{pmatrix},$$
-
-$$1\begin{pmatrix}a\\b\\\vdots\end{pmatrix} = \begin{pmatrix}a\\b\\\vdots\end{pmatrix}.$$
-
-
-La structure d'espace vectoriel de $$\mathbb{F}_2^n$$ permet de définir
-les *applications linéaires de $$\mathbb{F}_2^n$$ vers
-$$\mathbb{F}_2^m$$*. Sans vouloir trop s'attarder sur les définitions
-mathématiques, une application linéaire est juste une **matrice**
-$$m\times n$$ à coefficients dans $$\mathbb{F}_2$$. Les produits
-matrice-vecteur et matrice-matrice se calculent comme sur les entiers,
-sauf que l'addition et la multiplication sont maintenant celles de
-$$\mathbb{F}_2$$ (ce qui est, avouez-le, beaucoup plus simple!).
-
-3. Calculer les produits matrice-vecteur suivants:
-
-$$\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix} \begin{pmatrix}1\\1\\0\\1\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\end{pmatrix} \begin{pmatrix}1\\1\\0\\1\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&1\\1&0&0\\1&1&0\\1&1&1\end{pmatrix} \begin{pmatrix}1\\1\\0\end{pmatrix}.$$
-
-4. Calculer le produit matrice-matrice suivant:
-   
-   $$\begin{pmatrix}1&0&1&0\\1&0&0&0\\1&0&1&1\end{pmatrix} \begin{pmatrix}1&0\\0&1\\0&0\\1&1\end{pmatrix}.$$
-
-
-Vous l'avez compris, une matrice $$m\times n$$ est juste une fonction
-$$\mathbb{F}_2^n\to\mathbb{F}_2^m$$ un peu spéciale.
-
-5. Les applications linéaires suivantes, sont-elles injectives,
-   surjectives, bijectives?
-   
-   $$\begin{pmatrix}0&0&0\\0&0&0\\0&0&0\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&0\\0&1&0\end{pmatrix},$$
-   
-   $$\begin{pmatrix}1&0\\0&1\\1&1\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&1\\0&1&0\\0&0&1\end{pmatrix},\qquad
-   \begin{pmatrix}1&0&0\\0&1&1\\0&1&1\end{pmatrix}.$$
-   
 
 ## Codage linéaire
 
@@ -735,7 +637,7 @@ plus petit code de Hamming intéressant est le code $$(7,4)$$.
 La construction d'un code de Hamming est très simple. On commence par
 choisir l'entier $$m$$, qui est le nombre de *bits de contrôle*. On
 construit alors la *matrice de parité* du code, qui est la matrice
-$$m\times (2^m-1)$$ où les lignes sont les écritures en base $$2$$ des
+$$m\times (2^m-1)$$ où les colonnes sont les écritures en base $$2$$ des
 entiers compris entre $$1$$ et $$2^m-1$$. Voici la matrice de parité du
 code $$(7,4)$$:
 
@@ -971,3 +873,35 @@ public class Hamming {
 }
 ~~~
 {: .collapsible .collapsed}
+
+
+## Décodage syndrome
+
+Allez d'abord réviser la théorie du [Décodage syndrome](Décodage syndrome). Ensuite
+
+1. Ajoutez à votre classe `Hamming` une méthode
+   
+   ~~~
+   public BinVector addError(BinVector c)
+   ~~~
+   
+   qui prend en entrée un mot de code et qui y ajoute une erreur à une position aléatoire. Pour choisir une position aléatoire, vous pouvez utliser un code similaire au suivant:
+   
+   ~~~
+   int alea = (int)(Math.random() * 10);
+   ~~~
+       
+   qui génère un entier aléatoire entre 0 et 9 inclus.
+
+2. Ajoutez à votre classe `Hamming` une méthode
+   
+   ~~~
+   public BinVector decode(BinVector y)
+   ~~~
+   
+   qui réalise le décodage syndrome.
+
+
+Si vous avez envie d'aller plus loin, allez voir le
+[DM de l'an dernier sur le décodage syndrome](DM2 - Décodage par syndrome) et résolvez le challenge.
+
