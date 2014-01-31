@@ -134,7 +134,7 @@ Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographi
 Ces références concernent la cryptographie, les codes et les algorithmes.
 
 D. Stinson. *Cryptographie -- Théorie et pratique*.
-:   2^e^ édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Côte BU: 005.82 STI. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
+:   2e édition. Vuibert, Paris, 2003. ISBN: 2-7117-4800-6. Côte BU: 005.82 STI. Ouvrage d'introduction à la cryptographie, d'un niveau tout à fait adapté à la licence. Une bonne partie du cours se base sur ce livre.
 
 B. Martin. *Codage, cryptologie et applications*.
 :   Presse polytechniques et universitaires romandes. ISBN: 2-88074-569-1. Côte BU: 005.82 MAR. Autre ouvrage d'introduction couvrant une bonne partie du cours. Les leçons sur les codes correcteurs suivent de près de ce livre.
@@ -143,7 +143,7 @@ B. Martin. *Codage, cryptologie et applications*.
 :   Éditions POLE, 2006. Hors-Série Tangente 26. ISSN: 09870806. Côte BU: 008.82 CRY. Ouvrage de divulgation non-technique, recouvrant une partie du cours. Surtout les chapitres introductifs sur la cryptographie classique sont assez riches pour être utilisés comme matériel d'étude à la place du Stinson (qui est moins verbeux, mais plus technique).
 
 J. A. Buchmann. *Introduction à la cryptographie*.
-:   2^e^ édition. Dunod, 2006. ISBN 2-10-049622-0. Côte BU: 005.82 BUC. Texte d'introduction à la cryptographie pour mathématiciens, avec exercices. Les deux premier chapitres font un panorama complet des algorithmes qu'on utilisera pour la [Cryptographie asymétrique](Cryptographie asymétrique).
+:   2e édition. Dunod, 2006. ISBN 2-10-049622-0. Côte BU: 005.82 BUC. Texte d'introduction à la cryptographie pour mathématiciens, avec exercices. Les deux premier chapitres font un panorama complet des algorithmes qu'on utilisera pour la [Cryptographie asymétrique](Cryptographie asymétrique).
 
 -------
 

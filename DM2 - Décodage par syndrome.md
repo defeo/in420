@@ -3,7 +3,7 @@ layout: post
 title: DM2 – Décodage par syndrome
 ---
 
-Ce DM se place dans la continuité du TD sur les [Codes linéaires](). 
+Ce DM se place dans la continuité du TD sur les [Codes linéaires](Codes linéaires). 
 Si vous avez fait ce TD en entier, l'effort nécessaire à
 compléter ce DM va être minimal. Il vous est tout de même possible de
 réussir ce DM sans avoir résolu l'intégralité du TD, en effet vous
