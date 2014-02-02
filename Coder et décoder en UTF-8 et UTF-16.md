@@ -94,36 +94,36 @@ public class Transcoder {
     */
     static void test(int codepoint) throws UnsupportedEncodingException {
         int[] utf8 = cp_to_UTF8(codepoint);
-	int[] pad = new int[4];
-	if (utf8 != null) {
-	    byte[] code = new byte[utf8.length];
-	    for (int i = 0 ; i < utf8.length ; i++) {
-		pad[i] = utf8[i];
-		code[i] = (byte)utf8[i];
-		System.out.print(Integer.toString(utf8[i], 16) + " ");
-	    }
-	    System.out.println("\n" +
-			       Integer.toString(cp_from_UTF8(pad[0],
-							     pad[1],
-							     pad[2],
-							     pad[3]),
-						16));
-	    System.out.println(new String(code, "UTF-8"));
-	}
+        int[] pad = new int[4];
+        if (utf8 != null) {
+            byte[] code = new byte[utf8.length];
+            for (int i = 0 ; i < utf8.length ; i++) {
+        	pad[i] = utf8[i];
+        	code[i] = (byte)utf8[i];
+        	System.out.print(Integer.toString(utf8[i], 16) + " ");
+            }
+            System.out.println("\n" +
+        		       Integer.toString(cp_from_UTF8(pad[0],
+        						     pad[1],
+        						     pad[2],
+        						     pad[3]),
+        					16));
+            System.out.println(new String(code, "UTF-8"));
+        }
 
-	int[] utf16 = cp_to_UTF16(codepoint);
-	if (utf16 != null) {
-	    pad = new int[2];
-	    for (int i = 0 ; i < utf16.length ; i++) {
-		System.out.print(Integer.toString(utf16[i], 16) + " ");
-		pad[i] = utf16[i];
-	    }
-	    System.out.println("\n" +
-			       Integer.toString(cp_from_UTF16(pad[0],
-							      pad[1]),
-						16));
-	    System.out.println("" + (char)pad[0] + (char)pad[1]);
-	}
+        int[] utf16 = cp_to_UTF16(codepoint);
+        if (utf16 != null) {
+            pad = new int[2];
+            for (int i = 0 ; i < utf16.length ; i++) {
+        	System.out.print(Integer.toString(utf16[i], 16) + " ");
+        	pad[i] = utf16[i];
+            }
+            System.out.println("\n" +
+        		       Integer.toString(cp_from_UTF16(pad[0],
+        						      pad[1]),
+        					16));
+            System.out.println("" + (char)pad[0] + (char)pad[1]);
+        }
     }
 
     public static void main(String[] args) 
@@ -354,65 +354,65 @@ public class Transcoder {
       Convertit un flux de UTF-8 a UTF-16
     */
     public static void utf8to16(InputStream in, OutputStream out)
-	throws IOException {
+        throws IOException {
 
-	int b1 = in.read(), 
-	    b2 = in.read(), 
-	    b3 = in.read(),
-	    b4;
-	while (b1 != -1) {
-	    b4 = in.read();
-	    int cp = cp_from_UTF8(b1, b2, b3, b4);
-	    if (cp != -1) {
-		int[] pairs = cp_to_UTF16(cp);
-		for (int i = 0 ; i < pairs.length ; i++) {
-		    out.write(pairs[i] / 0x100);
-		    out.write(pairs[i] % 0x100);
-		}
-	    }
-	    b1 = b2; b2 = b3; b3 = b4;
-	}
+        int b1 = in.read(), 
+            b2 = in.read(), 
+            b3 = in.read(),
+            b4;
+        while (b1 != -1) {
+            b4 = in.read();
+            int cp = cp_from_UTF8(b1, b2, b3, b4);
+            if (cp != -1) {
+        	int[] pairs = cp_to_UTF16(cp);
+        	for (int i = 0 ; i < pairs.length ; i++) {
+        	    out.write(pairs[i] / 0x100);
+        	    out.write(pairs[i] % 0x100);
+        	}
+            }
+            b1 = b2; b2 = b3; b3 = b4;
+        }
     }
 
     /*
       Convertit un flux de UTF-16 a UTF-18
     */
     public static void utf16to8(InputStream in, OutputStream out) 
-	throws IOException {
-	int b1 = in.read(), 
-	    b2 = in.read(), 
-	    b3, b4;
+        throws IOException {
+        int b1 = in.read(), 
+            b2 = in.read(), 
+            b3, b4;
 
-	while (b1 != -1) {
-	    b3 = in.read();
-	    b4 = in.read();
-	    int cp = cp_from_UTF16(b1 * 0x100 + b2, b3 * 0x100 + b4);
-	    if (cp != -1) {
-		int[] bytes = cp_to_UTF8(cp);
-		for (int i = 0 ; i < bytes.length ; i++)
-		    out.write(bytes[i]);
-	    }
-	    b1 = b3; b2 = b4;
-	}
+        while (b1 != -1) {
+            b3 = in.read();
+            b4 = in.read();
+            int cp = cp_from_UTF16(b1 * 0x100 + b2, b3 * 0x100 + b4);
+            if (cp != -1) {
+        	int[] bytes = cp_to_UTF8(cp);
+        	for (int i = 0 ; i < bytes.length ; i++)
+        	    out.write(bytes[i]);
+            }
+            b1 = b3; b2 = b4;
+        }
     }
 
     public static void main(String[] args) 
         throws IOException, UnsupportedEncodingException {
-	InputStream in = System.in;
+        InputStream in = System.in;
         OutputStream out = System.out;
-	int utf16 = 0;
+        int utf16 = 0;
 
         if (args.length >= 1 && args[0].equals("-utf16"))
-	    utf16 = 1;
-	if (args.length >= 1 + utf16)
-	    in = new FileInputStream(args[utf16]);
+            utf16 = 1;
+        if (args.length >= 1 + utf16)
+            in = new FileInputStream(args[utf16]);
         if (args.length >= 2 + utf16) 
             out = new FileOutputStream(args[1+utf16]);
 
-	if (utf16 == 0)
-	    utf8to16(in, out);
-	else
-	    utf16to8(in, out);
+        if (utf16 == 0)
+            utf8to16(in, out);
+        else
+            utf16to8(in, out);
     }
 }
 ~~~

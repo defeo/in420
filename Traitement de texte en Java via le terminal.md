@@ -217,66 +217,66 @@ public class Symboles {  // Cliquez ici pour voir la solution
        Ecrit un entier en base b. Recursif, juste pour le plaisir.
      */
     public static String toString(int d, int b) {
-	if (b > 36 || b < 2)
-	    throw new NumberFormatException("Base too small or too large: " + b);
-	if (d < 0) {
-	    return "-" + toString(-d, b);
-	} else {
-	    // Le chiffre le plus a gauche de d, comme un entier
-	    int chiffre = d % b;
-	    // Conversion du chiffre en code Unicode
-	    char c = (char)(chiffre < 10 ? 
-			    '0' + chiffre :
-			    'A' + chiffre - 10);
-	    // Concatenation avec le reste du nombre
-	    return (d >= b ? toString(d / b, b) : "") + c;
-	}
+        if (b > 36 || b < 2)
+            throw new NumberFormatException("Base too small or too large: " + b);
+        if (d < 0) {
+            return "-" + toString(-d, b);
+        } else {
+            // Le chiffre le plus a gauche de d, comme un entier
+            int chiffre = d % b;
+            // Conversion du chiffre en code Unicode
+            char c = (char)(chiffre < 10 ? 
+        		    '0' + chiffre :
+        		    'A' + chiffre - 10);
+            // Concatenation avec le reste du nombre
+            return (d >= b ? toString(d / b, b) : "") + c;
+        }
     }
 
     /*
        Lit un entier en base b. Recursif, comme auparavant.
      */
     public static int fromString(String s, int b) {
-	if (s.length() == 0)
-	    return 0;
+        if (s.length() == 0)
+            return 0;
 
-	// Le code Unicode du chiffre le plus a gauche
-	char c = s.charAt(s.length() - 1);
-	// Conversion du code Unicode a un entier
-	int chiffre;
-	if (c >= '0' && c <= '9')
-	    chiffre = c - '0';
-	else if (c >= 'a' && c <= 'z')
-	    chiffre = c - 'a' + 10;
-	else if (c >= 'A' && c <= 'Z')
-	    chiffre = c - 'A' + 10;
-	else
-	    throw new NumberFormatException("Cannot interpret string as number: " + s);
+        // Le code Unicode du chiffre le plus a gauche
+        char c = s.charAt(s.length() - 1);
+        // Conversion du code Unicode a un entier
+        int chiffre;
+        if (c >= '0' && c <= '9')
+            chiffre = c - '0';
+        else if (c >= 'a' && c <= 'z')
+            chiffre = c - 'a' + 10;
+        else if (c >= 'A' && c <= 'Z')
+            chiffre = c - 'A' + 10;
+        else
+            throw new NumberFormatException("Cannot interpret string as number: " + s);
 
-	// On controle que le nombre est coherent avec la base
-	if (chiffre >= b)
-	    throw new NumberFormatException("Cannot interpret string as number: " + s);
+        // On controle que le nombre est coherent avec la base
+        if (chiffre >= b)
+            throw new NumberFormatException("Cannot interpret string as number: " + s);
 
-	return fromString(s.substring(0, s.length() - 1), b) * b + chiffre;
+        return fromString(s.substring(0, s.length() - 1), b) * b + chiffre;
     }
 
     public static void main(String[] args) {
-	if (args.length == 0) {
-	    return;
-	} else if (args[0].startsWith("-u") && args.length > 1) {
-	    // Un ajout par rapport au sujet: on prend la base en parametre
-	    int b = fromString(args[0].substring(2), 10);
-	    b = b == 0 ? 16 : b;
-	    int c = fromString(args[1], b);
-	    System.out.println((char)c + " " +
-			       toString(c, 10) + " " +
-			       toString(c, 16));
-	} else {
-	    char c = args[0].charAt(0);
-	    System.out.println(c + " " + 
-			       toString(c, 10) + " " + 
-			       toString(c, 16));
-	}
+        if (args.length == 0) {
+            return;
+        } else if (args[0].startsWith("-u") && args.length > 1) {
+            // Un ajout par rapport au sujet: on prend la base en parametre
+            int b = fromString(args[0].substring(2), 10);
+            b = b == 0 ? 16 : b;
+            int c = fromString(args[1], b);
+            System.out.println((char)c + " " +
+        		       toString(c, 10) + " " +
+        		       toString(c, 16));
+        } else {
+            char c = args[0].charAt(0);
+            System.out.println(c + " " + 
+        		       toString(c, 10) + " " + 
+        		       toString(c, 16));
+        }
     }
 }
 ~~~

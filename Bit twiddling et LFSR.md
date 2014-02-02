@@ -113,7 +113,7 @@ les attributs de l'objet.
     - Un entier en base hexadécimale, qui code les *taps*. Voici
       comment transformer une chaîne de caractères hexadécimales (de
       longeur au plus 4) en `char`:
-	  
+          
       ~~~
       char taps = (char)Integer.parseInt(args[0], 16);
       ~~~
