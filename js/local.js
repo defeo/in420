@@ -1,9 +1,3 @@
-hljs.configure({
-    tabReplace: '    ',
-    languages: ['java', 'c', 'python']
-});
-hljs.initHighlightingOnLoad();
-
 (function() {
     var c = document.querySelectorAll(".collapsible");
     for (var i = 0; i < c.length; i++) {
