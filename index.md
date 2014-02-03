@@ -18,13 +18,13 @@ title: IN420 – Algorithmique pour la cryptographie
 ## Cours
 
 Cours 1 (20/01/2013)
-:  Codage ASCII, types de données en Java.
+:  Types de données en Java.
 
 Cours 2 (27/01/2013)
-:  [UTF-16](UTF-16), [UTF-8](UTF-8).
+:  Codage ASCII, [UTF-16](UTF-16).
 
 Cours 3 (03/02/2013)
-:  [Codage de Huffman](Codage de Huffman), [Codes instantanés](Codes instantanés), [Codage de Ziv-Lempel](Codage de Ziv-Lempel).
+:  [UTF-8](UTF-8), [Codage de Huffman](Codage de Huffman), [Codes instantanés](Codes instantanés), Compression.
 
 Cours 4 (10/02/2013)
 :  [Chiffrement par substituion](Chiffrement par substituion).
