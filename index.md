@@ -76,7 +76,7 @@ TD 6 (11/03/2013)
 TD 7 (18/03/2013)
 :  [Codes linéaires](Codes linéaires).
 
-TD 8 (26/03/2013)
+TD 8 (25/03/2013)
 :  [Codes linéaires](Codes linéaires).
 
 TD 9 (01/04/2013)

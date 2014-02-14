@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Construction du code de Huffman
+scripts: ['js/show-after.js']
 ---
 
 Dans ce TD nous allons nous occuper de la partie du [Codage de Huffman](Codage de Huffman) qui consiste à construire l'arbre de décodage. Le TD est divisé en deux parties : dans un premier temps nous allons nous occuper de la construction de l'arbre avec des fréquences prédéfinies dans le code source ; dans un deuxième temps, nous allons récupérer ces fréquences d'un fichier de texte.
@@ -140,6 +141,8 @@ e: null
 
 Pour être sûr que votre code est bon, testez avec d'autres jeux de symboles plus grands que 'a', 'b', 'c', 'd'. Pour qu'un code soit valide il ne doit pas y avoir de dupliqués (deux symboles ne peuvent pas être encodés par les mêmes symboles) et, plus généralement, aucun code ne doit être le *préfixe* d'un autre.
 
+<div id="solution" class="show-after" data-show-after="2014-02-19">
+
 Voici la solution de cette partie.
 
 ~~~
@@ -260,8 +263,9 @@ public class Huffman {
     }
 }
 ~~~
-{: .collapsible .collapsed}
+{: .collapsible .collapsed }
 
+</div>
 
 
 ## Lecture des fréquences d'un fichier texte

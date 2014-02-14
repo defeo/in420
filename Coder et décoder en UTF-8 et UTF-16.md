@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Coder et décoder en UTF-8 et UTF-16
-scripts: ['js/file-opener.js']
+scripts: ['js/file-opener.js', 'js/show-after.js']
 ---
 
 Dans ce TD nous allons écrire un transcodeur capable de convertir des fichiers de l'encodage [UTF-16](UTF-16) à l'encodage [UTF-8](UTF-8) et *vice-versa*.
@@ -230,6 +230,7 @@ soucier de cela : l'un des trois marchera pour vous (vous aurez fait
 implicitement un choix d'endiannes en écrivant votre code). Pour plus
 de détails, voir [Endianness](Endianness).
 
+<div class="show-after" data-show-after="2014-02-12">
 
 ## Solution
 
@@ -417,3 +418,5 @@ public class Transcoder {
 }
 ~~~
 {: .collapsible .collapsed}
+
+</div>

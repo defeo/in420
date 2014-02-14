@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Bit twiddling et LFSR
+scripts: ['js/show-after.js']
 ---
 
 Le Linear Feedback Shift Register (LFSR) est un outil pour la production d'une suite pseudo-aléatoire, de conception très simple et  adaptée à la réalisation matérielle. Ce TD compare les deux techniques principales pour réaliser un LFSR: le LFSR de Fibonacci et celui de Galois.
@@ -150,6 +151,8 @@ besoin de faire appel à `parite`.
 6. Modifiez le `main` pour qu'il prenne un argument permettant de choisir entre le mode Fibonacci et le mode Galois.
 
 
+<div class="show-after" data-show-after="2015-03-12">
+
 ## Solution
 
 Voici une solution complète. Essayez de compléter le TD avant de la regarder.
@@ -229,3 +232,5 @@ public class LFSR {           // cliquez ici pour voir la solution
 }
 ~~~
 {: .collapsible .collapsed}
+
+</div>

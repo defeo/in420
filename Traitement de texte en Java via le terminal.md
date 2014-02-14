@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Traitement de texte en Java via le terminal
+scripts: ['js/show-after.js']
 ---
 
 Java est un langage destiné principalement aux interfaces graphiques et à la programmation de serveurs. Néanmoins, il offre les mêmes facilités que le C, voire un peu de bibliothèques en plus, pour le traitement de données au terminal. D'autres langages de scripting, tel Perl, Python, Lua, Ruby, offrent beaucoup plus de facilités dans ce sens, mais le but de ce cours étant aussi la consolidation de notre connaissance du Java, nous n'en parlerons pas.
@@ -207,6 +208,8 @@ Essayez avec plusieurs symboles courant. Essayez avec des symboles exotiques, co
 
 7. Modifiez les fonctions `toHexString` et `fromHexString` pour qu'elles fassent la conversion en utilisant une base arbitraire à la place de 16. Elles doivent prendre un deuxième paramètre de type `int` qui représente la base.
 
+<div class="show-after" data-show-after="2014-01-29">
+
 ## Solution
 
 Cliquez sur la boîte ci-dessous pour découvrir la solution.
@@ -281,3 +284,5 @@ public class Symboles {  // Cliquez ici pour voir la solution
 }
 ~~~
 {: .collapsible .collapsed}
+
+</div>

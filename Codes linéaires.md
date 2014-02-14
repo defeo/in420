@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Codes linéaires
+scripts: ['js/show-after.js']
 ---
 
 Ce TD, développé sur deux séances, est consacré aux codes correcteurs
@@ -419,6 +420,8 @@ bien dans les deux sens. Pour plus d'information sur les
 lectures/écritures de fichiers, allez voir
 [cette page](Entrées-Sorties en Java).
 
+<div id="solution" class="show-after" data-show-after="2014-04-02">
+
 Et enfin, voici le code complet des trois classes `Bit`, `BinVector`
 et `BinMatrix` (sans les méthodes main).
 
@@ -616,6 +619,8 @@ public class BinMatrix {
 ~~~
 {: .collapsible .collapsed}
 
+</div>
+
 
 ## Codes de Hamming
 
@@ -788,6 +793,8 @@ multipliant par $$G$$.
 Testez votre code en encodant des messages de plusieurs octets et en
 vérifiant que leur produit par $$H$$ fait bien zéro.
 
+<div class="show-after" data-show-after="2014-04-02">
+
 Vous trouverez la solution ci-dessous.
 
 ~~~
@@ -873,6 +880,8 @@ public class Hamming {
 }
 ~~~
 {: .collapsible .collapsed}
+
+</div>
 
 
 ## Décodage syndrome
