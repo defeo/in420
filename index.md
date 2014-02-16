@@ -115,7 +115,7 @@ Travaillez ces chapitres, et vous validerez le cours sans problèmes.
 - Cryptographie asymétrique: **J. A. Buchmann**. *Introduction à la cryptographie*. Chapitre 8.
 - Arithmétique modulaire: **J. Vélu**. *Méthodes Mathématiques pour l'Informatique*. Chapitres 15-16, vous pouvez sauter la section 16.2.
 
-Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Le cours de J.-C. chappelier est ici : <http://icwww.epfl.ch/~chappeli/it/courseFR/index.php?shownav=yes>. Allez aussi voir [cette page](http://swift.prism.uvsq.fr/py/in420.py/biblio).
+Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographie)). Le cours de J.-C. chappelier est ici : <http://icwww.epfl.ch/~chappeli/it/courseFR/index.php?shownav=yes>. Allez aussi voir [cette page](http://proust.prism.uvsq.fr/~dfl/in420-biblio/).
 
 
 ## Liens et pages utiles
