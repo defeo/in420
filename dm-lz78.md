@@ -612,7 +612,7 @@ pour gagner des points.
 	   <text x="-200" y="180">P : 4</text>
 	   <text x="-60" y="180">S : 6</text>
 	   
-	   <text x="-340" y="260">ATI : 8</text>
+	   <text x="-340" y="260">I : 8</text>
 	 </g>
 	 <g style="stroke:black;stroke-width:1;marker-end:url(#arrow)">
 	   <path d="M -10,30 -200,80" />
