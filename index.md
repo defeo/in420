@@ -94,6 +94,8 @@ TD 12 (29/04/2013)
 
 ## Devoirs maison
 
+DM 1 (à rendre le 09/03/2014)
+:  [Compression LZ78](dm-lz78) et son [challenge](http://it-katas.defeo.lu/katas/lz78).
 
 ### Anciens devoirs
 

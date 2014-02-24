@@ -9,7 +9,78 @@ strong {
 	font-family: Sans, sans-serif;
 	font-size: 90%;
 }
+#lz78-enc, #lz78-dec {
+	font-family: Mono, monospace;
+	padding: 1em;
+	border: solid thin black;
+	border-radius: 5px;
+	float: right;
+	margin: 1em;
+}
+.input .selected, .dict .selected {
+	transition: box-shadow 2s;
+	box-shadow: 0 0 3px red;
+}
+.output > .written ~ span,
+.dict   > .written ~ span {
+	visibility: hidden;
+	opacity: 0;
+}
+.output span, .dict span {
+	transition: opacity 2s, visibility 2s;
+}
+.dict {
+	padding-left: 1em;
+}
+.dict span {
+	white-space: pre;
+}
+.controls {
+	text-align: center;
+}
+.controls button {
+	font-weight: bold;
+	font-size: 150%;
+}
 </style>
+<script>
+function LZ78(id, steps) {
+  this.elt = $(id);
+  this.steps = steps;
+
+  this.cur = 0;
+
+  this.go = function (i) {
+	if (i >= 0 && i < this.steps.length) {
+	  this.cur = i;
+	  var step = this.steps[this.cur];
+	  var select = function (elt, n) {
+		elt.classList.remove(this.class);
+		if ((this.ord.indexOf && this.ord.indexOf(n) >= 0)
+			|| this.ord == n) {
+		  elt.classList.add(this.class);
+		}
+	  }
+	  this.elt.$$('.input>span').forEach(select.bind({ ord : step.input, class : 'selected' }));
+	  this.elt.$$('.output>span').forEach(select.bind({ ord : step.output, class : 'written' }));
+	  this.elt.$$('.dict>span').forEach(select.bind({ ord : step.dict, class : 'written' }));
+	  this.elt.$$('.dict>span').forEach(select.bind({ ord : step.prefix, class : 'selected' }));
+	}
+  }
+
+  this.go(0);
+
+  var ctrl = this.elt.$('.controls');
+  ctrl.innerHTML += '<button>«</button> <button>»</button>';
+  ctrl.$('button:first-child').onclick = (function() {
+    this.go(this.cur - 1);
+  }).bind(this);
+  ctrl.$('button:last-child').onclick = (function() {
+    this.go(this.cur + 1);
+  }).bind(this);
+}
+</script>
+
 
 L'algorithme de compression Lempel-Ziv &apos;78, est l'un des tout premiers
 algorithmes de compression génériques. Il a vite été adopté dans des
@@ -199,207 +270,168 @@ confortable de noter cela avec un préfixe spécial, le *préfixe vide*
 
 	ε : 0
 
-On va commencer par un exemple. Supposons que notre source contienne
-la suite de symboles
-
-	alas falbala
-
 L'algorithme parcourt la source en gardant trace des préfixes
 rencontrés à chaque étape. Lorsqu'il trouve un préfixe qui n'est pas
 déjà dans le dictionnaire, il crée un nouveau préfixe, il lui donne le
 premier code non encore utilisé et le rentre dans le dictionnaire.
-
-Dans notre exemple, on commence avec le préfixe vide, de code
-**0**. Le premier symbole **a** n'est pas dans le dictionnaire
-
-	alas falbala
-	^
-{:.no-highlight}
-
-il est donc rentré avec le premier code disponible : **1**.
-
-	ε : 0
-	a : 1
-{:.no-highlight}
 
 Lorsque l'algorithme rentre un nouveau préfixe dans le dictionnaire,
 il émet sur sa sortie la paire **(préfixe, symbole)**, où **symbole**
 est le dernier symbole rencontré et **préfixe** est le dernier préfixe
 rencontré avant le symbole.
 
-Dans notre exemple, on aura la paire **(0,a)** sur la sortie.
+Voici un exemple avec une source contenant la suite de symboles
+`ACATAPLASMATIC`.
 
-	entrée :  alas falbala
-	          ^
-	sortie :  (0,a)
+{::options parse_block_html="false" /}
+<div id="lz78-enc">
+  <strong>Entrée :</strong>
+  <span class="input">
+	<span>A</span><span>C</span><span>A</span><span>T</span><span>A</span><span>P</span><span>L</span><span>A</span><span>S</span><span>M</span><span>A</span><span>T</span><span>I</span><span>C</span>
+  </span><br/>
+  
+  <strong>Sortie :</strong>
+  <span class="output"><span class="written"></span>
+	<span>(0,A)</span><span>(0,C)</span><span>(1,T)</span><span>(1,P)</span><span>(0,L)</span><span>(1,S)</span><span>(0,M)</span><span>(3,I)</span><span>(2,\0)</span>
+  </span><br/><br/>
 
-	Dictionnaire:
-	  ε : 0      < préfixe courant
-	  a : 1
-{:.no-highlight}
+  <strong>Dictionnaire :</strong>
+  <div class="dict">
+	<span class="written">ε   : 0</span><br/>
+	<span>A   : 1</span><br/>
+	<span>C   : 2</span><br/>
+	<span>AT  : 3</span><br/>
+	<span>AP  : 4</span><br/>
+	<span>L   : 5</span><br/>
+	<span>AS  : 6</span><br/>
+	<span>M   : 7</span><br/>
+	<span>ATI : 8</span>
+  </div>
 
-Ensuite l'algorithme redémarre du préfixe vide et continue parcourir
-la source comme auparavant.
+  <div class="controls"></div>
+</div>
+<script>
+var enc = new LZ78('#lz78-enc', [
+  { prefix : -1, input : -1, output : 0, dict : 0 },
+  { prefix : 0, input : 0, output : 0, dict : 0 },
+  { prefix : 0, input : 0, output : 1, dict : 1 },
+  { prefix : 0, input : 1, output : 1, dict : 1 },
+  { prefix : 0, input : 1, output : 2, dict : 2 },
+  { prefix : 0, input : 2, output : 2, dict : 2 },
+  { prefix : 1, input : [2,3], output : 2, dict : 2 },
+  { prefix : 1, input : [2,3], output : 3, dict : 3 },
+  { prefix : 0, input : 4, output : 3, dict : 3 },
+  { prefix : 1, input : [4,5], output : 3, dict : 3 },
+  { prefix : 1, input : [4,5], output : 4, dict : 4 },
+  { prefix : 0, input : 6, output : 4, dict : 4 },
+  { prefix : 0, input : 6, output : 5, dict : 5 },
+  { prefix : 0, input : 7, output : 5, dict : 5 },
+  { prefix : 1, input : [7,8], output : 5, dict : 5 },
+  { prefix : 1, input : [7,8], output : 6, dict : 6 },
+  { prefix : 0, input : 9, output : 6, dict : 6 },
+  { prefix : 0, input : 9, output : 7, dict : 7 },
+  { prefix : 0, input : 10, output : 7, dict : 7 },
+  { prefix : 1, input : [10,11], output : 7, dict : 7 },
+  { prefix : 3, input : [10,11,12], output : 7, dict : 7 },
+  { prefix : 3, input : [10,11,12], output : 8, dict : 8 },
+  { prefix : 0, input : 13, output : 8, dict : 8 },
+  { prefix : 2, input : 13, output : 8, dict : 8 },
+  { prefix : 2, input : 13, output : 9, dict : 9 },
+]);
+</script>
+{::options parse_block_html="true" /}
 
-Dans notre exemple, nous aurons les itérations suivantes.
 
-    entrée :  alas falbala
-               ^
-    sortie :  (0,a)(0,l)
+Dans l'exemple, on [commence](#lz78-enc){:onclick="enc.go(1)"} avec le
+préfixe vide, de code **0**. Le premier symbole **A** n'est pas dans
+le dictionnaire il est donc [rentré](#lz78-enc){:onclick="enc.go(2)"}
+avec le premier code disponible (**1**), et la paire **(0,A)** est
+écrite en sortie.
 
-    Dictionnaire:
-      ε : 0      < préfixe courant
-      a : 1
-      l : 2
-{:.no-highlight}
-    entrée :  alas falbala
-                ^
-	sortie :  (0,a)(0,l)
+Ensuite l'algorithme [redémarre](#lz78-enc){:onclick="enc.go(3)"} du
+préfixe vide et continue parcourir la source comme auparavant.
 
-    Dictionnaire:
-      ε : 0      < préfixe courant
-      a : 1
-      l : 2
-{:.no-highlight}
-    entrée :  alas falbala
-                –^
-    sortie :  (0,a)(0,l)(1,s)
-
-    Dictionnaire:
-      ε  : 0
-      a  : 1     < préfixe courant
-      l  : 2
-      as : 3
-{:.no-highlight}
-
-Cette dernière itération est intéressante : ayant déjà inséré le
-préfixe **a** dans le dictionnaire, on continue jusqu'à trouver la
-suite **as** avant de rentrer un nouveau préfixe dans le
+La [troisième itération](#lz78-enc){:onclick="enc.go(5)"} est
+intéressante : ayant déjà inséré le préfixe **A** dans le
+dictionnaire, on [continue](#lz78-enc){:onclick="enc.go(6)"} jusqu'à
+trouver la suite **AT** avant de
+[rentrer](#lz78-enc){:onclick="enc.go(7)"} un nouveau préfixe dans le
 dictionnaire. Le symbole de sortie correspondant sera le code **1**
-pour le préfixe **a**, suivi du nouveau symbole **s**.
+pour le préfixe **A**, suivi du nouveau symbole **T**.
 
-On continue
-
-    entrée :  alas falbala
-                  ^
-    sortie :  (0,a)(0,l)(1,s)(0, )
-
-    Dictionnaire:
-      ε  : 0     < préfixe courant
-      a  : 1
-      l  : 2
-      as : 3
-         : 4
-{:.no-highlight}
-    entrée :  alas falbala
-                   ^
-    sortie :  (0,a)(0,l)(1,s)(0, )(0,f)
-
-    Dictionnaire:
-      ε  : 0     < préfixe courant
-      a  : 1
-      l  : 2
-      as : 3
-         : 4
-      f  : 5
-{:.no-highlight}
-    entrée :  alas falbala
-                    –^
-    sortie :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)
-
-    Dictionnaire:
-      ε  : 0
-      a  : 1     < préfixe courant
-      l  : 2
-      as : 3
-         : 4
-      f  : 5
-      al : 6
-{:.no-highlight}
-    entrée :  alas falbala
-                      ^
-    sortie :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)
-
-    Dictionnaire:
-      ε  : 0     < préfixe courant
-      a  : 1
-      l  : 2
-      as : 3
-         : 4
-      f  : 5
-      al : 6
-      b  : 7
-{:.no-highlight}
-    entrée :  alas falbala
-                       ––^
-    sortie :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-
-    Dictionnaire:
-      ε   : 0
-      a   : 1
-      l   : 2
-      as  : 3
-          : 4
-      f   : 5
-      al  : 6    < préfixe courant
-      b   : 7
-      ala : 8
-{:.no-highlight}
-
-L'algorithme s'arrête lorsqu'il atteint la sortie du flux et renvoie
-le flux de sortie. Il y a un problème potentiel sur la dernière
-itération : l'algorithme peut se trouver sur un préfixe déjà connu
-autre que le préfixe vide. C'est le cas, par exemple, dans l'encodage
-du mot **aaaa** :
-
-    entrée :  aaaa
-                ^
-    sortie :  (0,a)(1,a)
-	
-    Dictionnaire :
-      ε  : 0
-	  a  : 1      < préfixe courant
-	  aa : 2
-{:.no-highlight}
-
-Dans ce cas on a deux solutions:
+L'algorithme [s'arrête](#lz78-enc){:onclick="enc.go(23)"} lorsqu'il
+atteint la fin du flux et renvoie le flux de sortie. Il y a un
+problème potentiel sur la dernière itération : l'algorithme peut se
+trouver sur un préfixe déjà connu, autre que le préfixe vide. C'est le
+cas dans notre exemple : on termine sur le préfixe **C**, qui est déjà
+dans le dictionnaire, avant qu'on ait pu écrire le symbole
+correspondant sur la sortie. On a deux solutions:
 
 - On utilise un symbole spécial pour marquer la fin du flux. Par
   exemple, pour l'encodage d'un fichier ASCII cela pourrait être le
   symbole `\0` (code ASCII `0x00`), qui sert exactement de terminateur
   de chaîne de caractères. Remarquez que ceci n'est pas applicable à
-  tout format de fichier. Dans notre exemple, cela donne
+  tout format de fichier. C'est le choix que nous
+  [avons pris](#lz78-enc){:onclick="enc.go(24)"} dans l'exemple.
   
-	  (0,a)(1,a)(2,\0)
-
 - On termine le flux de sortie par un **préfixe** sans
   **symbole**. Cette technique peut s'appliquer toujours, mais
-  l'algorithme de décodage devra tenir compte de cela. Dans notre
-  exemple, cela donne
-  
-	  (0,a)(1,a)(2)
-		  
-Il reste un problème : sur combien de bits encoder la partie
-**préfixe** du flux de sortie ? Si on avait une borne sur la taille
-maximale du dictionnaire, on pourrait allouer suffisamment de bits
-pour représenter le plus grand des codes. On peut faire mieux : à
-l'étape $$i$$ on sait qu'on ne pourra pas rencontrer un code de
-préfixe plus grand que $$i$$, il suffit donc d'encoder les codes de
-préfixe sur $$\log_2 i$$ bits. L'espace nécessaire à écrire ces codes
-va grandir au fur et à mesure qu'on écrit le flux de sortie : le
-premier code (il s'agit nécessairement du code **0**) va être écrit
-sur 0 bits, le deuxième sur 1 bit, le troisième et le quatrième sur 2
-bits, du cinquième au huitième sur 3 bits, et ainsi de suite.
+  l'algorithme de décodage devra tenir compte de cela.
 
-Pour notre exemple, cela donne finalement l'encodage (les points sont
-ajoutés pour aider la lecture)
 
-    A.0L.01S.00 .000F.001L.000B.006A
+### Encodage à longueur variable et endiannes
 
-où, bien évidemment, les symboles de l'alphabet d'entrée sont codés
-par leur code ASCII sur 8 bits. On remarque que dans cet exemple, le
-code compressé occupe 11 octets (plus précisément, 81 bits), alors que
-la source en occupait 12.
+Il reste un détail : comment encoder le flux de sortie en une suite de
+bits ? Plus précisément, comment encoder les **préfixes** et comment
+encoder les **symboles** ?
+
+Puisqu'on va être amenés à écrire des entiers dans un flux de bits, il
+faut d'abord adopter une convention sur l'écriture de ces
+entiers. Nous allons utiliser l'ordre [big endian](Endianness), c'est
+à dire l'écriture usuelle des entiers, qui commence par les bits de
+poids fort (les plus hautes puissances de la base).
+
+Dans notre exemple, les symboles **A**, **B**, etc., ont pour code
+ASCII **65**, **66**, etc. Leur écriture sur des blocs de 8 bits sera
+donc
+
+| **A** | 01000001 |
+| **B** | 01000010 |
+| **...** | |
+{:.centered}
+
+les bits étant insérés dans le flux de gauche à droite. Voir aussi la
+page [Endianness](Endianness).
+
+Concernant les codes de préfixe, il faut savoir sur combien de bits on
+va écrire leur encodage.  Si on avait une borne sur la taille maximale
+du dictionnaire, on pourrait allouer suffisamment de bits pour
+représenter le plus grand des codes. On peut faire mieux : à l'étape
+$$i$$ on sait qu'on ne peut pas rencontrer un code de préfixe plus
+grand que $$i$$, il suffit donc d'encoder les codes de préfixe sur
+$$\log_2 i$$ bits. L'espace nécessaire à écrire ces codes va grandir
+au fur et à mesure qu'on écrit le flux de sortie : le premier code (il
+s'agit nécessairement du code **0**) va être écrit sur 0 bits, le
+deuxième sur 1 bit, le troisième et le quatrième sur 2 bits, du
+cinquième au huitième sur 3 bits, et ainsi de suite.
+
+Pour reprendre notre exemple, voici le flux de sorite.
+
+	(0,A)(0,C)(1,T)(1,P)(0,L)(1,S)(0,M)(3,I)(2,\0)
+
+On commence par écrire les préfixes en binaire sur $$\log_2 i$$ bits.
+
+	(,A)(0,C)(01,T)(01,P)(000,L)(001,S)(000,M)(011,I)(0010,\0)
+
+Enfin, on écrit les symboles avec le même codage qu'en entrée. Cela
+donne le flux de bits suivant (les points ont été ajoutés pour
+faciliter la lecture).
+
+    01000001.001000011.0101010100.0101010000.00001001100.00101010011.00001001101.01101001001.001000000000
+{: style="font-size:smaller"}
+
+On remarque que dans cet exemple, le code compressé occupe 12 octets
+(plus exactement, 93 bits), alors que la source en occupait 15.
 
 Pour résumer, voici le pseudo-code de l'algorithme de compression.
 
@@ -423,6 +455,7 @@ si préfixe ≠ ε:
 	écrire dict[préf] sur ⎣log₂ comp⎦ + 1 bits
 ~~~
 
+
 ### Décompression
 
 L'algorithme de décompression LZ78 lit un flux compressé, une paire
@@ -434,99 +467,66 @@ Au début, le dictionnaire contient la seule association
 
 	0 : ε
 
+{::options parse_block_html="false" /}
+<div id="lz78-dec">
+  <strong>Entrée :</strong>
+  <span class="input">
+	<span>(0,A)</span><span>(0,C)</span><span>(1,T)</span><span>(1,P)</span><span>(0,L)</span><span>(1,S)</span><span>(0,M)</span><span>(3,I)</span><span>(2,\0)</span>
+  </span><br/>
+  
+  <strong>Sortie :</strong>
+  <span class="output"><span class="written"></span>
+	<span>A</span><span>C</span><span>A</span><span>T</span><span>A</span><span>P</span><span>L</span><span>A</span><span>S</span><span>M</span><span>A</span><span>T</span><span>I</span><span>C</span>
+  </span><br/><br/>
+
+  <strong>Dictionnaire :</strong>
+  <div class="dict">
+	<span class="written">0 : ε</span><br/>
+	<span>1 : A</span><br/>
+	<span>2 : C</span><br/>
+	<span>3 : AT</span><br/>
+	<span>4 : AP</span><br/>
+	<span>5 : L</span><br/>
+	<span>6 : AS</span><br/>
+	<span>7 : M</span><br/>
+	<span>8 : ATI</span>
+  </div>
+
+  <div class="controls"></div>
+</div>
+<script>
+var dec = new LZ78('#lz78-dec', [
+  { prefix : -1, input : -1, output : 0, dict : 0 },
+  { prefix : 0, input : 0, output : 0, dict : 0 },
+  { prefix : 0, input : 0, output : 1, dict : 1 },
+  { prefix : 0, input : 1, output : 1, dict : 1 },
+  { prefix : 0, input : 1, output : 2, dict : 2 },
+  { prefix : 1, input : 2, output : 2, dict : 2 },
+  { prefix : 1, input : 2, output : 4, dict : 3 },
+  { prefix : 1, input : 3, output : 4, dict : 3 },
+  { prefix : 1, input : 3, output : 6, dict : 4 },
+  { prefix : 0, input : 4, output : 6, dict : 4 },
+  { prefix : 0, input : 4, output : 7, dict : 5 },
+  { prefix : 1, input : 5, output : 7, dict : 5 },
+  { prefix : 1, input : 5, output : 9, dict : 6 },
+  { prefix : 0, input : 6, output : 9, dict : 6 },
+  { prefix : 0, input : 6, output : 10, dict : 7 },
+  { prefix : 3, input : 7, output : 10, dict : 7 },
+  { prefix : 3, input : 7, output : 13, dict : 8 },
+  { prefix : 2, input : 8, output : 13, dict : 8 },
+  { prefix : 2, input : 8, output : 14, dict : 8 },
+]);
+</script>
+{::options parse_block_html="true" /}
+
 Lorsque l'algo lit une paire **(préfixe, symbole)**, il écrit sur sa
 sortie le **préfixe**, suivi du **symbole**, puis augmente le
 dictionnaire avec un nouveau code, correspondant à la concaténation du
 **préfixe** et du **symbole**.
 
-Voici comme l'algorithme de décompression opère sur l'exemple
-précédent.
+Voici le même exemple qu'auparavant, traité par l'algorithme de
+décompression.
 
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	           ^
-	sortie :  a
-
-	Dictionnaire:
-	  0 : ε      < préfixe
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                ^
-	sortie :  al
-
-	Dictionnaire:
-	  0 : ε      < préfixe
-	  1 : a
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                     ^
-	sortie :  alas
-
-	Dictionnaire:
-	  0 : ε
-	  1 : a      < préfixe
-	  2 : l
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                          ^
-	sortie :  alas 
-
-	Dictionnaire:
-	  0 : ε      < préfixe
-	  1 : a
-	  2 : l
-	  3 : as
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                               ^
-	sortie :  alas f
-
-	Dictionnaire:
-	  0 : ε      < préfixe
-	  1 : a
-	  2 : l
-	  3 : as
-	  4 : 
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                                    ^
-	sortie :  alas fal
-
-	Dictionnaire:
-	  0 : ε
-	  1 : a      < préfixe
-	  2 : l
-	  3 : as
-	  4 :
-	  5 : f
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                                         ^
-	sortie :  alas falb
-
-	Dictionnaire:
-	  0 : ε      < préfixe
-	  1 : a
-	  2 : l
-	  3 : as
-	  4 :
-	  5 : f
-	  6 : al
-{:.no-highlight}
-	entrée :  (0,a)(0,l)(1,s)(0, )(0,f)(1,l)(0,b)(6,a)
-	                                              ^
-	sortie :  alas falbala
-
-	Dictionnaire:
-	  0 : ε
-	  1 : a
-	  2 : l
-	  3 : as
-	  4 :
-	  5 : f
-	  6 : al     < préfixe
-	  7 : b
-{:.no-highlight}
-	  
 On remarquera que le dictionnaire ainsi construit est exactement
 l'inverse du dictionnaire construit par l'algorithme de compression.
 
@@ -560,7 +560,7 @@ vous devez :
 
 1. Implanter l'algorithme de compression LZ78. Pour réaliser
    le dictionnaire, vous pouvez vous servir, par exemple, d'une table
-   de hashage :
+   de hachage :
    [`java.util.HashMap`](http://docs.oracle.com/javase/6/docs/api/java/util/HashMap.html).
 
 2. Implanter l'algorithme de décompression LZ78 en Java. Cette
@@ -571,10 +571,12 @@ vous devez :
 3. Résoudre le *challenge* à l'adresse <http://it-katas.defeo.lu/katas/lz78>.
 
 Soumettez votre code source, ainsi que le texte décompressé, dans la
-boîte de dépôt sur [e-campus 2](), ou par mail à votre
-[enseignant](http://defeo.lu/). Vous avez jusqu'au ?? à 4h du matin
-pour soumettre votre travail. Un point de pénalité pour chaque heure
-de retard : le ?? à 23h59 c'est votre dernière chance !
+boîte de dépôt sur
+[e-campus 2](http://e-campus2.uvsq.fr/cours/lucadefe/Cours.lucadefe.2011-12-20.0840/BoiteDepot-lucadefe-20140224012138548648/cours_boite_view),
+ou par mail à votre [enseignant](http://defeo.lu/). Vous avez jusqu'au
+10 mars à 4h du matin pour soumettre votre travail. Un point de
+pénalité pour chaque heure de retard : le 10 mars à 23h59 c'est votre
+dernière chance !
 
 
 ## Pour aller plus loin
@@ -583,20 +585,49 @@ Voici des améliorations que vous pouvez apporter à votre implantation
 pour gagner des points.
 
 1. Dans l'algorithme d'encodage il y a plus efficace que de stocker le
-   dictionnaire dans une table de hashage. En effet, les préfixes
+   dictionnaire dans une table de hachage. En effet, les préfixes
    peuvent étre stockés dans une structure d'arbre, ce qui permet de
    rendre le recherches plus rapides. Le dictionnaire de l'exemple,
    serait alors représenté par l'arbre suivant.
-   
-   ~~~
-   ε : 0 |– a : 1 |– s : 3
-	     |        |– l : 6 |– a : 8
-         |– l : 2
-		 |–   : 4
-		 |– f : 5
-		 |– b : 7
-   ~~~
-   
+      
+   <pre><svg width="800" height="290" style="margin:auto;display:block" viewbox="-420,-10,800,280">
+     <defs>
+	   <marker id="arrow" orient="auto"
+               style="overflow:visible">
+         <path
+			 d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+			 transform="matrix(-0.8,0,0,-0.8,-10,0)"
+			 style="fill-rule:evenodd;stroke:black;stroke-width:1pt;marker-start:none" />
+	   </marker>
+	 </defs>
+	 <g text-anchor="middle">
+	   <text x="0" y="20">ε : 0</text>
+	   
+	   <text x="-200" y="100">A : 1</text>
+	   <text x="-0" y="100">C : 2</text>
+	   <text x="160" y="100">L : 5</text>
+	   <text x="320" y="100">M : 7</text>
+	   
+	   <text x="-340" y="180">T : 3</text>
+	   <text x="-200" y="180">P : 4</text>
+	   <text x="-60" y="180">S : 6</text>
+	   
+	   <text x="-340" y="260">ATI : 8</text>
+	 </g>
+	 <g style="stroke:black;stroke-width:1;marker-end:url(#arrow)">
+	   <path d="M -10,30 -200,80" />
+	   <path d="M 0,30 0,80" />
+	   <path d="M 10,30 160,80" />
+	   <path d="M 15,30 320,80" />
+	   
+	   <path d="M -210,110 -340,160" />
+	   <path d="M -200,110 -200,160" />
+	   <path d="M -190,110 -60,160" />
+	   
+	   <path d="M -340,190 -340,240" />
+	 </g>
+   </svg></pre>
+
    Implantez votre dictionnaire avec une structure d'arbre comme
    celle-ci.
 
