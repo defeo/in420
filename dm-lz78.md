@@ -430,8 +430,16 @@ faciliter la lecture).
     01000001.001000011.0101010100.0101010000.00001001100.00101010011.00001001101.01101001001.001000000000
 {: style="font-size:smaller"}
 
-On remarque que dans cet exemple, le code compressé occupe 12 octets
-(plus exactement, 93 bits), alors que la source en occupait 15.
+Pour vous aider à vérifier votre code, voici un
+[fichier](misc/dm_lz78_acataplasmatic.bin) contenant le flux
+ci-dessus. On remarque que dans cet exemple, le code compressé occupe
+12 octets (plus exactement, 93 bits), alors que la source en
+occupait 14.
+
+Une autre aide précieuse pourra vous être fournie par les outils de
+lecture de fichiers binaires. Sous Linux et MacOS, utilisez la
+commande `hd`. Sous Windows vous pouvez installer
+[Hexdump](http://www.richpasco.org/utilities/hexdump.html).
 
 Pour résumer, voici le pseudo-code de l'algorithme de compression.
 
