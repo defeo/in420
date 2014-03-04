@@ -376,7 +376,8 @@ correspondant sur la sortie. On a deux solutions:
   
 - On termine le flux de sortie par un **préfixe** sans
   **symbole**. Cette technique peut s'appliquer toujours, mais
-  l'algorithme de décodage devra tenir compte de cela.
+  l'algorithme de décodage devra tenir compte de cela. C'est le choix
+  que nous prenons plus bas dans le pseudo-code.
 
 
 ### Encodage à longueur variable et endiannes
@@ -441,7 +442,10 @@ lecture de fichiers binaires. Sous Linux et MacOS, utilisez la
 commande `hd`. Sous Windows vous pouvez installer
 [Hexdump](http://www.richpasco.org/utilities/hexdump.html).
 
-Pour résumer, voici le pseudo-code de l'algorithme de compression.
+Pour résumer, voici le pseudo-code de l'algorithme de compression
+(attention, comme dit plus haut, ce pseudocode ne produit pas
+exactement le flux de l'exemple, car il traite différemment la fin du
+flux d'entrée).
 
 ~~~
 dict ← { ε : 0 }
