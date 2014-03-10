@@ -79,7 +79,7 @@ Dans le même esprit, écrire une classe `OutputBitStream` qui encapsule un `Out
 
 Pour le stockage des bits à l'intérieur d'un octet, vous êtes libres de choisir la [Endianness](Endianness) que vous préférez.
 
-Avant de passer à la suite, il est conseiller de bien débugguer cette partie en vérifiant que la lecture et l'écriture bit par bit d'un fichier de texte réalisent une copie parfaite. Pour vous aider à débugguer cette partie du code, vous pouvez utiliser un outil de lecture de fichiers binaires. Sous Linux et MacOS, la commande `hd` fournit un tel outil. Sous Windows vous pouvez installer [Hexdump](http://www.richpasco.org/utilities/hexdump.html).
+Avant de passer à la suite, il est conseillé de bien débugguer cette partie en vérifiant que la lecture et l'écriture bit par bit d'un fichier de texte réalisent une copie parfaite. Pour vous aider à débugguer cette partie du code, vous pouvez utiliser un outil de lecture de fichiers binaires. Sous Linux et MacOS, la commande `hd` fournit un tel outil. Sous Windows vous pouvez installer [Hexdump](http://www.richpasco.org/utilities/hexdump.html).
 
 
 ## Encoder et décoder
