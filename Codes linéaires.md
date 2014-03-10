@@ -9,7 +9,7 @@ d'erreurs linéaires, et aux codes de Hamming en particulier.
 
 Avant de commencer ce TD vous devez avoir compris les concepts
 d'*espace vectoriel* et d'*application linéaires*, en particulier à
-coe fficients dans le corps à deux éléments $$\mathbb{F}_2$$. Allez voir
+coefficients dans le corps à deux éléments $$\mathbb{F}_2$$. Allez voir
 la page [Codes correcteurs d'erreurs](Codes correcteurs d'erreurs)
 pour vous rafraîchir la mémoire.
 
@@ -27,9 +27,9 @@ qui prend des mots de $$\mathbb{F}_2^k$$ et qui renvoie des mots de
 $$\mathbb{F}_2^n$$.
 
 Le codage se fait en découpant le message original en blocs de $$k$$
-bits, puis en multipliant chaque bloc par la matrice $$G$$, ce qui donne
-des mots de code de $$n$$ bits. Le décodage est une autre histoire et
-fera l'objet du DM.
+bits, puis en multipliant chaque bloc par la matrice $$G$$, ce qui
+donne des mots de code de $$n$$ bits. Le décodage est plus compliqué
+et on verra plus tard comment le faire.
 
 ### Les éléments de $$\mathbb{F}_2$$
 
