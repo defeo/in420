@@ -85,9 +85,9 @@ par substitution similaire au chiffre de Vigenère, la seule différence
 en supposant que la clef secrète soit 836964, le texte chiffré est
 obtenu en additionnant cette clef au texte encodé modulo 10 :
 
-|**encodé**   |1|0|0|1|8|4|4|7|3|0|8|1|4|3|7|5|2|3|2|3|7|2|8|1|2|8|8|6|1|4|2|0|7
+|**encodé**   |1|0|0|1|8|3|4|7|3|0|8|0|4|3|7|5|2|3|2|3|7|2|8|1|2|8|8|5|1|4|2|0|7
 |**clef**     |8|3|6|9|6|4|8|3|6|9|6|4|8|3|6|9|6|4|8|3|6|9|6|4|8|3|6|9|6|4|8|3|6
-|**chiffré**  |9|3|6|0|4|8|2|0|9|9|4|5|2|6|3|4|8|7|0|6|3|1|4|5|0|1|4|5|7|8|0|3|3
+|**chiffré**  |9|3|6|0|4|7|2|0|9|9|4|4|2|6|3|4|8|7|0|6|3|1|4|5|0|1|4|4|7|8|0|3|3
 
 Le décodage se fait de façon analogue. Vous remarquerez que la
 cryptanalyse de ce texte est beaucoup plus dure que pour un simple
