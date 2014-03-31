@@ -97,12 +97,14 @@ TD 12 (29/04/2013)
 DM 1 (à rendre le 09/03/2014)
 :  [Compression LZ78](dm-lz78) et son [challenge](http://it-katas.defeo.lu/katas/lz78).
 
+DM 2 (à rendre le 07/04/2014)
+: [Chiffre VIC](dm-vic), avec son [challenge](http://it-katas.defeo.lu/vic).
+
 ### Anciens devoirs
 
 - [Codage et décodage avec Huffman](Codage et décodage avec Huffman) et son [challenge](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman).
 - [Cryptanalyse de Vigenère](Cryptanalyse de Vigenère - DM) et son [challenge](http://it-katas.defeo.lu/katas/vigenere).
 - [Pas de bébé et pas de géant](Pas de bébé et pas de géant) et son [challenge](http://it-katas.defeo.lu/katas/dlog).
-- [Chiffre VIC](DM1 - Chiffre VIC), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/vic).
 -  [Décodage par syndrome](DM2 - Décodage par syndrome), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/syndrome).
 -  [Test de Miller-Rabin](DM3 - Test de Miller-Rabin), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/primes).
 
