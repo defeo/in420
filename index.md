@@ -98,7 +98,7 @@ DM 1 (à rendre le 09/03/2014)
 :  [Compression LZ78](dm-lz78) et son [challenge](http://it-katas.defeo.lu/katas/lz78).
 
 DM 2 (à rendre le 07/04/2014)
-: [Chiffre VIC](dm-vic), avec son [challenge](http://it-katas.defeo.lu/vic).
+: [Chiffre VIC](dm-vic), avec son [challenge](http://it-katas.defeo.lu/katas/vic).
 
 ### Anciens devoirs
 

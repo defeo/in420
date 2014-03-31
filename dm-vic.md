@@ -102,7 +102,7 @@ fichier, ou de n'importe quelle autre façon) et une clef et qui
 affiche le texte chiffré/déchiffré. On vous conseille de vous inspirer
 des solutions des TDs pour réaliser les entrées-sorties.
 
-2. Challenge : visitez [cette page](http://it-katas.defeo.lu/vic) et
+2. Challenge : visitez [cette page](http://it-katas.defeo.lu/katas/vic) et
 déchiffrez le texte qui vous est proposé. **ATTENTION:** l'échiquier
 de diffusion est différent, par conséquent vous devez soit modifier
 votre code pour prendre un échiquier quelconque en entrée (mieux: ça
