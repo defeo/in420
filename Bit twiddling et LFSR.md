@@ -151,7 +151,7 @@ besoin de faire appel à `parite`.
 6. Modifiez le `main` pour qu'il prenne un argument permettant de choisir entre le mode Fibonacci et le mode Galois.
 
 
-<div class="show-after" data-show-after="2015-03-12">
+<div class="show-after" data-show-after="2014-03-12">
 
 ## Solution
 
