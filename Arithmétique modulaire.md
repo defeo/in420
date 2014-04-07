@@ -8,7 +8,7 @@ séances de TD précédentes. Par exemple, nous avons travaillé avec les
 anneaux $$\mathbb{Z}/26\mathbb{Z}$$ et $$\mathbb{Z}/10\mathbb{Z}$$
 lorsque nous avons étudié le
 [chiffre de Hill](Algèbre linéaire et chiffre de Hill)
-et le [chiffre VIC](DM1 - Chiffre VIC), et avec
+et le [chiffre VIC](dm-vic), et avec
 le corps $$\mathbb{F}_2\simeq\mathbb{Z}/2\mathbb{Z}$$ lorsque nous
 avons étudié les [Codes linéaires](Codes linéaires).
 
