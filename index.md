@@ -100,6 +100,9 @@ DM 1 (à rendre le 09/03/2014)
 DM 2 (à rendre le 07/04/2014)
 : [Chiffre VIC](dm-vic), avec son [challenge](http://it-katas.defeo.lu/katas/vic).
 
+DM 3 (à rendre le 07/05/2014)
+: [Méthode *p* – 1](dm-p-1), avec son [challenge](http://it-katas.defeo.lu/katas/p-1).
+
 ### Anciens devoirs
 
 - [Codage et décodage avec Huffman](Codage et décodage avec Huffman) et son [challenge](http://swift.prism.uvsq.fr/py/in420-dms13.py/huffman).
