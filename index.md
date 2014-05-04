@@ -171,6 +171,11 @@ B. Martin. *Codage, cryptologie et applications*.
 J. A. Buchmann. *Introduction à la cryptographie*.
 :   2e édition. Dunod, 2006. ISBN 2-10-049622-0. Côte BU: 005.82 BUC. Texte d'introduction à la cryptographie pour mathématiciens, avec exercices. Les deux premier chapitres font un panorama complet des algorithmes qu'on utilisera pour la [Cryptographie asymétrique](Cryptographie asymétrique).
 
+D. Barsky. *Notes de cours de Cryptographie*.
+:   <http://www.math.univ-paris13.fr/~barsky/enseignement/cours-crypto-070206.pdf>.
+    Très bon poly couvrant quasiment toutes les notions de cryptologie
+    abordés en cours, et plus.
+
 -------
 
 Ces références concernent les algorithmes et les mathématiques. On indique les chapitres importants pour le cours.
