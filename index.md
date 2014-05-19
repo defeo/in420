@@ -109,7 +109,7 @@ DM 3 (à rendre le 07/05/2014)
 - [Cryptanalyse de Vigenère](Cryptanalyse de Vigenère - DM) et son [challenge](http://it-katas.defeo.lu/katas/vigenere).
 - [Pas de bébé et pas de géant](Pas de bébé et pas de géant) et son [challenge](http://it-katas.defeo.lu/katas/dlog).
 -  [Décodage par syndrome](DM2 - Décodage par syndrome), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/syndrome).
--  [Test de Miller-Rabin](DM3 - Test de Miller-Rabin), avec son [challenge](http://swift.prism.uvsq.fr:2401/in420-dms.py/primes).
+-  [Test de Miller-Rabin](DM3 - Test de Miller-Rabin), avec son [challenge](http://it-katas.defeo.lu/katas/miller-rabin).
 
 
 ## Bibliographie essentielle.
@@ -136,6 +136,7 @@ Vous pouvez retrouver ces références à la BU (voir [ci-dessous](#bibliographi
 
 ## Sujets d'examen
 
+- Le [partiel 2014](misc/examen-14-05-19.pdf).
 - Le [partiel 2013](misc/examen-13-06-28.pdf) session de rattrapage, avec solution.
 - Le [partiel 2013](misc/examen-13-05-22.pdf) avec solution.
 - Le [partiel 2012](misc/examen-12-06-28.pdf) session de rattrapage, avec solution.
