@@ -3,12 +3,13 @@ plugins: ['mathjax', 'highlight']
 ---
 
 <!DOCTYPE html>
+<html>
   <head lang="en">
     <meta charset="utf-8">
     <title>{{ page.title | strip_html }}</title>
 
     {% if page.plugins contains 'highlight' %}
-    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+    <link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/default.min.css">
     {% endif %}
 
     <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
@@ -23,21 +24,23 @@ plugins: ['mathjax', 'highlight']
     </style>
 
 
-    <link href="{{ site.github_base }}/commits/gh-pages.atom" rel="alternate" title="Recent Commits to {{ site.baseurl }}:gh-pages" type="application/atom+xml" />
+    <link href="{{ site.github.zip_url | replace: 'zipball', 'commits' }}.atom" rel="alternate" title="Recent Commits to {{ site.github.repository_name }}" type="application/atom+xml" />
 
     <script src="{{ site.baseurl }}/js/polyfills.js"></script>
   </head>
   <body>
 
-    <a id="forkme" class="dont-print" href="{{ site.github_base }}">
+    <a id="forkme" class="dont-print" href="{{ site.github.repository_url }}">
       <img style="position: absolute; top: 0; right: 0; border: 0;"
 	   src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
 	   alt="Fork me on GitHub"></a>
 
     <ul class="menu dont-print" id="top-menu">
       <li><a href="{{ site.baseurl }}/">Home</a></li>
-      <li><a href="{{ site.github_blob }}/{{ page.path }}">Source</a></li>
+      <li><a href="{{ site.github.zip_url | replace: 'zipball', 'blob' }}/{{ page.path }}">Source</a></li>
+      <li><a href="{{ site.github.zip_url | replace: 'zipball', 'edit' }}/{{ page.path }}">Quick edit</a></li>
       <li><a href="javascript:window.print()">Print</a></li>
+      <li><a href="{{ site.baseurl }}/HELP">Help</a></li>
     </ul>
 
     <div class="main">
@@ -58,7 +61,7 @@ plugins: ['mathjax', 'highlight']
 	      4.0</a>.</p>
 
 	  <p class="dont-print">Source code available
-	    on <a href="{{ site.github_base }}">GitHub</a>,
+	    on <a href="{{ site.github.repository_url }}">GitHub</a>,
 	    static Website generated
 	    with <a href="http://jekyllrb.com/">Jekyll</a> and kindly
 	    hosted by <a href="http://pages.github.com/">GitHub</a>.</p>
@@ -77,11 +80,11 @@ plugins: ['mathjax', 'highlight']
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js"></script>
     {% endif %}
 
     {% if page.plugins contains 'highlight' %}
-    <script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+    <script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
     <script>
       hljs.configure({
         tabReplace: '    ',

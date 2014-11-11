@@ -1,9 +1,5 @@
 baseurl: /in420
-github: https://github.com/defeo
-github_base: https://github.com/defeo/in420
-github_blob: https://github.com/defeo/in420/blob/gh-pages
 permalink: /:categories/:title
 
-markdown: kramdown
 kramdown:
   parse_block_html: true
