@@ -15,7 +15,7 @@
 		if (diff !== NaN && diff < 24*60*60*100) {
 		    setTimeout(function() {
 			show(sa);
-		    }, diff);
+		    }, Math.max(diff, 0));
 		}
 	    });
 	}
